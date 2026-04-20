@@ -298,6 +298,14 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(0);
 }
 
+/* Cuando el menú mobile está abierto, anulamos el transform del header para
+   que el hijo position:fixed se dimensione respecto al viewport (y no al
+   header-wrapper, que se convertiría en containing block al tener transform) */
+#header-wrapper:has(#header-main.open) {
+  transform: none !important;
+  z-index: 1200;
+}
+
 #header {
   display: grid;
   grid-template-columns: auto 1fr;
