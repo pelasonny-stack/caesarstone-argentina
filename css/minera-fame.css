@@ -1281,9 +1281,8 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   /* Container padding uniforme */
   .mf-container { padding-left: 20px; padding-right: 20px; }
 
-  /* Hero — logo Caesarstone dentro del slide se oculta (el título ya comunica
-     la marca) y liberamos espacio vertical para el texto */
-  .mf-slide-logo { display: none; }
+  /* Hero — logo Caesarstone dentro del slide visible pero más compacto */
+  .mf-slide-logo { height: 32px; margin-bottom: 1rem; }
   .mf-slide-content h1 { font-size: clamp(1.85rem, 7.5vw, 2.5rem); }
   .mf-slide-eyebrow { font-size: 0.625rem; }
 
