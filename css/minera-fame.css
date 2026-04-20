@@ -1185,20 +1185,14 @@
   }
   .mf-mobile-toggle { display: flex; }
 
-  /* Hero — contenido posicionado absoluto DEBAJO del header fijo para que
-     el logo "mf" nunca se solape con el título/eyebrow. Inmune a cascadas
-     de padding shorthand en breakpoints menores. */
+  /* Hero — evitar solape con el header fijo: centramos el contenido y
+     forzamos padding-top >= altura del header. El padding-top va DESPUÉS
+     del shorthand para que no lo pise. */
   .mf-hero-swiper-section { min-height: 100dvh; }
   .mf-slide-content {
-    position: absolute;
-    top: var(--mf-header-h, 68px);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    max-width: 100%;
     justify-content: center;
-    padding: 1.5rem clamp(1rem, 4vw, 2rem);
+    padding: 1.5rem 1.5rem 3rem;
+    padding-top: calc(var(--mf-header-h, 68px) + 1rem);
   }
 
   /* Stats bar */
@@ -1329,7 +1323,10 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
   /* Hero — altura ajustada + contenido más aire */
   .mf-hero-swiper-section { min-height: 500px; height: auto; }
-  .mf-slide-content { padding: 1.5rem 1.25rem 2.5rem; }
+  .mf-slide-content {
+    padding: 1.5rem 1.25rem 2.5rem;
+    padding-top: calc(var(--mf-header-h, 68px) + 1rem);
+  }
   .mf-slide-content h1 { font-size: clamp(1.65rem, 8vw, 2.2rem); }
 
   /* Materiales featured vuelve a full width */
@@ -1388,7 +1385,10 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 /* --- Landscape mobile --------------------------------------------------- */
 @media (max-height: 500px) and (orientation: landscape) {
   .mf-hero-swiper-section { min-height: 380px; height: auto; }
-  .mf-slide-content { padding: 1.25rem 1.5rem 2rem; }
+  .mf-slide-content {
+    padding: 1.25rem 1.5rem 2rem;
+    padding-top: calc(var(--mf-header-h, 68px) + 0.5rem);
+  }
   .mf-slide-content h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
 }
 
