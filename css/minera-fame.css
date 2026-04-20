@@ -1320,8 +1320,8 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   .mf-section-title { font-size: clamp(1.4rem, 6vw, 2rem); }
   .mf-section-eyebrow { font-size: 0.625rem; }
 
-  /* Hero — altura ajustada + contenido más aire */
-  .mf-hero-swiper-section { min-height: 500px; height: auto; }
+  /* Hero — altura fija para que Swiper mantenga la pagination anclada */
+  .mf-hero-swiper-section { height: 100svh; min-height: 500px; }
   .mf-slide-content {
     padding: 1.5rem 1.25rem 2.5rem;
     padding-top: calc(var(--mf-header-h, 68px) + 1rem);
@@ -1383,7 +1383,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 /* --- Landscape mobile --------------------------------------------------- */
 @media (max-height: 500px) and (orientation: landscape) {
-  .mf-hero-swiper-section { min-height: 380px; height: auto; }
+  .mf-hero-swiper-section { height: 100svh; min-height: 380px; }
   .mf-slide-content {
     padding: 1.25rem 1.5rem 2rem;
     padding-top: calc(var(--mf-header-h, 68px) + 0.5rem);
