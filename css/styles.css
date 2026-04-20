@@ -1678,6 +1678,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  /* reservamos espacio arriba a la derecha para el botón X de cerrar
+     (30px + 12px right + ~8px de aire) */
+  padding-right: 50px;
 }
 .modal-cs-logo {
   height: 20px;
