@@ -1,31 +1,12 @@
 /* ── Minera Fame — minera-fame.js ── */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initHeroSwiper();
   initHeader();
   initMobileNav();
   initStatCounters();
   initGSAP();
   initContactForm();
 });
-
-/* ── Hero Swiper ─────────────────────────────────────────────────────────── */
-function initHeroSwiper() {
-  if (typeof Swiper === 'undefined') return;
-  new Swiper('.mf-hero-swiper', {
-    loop: true,
-    autoplay: { delay: 7000, disableOnInteraction: false },
-    speed: 1200,
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
-    pagination: { el: '.mf-pagination', clickable: true },
-    navigation: {
-      nextEl: '.mf-btn-next',
-      prevEl: '.mf-btn-prev',
-    },
-    a11y: { prevSlideMessage: 'Slide anterior', nextSlideMessage: 'Slide siguiente' },
-  });
-}
 
 /* ── Header ──────────────────────────────────────────────────────────────── */
 function initHeader() {
