@@ -128,16 +128,78 @@
 <main id="main-content" role="main">
 
 <section class="mf-hero-swiper-section" id="hero" aria-label="Introducción Minera Fame">
-  <div class="mf-hero-single">
-    <div class="mf-slide-bg video-bg">
-      <img class="mf-mobile-poster" src="assets/minerafame/hero-marmol.jpg" alt="Mármoles y granitos importados" fetchpriority="high">
-      <iframe src="https://player.vimeo.com/video/216310497?background=1&autoplay=1&loop=1&muted=1&playsinline=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Cantera de mármol" aria-hidden="true"></iframe>
+  <div class="swiper mf-hero-swiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1: Caesarstone -->
+      <div class="swiper-slide">
+        <div class="mf-slide-bg video-bg">
+          <img class="mf-mobile-poster" src="assets/minerafame/hero-silestone.jpg" alt="Caesarstone — Superficies de cuarzo técnico" fetchpriority="high">
+          <iframe src="https://player.vimeo.com/video/216310497?background=1&autoplay=1&loop=1&muted=1&playsinline=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Cantera de mármol" aria-hidden="true"></iframe>
+        </div>
+        <div class="mf-slide-overlay"></div>
+        <div class="mf-slide-content">
+          <img src="assets/logos/caesarstone-logo.png" alt="Caesarstone" class="mf-slide-logo">
+          <h1 class="mf-slide-title">en Argentina</h1>
+        </div>
+      </div>
+
+      <!-- Slide 2: Planta / Proyectos a medida -->
+      <div class="swiper-slide">
+        <div class="mf-slide-bg video-bg">
+          <img class="mf-mobile-poster" src="assets/minerafame/hero-plant.jpg" alt="Planta Minera Fame S.A. — Caseros, Buenos Aires" loading="eager" decoding="async">
+          <iframe src="https://player.vimeo.com/video/334156884?background=1&autoplay=1&loop=1&muted=1&playsinline=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Tallado industrial de mármol en cantera" aria-hidden="true"></iframe>
+        </div>
+        <div class="mf-slide-overlay"></div>
+        <div class="mf-slide-content">
+          <p class="mf-slide-eyebrow">50 años transformando espacios</p>
+          <h1 class="mf-slide-title">Proyectos<br>a medida</h1>
+          <p class="mf-slide-sub">Desarrollamos sus ideas adaptándonos a cada una de sus necesidades. Importadores directos, planta propia en Caseros.</p>
+          <div class="mf-slide-actions">
+            <a href="#empresa" class="mf-btn-light">Conocer la empresa</a>
+            <a href="#contacto" class="mf-btn-ghost">Contactarnos</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Mármoles y Granitos -->
+      <div class="swiper-slide">
+        <div class="mf-slide-bg video-bg">
+          <img class="mf-mobile-poster" src="assets/minerafame/hero-marmol.jpg" alt="Mármoles y granitos importados" loading="lazy">
+          <iframe src="https://player.vimeo.com/video/410621458?background=1&autoplay=1&loop=1&muted=1&playsinline=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Detalle de mármol en proceso" aria-hidden="true"></iframe>
+        </div>
+        <div class="mf-slide-overlay"></div>
+        <div class="mf-slide-content">
+          <p class="mf-slide-eyebrow">Importadores directos</p>
+          <h1 class="mf-slide-title">Mármoles<br>y Granitos</h1>
+          <p class="mf-slide-sub">Estilo y calidad en cada placa. Importadores directos del 80% de los materiales que trabajamos.</p>
+          <div class="mf-slide-actions">
+            <a href="#materiales" class="mf-btn-light">Ver catálogo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Fachada Ventilada -->
+      <div class="swiper-slide">
+        <div class="mf-slide-bg video-bg">
+          <img class="mf-mobile-poster" src="assets/minerafame/hero-fachada.jpg" alt="Revestimiento Travertino — Fachada ventilada" loading="lazy">
+          <iframe src="https://player.vimeo.com/video/410618029?background=1&autoplay=1&loop=1&muted=1&playsinline=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Mármol tallado — revestimiento natural" aria-hidden="true"></iframe>
+        </div>
+        <div class="mf-slide-overlay"></div>
+        <div class="mf-slide-content">
+          <p class="mf-slide-eyebrow">Novedad</p>
+          <h1 class="mf-slide-title">Fachada<br>Ventilada</h1>
+          <p class="mf-slide-sub">La solución rápida y práctica para usar mármol natural en tus espacios. Ahorro energético garantizado.</p>
+          <div class="mf-slide-actions">
+            <a href="#fachada" class="mf-btn-light">Saber más</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="mf-slide-overlay"></div>
-    <div class="mf-slide-content">
-      <img src="assets/logos/caesarstone-logo.png" alt="Caesarstone" class="mf-slide-logo">
-      <h1 class="mf-slide-title">en Argentina</h1>
-    </div>
+    <div class="swiper-pagination mf-pagination"></div>
+    <div class="swiper-button-next mf-btn-next" aria-label="Slide siguiente"></div>
+    <div class="swiper-button-prev mf-btn-prev" aria-label="Slide anterior"></div>
   </div>
 </section>
 

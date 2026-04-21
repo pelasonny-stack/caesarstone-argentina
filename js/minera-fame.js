@@ -3,10 +3,42 @@
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initMobileNav();
+  initHeroSwiper();
   initStatCounters();
   initGSAP();
   initContactForm();
 });
+
+/* ── Hero Swiper ─────────────────────────────────────────────────────────── */
+function initHeroSwiper() {
+  const el = document.querySelector('.mf-hero-swiper');
+  if (!el || typeof Swiper === 'undefined') return;
+
+  new Swiper(el, {
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    loop: true,
+    speed: 1000,
+    autoplay: {
+      delay: 6500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      el: '.mf-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.mf-btn-next',
+      prevEl: '.mf-btn-prev',
+    },
+    keyboard: { enabled: true },
+    a11y: {
+      prevSlideMessage: 'Slide anterior',
+      nextSlideMessage: 'Slide siguiente',
+    },
+  });
+}
 
 /* ── Header ──────────────────────────────────────────────────────────────── */
 function initHeader() {
