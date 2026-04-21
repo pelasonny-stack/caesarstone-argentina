@@ -2,7 +2,7 @@
 
 /* ─── GLOBALS ────────────────────────────────────────────────────────────── */
 :root {
-  --mf-header-h: 80px;
+  --mf-header-h: 104px;
 }
 
 .section-header,
@@ -36,7 +36,7 @@
 .mf-logo-link { display: flex; align-items: center; }
 
 .mf-header-logo {
-  height: 52px;
+  height: 76px;
   width: auto;
   object-fit: contain;
   object-position: left;
@@ -1010,7 +1010,7 @@
 }
 
 .mf-footer-logo {
-  height: 32px;
+  height: 72px;
   width: auto;
   object-fit: contain;
   object-position: left;
@@ -1341,7 +1341,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   .mf-container { padding-left: 16px; padding-right: 16px; }
 
   /* Header: logo más compacto */
-  .mf-header-logo img { height: 40px; }
+  .mf-header-logo img { height: 56px; }
 
   /* Hero: altura más corta en pantallas chicas */
   .mf-hero-swiper-section { min-height: 440px; }
