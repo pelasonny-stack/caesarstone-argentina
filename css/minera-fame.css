@@ -94,6 +94,13 @@ body { background: var(--mf-ash); }
   overflow: hidden;
 }
 
+.mf-hero-swiper,
+.mf-hero-swiper .swiper-wrapper,
+.mf-hero-swiper .swiper-slide {
+  height: 100%;
+  width: 100%;
+}
+
 .mf-hero-single {
   position: relative;
   width: 100%;
