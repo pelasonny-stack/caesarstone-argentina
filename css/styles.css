@@ -1176,8 +1176,7 @@ h1, h2, h3, h4, h5, h6 {
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  object-position: left;
-  align-self: flex-start;
+  align-self: center;
   filter: brightness(0) invert(1);
 }
 
