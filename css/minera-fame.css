@@ -27,7 +27,7 @@ body { background: var(--mf-ash); }
 }
 
 .mf-header.scrolled {
-  background: rgba(232,229,223,0.94);
+  background: rgba(26,25,23,0.72);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 rgba(255,255,255,0.06);
@@ -42,6 +42,7 @@ body { background: var(--mf-ash); }
   width: auto;
   object-fit: contain;
   object-position: left;
+  filter: brightness(0) invert(1);
 }
 
 .mf-header-nav {
@@ -54,12 +55,12 @@ body { background: var(--mf-ash); }
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: rgba(26,25,23,0.82);
+  color: #fff;
   transition: color var(--dur-fast);
   white-space: nowrap;
 }
 
-.mf-header-nav a:hover { color: var(--c-ink); }
+.mf-header-nav a:hover { color: rgba(255,255,255,0.75); }
 
 .mf-header-cta {
   font-size: var(--text-xs);
@@ -67,15 +68,15 @@ body { background: var(--mf-ash); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.5rem 1.4rem;
-  border: 1.5px solid rgba(26,25,23,0.4);
+  border: 1.5px solid rgba(255,255,255,0.5);
   border-radius: var(--r-sm);
-  color: var(--c-ink) !important;
+  color: #fff !important;
   transition: background var(--dur-fast), border-color var(--dur-fast);
 }
 
 .mf-header-cta:hover {
-  background: rgba(26,25,23,0.08);
-  border-color: rgba(26,25,23,0.7);
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.85);
 }
 
 .mf-mobile-toggle {
@@ -83,7 +84,7 @@ body { background: var(--mf-ash); }
   width: 40px; height: 40px;
   align-items: center;
   justify-content: center;
-  color: var(--c-ink);
+  color: #fff;
 }
 
 /* ─── HERO SWIPER ────────────────────────────────────────────────────────── */
@@ -1207,7 +1208,9 @@ body { background: var(--mf-ash); }
     flex-direction: column;
     position: fixed;
     inset: var(--mf-header-h) 0 0 0;
-    background: var(--mf-ash);
+    background: rgba(26,25,23,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 2rem 1.5rem 3rem;
     z-index: 99;
     gap: 0;
@@ -1216,14 +1219,14 @@ body { background: var(--mf-ash); }
   .mf-header-nav.open a {
     font-size: 1.2rem;
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(26,25,23,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
     width: 100%;
-    color: rgba(26,25,23,0.85) !important;
+    color: #fff !important;
     display: block;
   }
   .mf-header-nav.open .mf-header-cta {
     margin-top: 1.5rem;
-    border: 1.5px solid rgba(26,25,23,0.35);
+    border: 1.5px solid rgba(255,255,255,0.5);
     text-align: center;
     padding: 0.75rem 1.5rem;
   }
