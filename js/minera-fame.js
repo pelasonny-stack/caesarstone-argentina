@@ -194,13 +194,7 @@ function initGSAP() {
     });
   });
 
-  /* Marca items */
-  gsap.from('.mf-marca-item', {
-    y: 20, opacity: 0, duration: 0.5, ease: 'expo.out', stagger: 0.06,
-    scrollTrigger: { trigger: '.mf-marcas-marquee', start: 'top 85%' },
-  });
-
-  /* Fachada section */
+/* Fachada section */
   gsap.from('.mf-fachada-visual img', {
     scale: 1.08, duration: 1.2, ease: 'expo.out',
     scrollTrigger: { trigger: '.mf-fachada-section', start: 'top 75%' },
