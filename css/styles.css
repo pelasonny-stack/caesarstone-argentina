@@ -1622,15 +1622,74 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--c-body);
 }
 
-.contact-map {
-  border-radius: 2px;
-  overflow: hidden;
-  height: 200px;
-  margin-top: 28px;
-  border: 1px solid var(--c-border);
+.contact-maps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
-.contact-map iframe { width: 100%; height: 100%; }
+.contact-map {
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--c-border);
+  background: var(--c-border);
+}
+
+.contact-map iframe { width: 100%; height: 100%; border: none; display: block; }
+
+.contact-map-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(26,25,23,0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.contact-map-cta {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(26,25,23,0.85);
+  color: #fff;
+  padding: 7px 11px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: background var(--dur-fast), transform var(--dur-fast);
+  z-index: 2;
+}
+
+.contact-map-cta:hover {
+  background: var(--c-accent-ink, #1a1917);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .contact-maps { gap: 1rem; }
+}
+
+@media (max-width: 640px) {
+  .contact-maps { grid-template-columns: 1fr; gap: 0.875rem; }
+  .contact-map { aspect-ratio: 16 / 10; }
+}
 
 /* Contact Form */
 .contact-form {
@@ -2519,9 +2578,6 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
 
-  /* Contact map height */
-  .contact-map { height: 180px; }
-
   /* Image paragraph */
   .ip-visual { aspect-ratio: 3/2; }
   .ip-number { font-size: 3rem; margin-bottom: 8px; }
@@ -2688,7 +2744,6 @@ input, select, textarea { font-size: 16px; }
   }
 
   /* Contact form/info padding reducido */
-  .contact-map { height: 220px; }
   .social-links { margin-top: 20px; }
 }
 
@@ -2811,9 +2866,6 @@ input, select, textarea { font-size: 16px; }
 
   /* Accordion panels aún más chicos */
   .accordion-panel { height: auto; aspect-ratio: 1; }
-
-  /* Contact map más chico */
-  .contact-map { height: 180px; margin-top: 20px; }
 
   /* Social links */
   .social-link { width: 36px; height: 36px; }
