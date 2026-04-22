@@ -157,7 +157,7 @@ function initGSAP() {
   /* Marca items */
   gsap.from('.mf-marca-item', {
     y: 20, opacity: 0, duration: 0.5, ease: 'expo.out', stagger: 0.06,
-    scrollTrigger: { trigger: '.mf-marcas-grid', start: 'top 85%' },
+    scrollTrigger: { trigger: '.mf-marcas-marquee', start: 'top 85%' },
   });
 
   /* Project items */
