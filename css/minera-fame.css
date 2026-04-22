@@ -1311,10 +1311,18 @@ span.mf-project-brand--letter {
 }
 
 @media (max-width: 900px) {
-  /* Header — compacto pero con logo bien visible en mobile */
+  /* Header — siempre visible + estirado en mobile (no colapsa al scrollear) */
   :root { --mf-header-h: 120px; }
   .mf-header-logo { height: 96px; }
-  .mf-header { padding: 0 1.25rem; }
+  .mf-header {
+    padding: 0 1.25rem;
+    background: rgba(26,25,23,0.92) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+  /* Nunca ocultar el header en mobile */
+  .mf-header.hidden { transform: none !important; }
   .mf-mobile-toggle {
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.25);

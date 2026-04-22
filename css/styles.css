@@ -552,14 +552,14 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
 }
 
-/* Poster mobile: oculto por defecto (desktop usa iframe). En mobile se muestra
-   en lugar del video para evitar recorte agresivo del 16:9 en viewport portrait. */
-.hero-slide-bg.video-bg .hero-mobile-poster {
+/* Video mobile: oculto por defecto (desktop usa iframe Vimeo). En mobile
+   se muestra en lugar del iframe para evitar recorte agresivo del 16:9. */
+.hero-slide-bg.video-bg .hero-mobile-video {
   display: none;
 }
 @media (max-width: 768px) {
   .hero-slide-bg.video-bg iframe { display: none; }
-  .hero-slide-bg.video-bg .hero-mobile-poster {
+  .hero-slide-bg.video-bg .hero-mobile-video {
     display: block;
     position: absolute;
     inset: 0;
@@ -567,11 +567,6 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transform: scale(1.04);
-    transition: transform 6s ease-out;
-  }
-  .hero-swiper .swiper-slide-active .hero-slide-bg.video-bg .hero-mobile-poster {
-    transform: scale(1.0);
   }
 }
 
