@@ -19,6 +19,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Una base neutra terrosa con vetas en tonos taupé y beige, con remolinos color crema de apariencia plumosa que aportan fluidez y movimiento.',
     img: 'assets/products/opal-taj.webp',
+    heroImg: 'assets/products/hero/opal-taj.jpg',
     labelImg: 'assets/products/opal-taj-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/584-opal-taj/',
     isNew: true,
@@ -35,6 +36,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Una suave base de espuma de mar con capas de intrincados remolinos blancos, finas vetas color liquen y sutiles motas granulares.',
     img: 'assets/products/fossillia.jpg',
+    heroImg: 'assets/products/hero/fossillia.jpg',
     labelImg: 'assets/products/fossillia-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/545-fossillia/',
     tone: 'blanco',
@@ -50,6 +52,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Base gris ahumado con una estructura compleja de finas vetas oscuras, manchas de pátina, limo oxidado y rayas blancas calcáreas.',
     img: 'assets/products/striata.jpg',
+    heroImg: 'assets/products/hero/striata.jpg',
     labelImg: 'assets/products/striata-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/513-striata/',
     tone: 'gris',
@@ -65,6 +68,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Una cálida base de piedra caliza arenosa con sinuosos remolinos de líneas blancas que evocan antiguos fósiles de conchas marinas, enriquecida con granos minerales en beige oscuro.',
     img: 'assets/products/thalassa.webp',
+    heroImg: 'assets/products/hero/thalassa.webp',
     labelImg: 'assets/products/thalassa-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/546-thalassa/',
     tone: 'color',
@@ -80,6 +84,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Una base lechosa moteada con infusiones de color salvia tenue y musgo oscuro. Las zonas más claras se ven realzadas por grandes y animados agregados. Impurezas yodadas y vetas de óxido.',
     img: 'assets/products/mosstone.jpg',
+    heroImg: 'assets/products/hero/mosstone.jpg',
     labelImg: 'assets/products/mosstone-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/542-mosstone/',
     tone: 'color',
@@ -95,6 +100,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Una superficie blanca con delicadas vetas grises inspirada en el clásico mármol de Carrara.',
     img: 'assets/products/carrara-ice.webp',
+    heroImg: 'assets/products/hero/carrara-ice.webp',
     labelImg: 'assets/products/carrara-ice-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/914-carrara-ice/',
     tone: 'blanco',
@@ -110,6 +116,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Base neutra de color blanquecino, repleta de un animado entrecruzamiento de vetas de gran tamaño y finas líneas craqueladas que presentan una superposición de cobre antiguo.',
     img: 'assets/products/isobellia.jpg',
+    heroImg: 'assets/products/hero/isobellia.jpg',
     labelImg: 'assets/products/isobellia-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/508-isobellia/',
     tone: 'blanco',
@@ -155,6 +162,7 @@ const PRODUCTS = [
     thickness: '12 mm',
     desc: 'Un fondo de color beige cremoso que equilibra la presencia textural de las piedras desgastadas.',
     img: 'assets/products/beige-ciment.jpg',
+    heroImg: 'assets/products/hero/beige-ciment.jpg',
     labelImg: 'assets/products/beige-ciment-pdf.jpg',
     caesarUrl: 'https://www.caesarstone.com/design/stones/412-beige-ciment/',
     tone: 'gris',
@@ -432,9 +440,9 @@ function openModal(id) {
 
   const overlay = document.getElementById('product-modal');
 
-  /* Stone hero — imagen limpia del producto (sin watermark del PDF) */
+  /* Stone hero — imagen HD landscape (fallback a thumb si no hay) */
   const img = document.getElementById('modal-stone-img');
-  img.src = p.img;
+  img.src = p.heroImg || p.img;
   img.alt = p.name;
 
   document.getElementById('modal-hero-collection').innerHTML =

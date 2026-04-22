@@ -1903,6 +1903,8 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: center;
+  image-rendering: auto;
   display: block;
 }
 
