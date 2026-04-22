@@ -368,9 +368,9 @@ function openModal(id) {
 
   const overlay = document.getElementById('product-modal');
 
-  /* Stone hero — usa imagen panorámica del PDF label si existe */
+  /* Stone hero — imagen limpia del producto (sin watermark del PDF) */
   const img = document.getElementById('modal-stone-img');
-  img.src = p.labelImg || p.img;
+  img.src = p.img;
   img.alt = p.name;
 
   document.getElementById('modal-hero-collection').innerHTML =
