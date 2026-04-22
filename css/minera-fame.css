@@ -831,24 +831,38 @@ body { background: var(--mf-ash); }
 
 .mf-project-item:hover img { transform: scale(1.04); }
 
-/* Sello de agua de marca — esquina superior derecha */
-.mf-project-watermark {
+/* Sello de agua tipográfico — nombre de marca por foto */
+.mf-project-brand {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  height: 26px;
-  width: auto;
-  opacity: 0.78;
-  filter: brightness(0) invert(1) drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+  top: 14px;
+  left: 14px;
   z-index: 2;
   pointer-events: none;
-  transition: opacity var(--dur-fast);
+  padding: 6px 12px 7px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: rgba(255,255,255,0.96);
+  background: rgba(26,25,23,0.35);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 3px;
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  max-width: calc(100% - 28px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background var(--dur-fast);
 }
 
-.mf-project-item:hover .mf-project-watermark { opacity: 1; }
+.mf-project-item:hover .mf-project-brand { background: rgba(26,25,23,0.55); }
 
 @media (max-width: 640px) {
-  .mf-project-watermark { height: 20px; top: 8px; right: 8px; }
+  .mf-project-brand { font-size: 0.8rem; top: 10px; left: 10px; padding: 5px 10px; }
 }
 
 /* Caption siempre visible — no necesita hover */
@@ -1223,9 +1237,9 @@ body { background: var(--mf-ash); }
 }
 
 @media (max-width: 900px) {
-  /* Header — altura y logo mucho más compactos en mobile */
-  :root { --mf-header-h: 92px; }
-  .mf-header-logo { height: 68px; }
+  /* Header — compacto pero con logo bien visible en mobile */
+  :root { --mf-header-h: 120px; }
+  .mf-header-logo { height: 96px; }
   .mf-header { padding: 0 1.25rem; }
   .mf-mobile-toggle {
     background: rgba(0,0,0,0.25);
@@ -1427,9 +1441,9 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 @media (max-width: 480px) {
   .mf-container { padding-left: 16px; padding-right: 16px; }
 
-  /* Header: logo más compacto en phones */
-  :root { --mf-header-h: 76px; }
-  .mf-header-logo { height: 54px; }
+  /* Header: logo visible pero compacto en phones */
+  :root { --mf-header-h: 100px; }
+  .mf-header-logo { height: 76px; }
 
   /* Hero: altura más corta en pantallas chicas */
   .mf-hero-swiper-section { min-height: 440px; }
