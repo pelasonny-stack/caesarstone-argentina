@@ -831,38 +831,57 @@ body { background: var(--mf-ash); }
 
 .mf-project-item:hover img { transform: scale(1.04); }
 
-/* Sello de agua tipográfico — nombre de marca por foto */
+/* Sello de agua por marca — logo real o fallback texto */
 .mf-project-brand {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 12px;
+  left: 12px;
   z-index: 2;
   pointer-events: none;
-  padding: 6px 12px 7px;
+  transition: opacity var(--dur-fast), transform var(--dur-fast);
+}
+
+/* Variante <img>: logo real forzado a blanco con drop-shadow para legibilidad */
+img.mf-project-brand {
+  height: 28px;
+  width: auto;
+  max-width: 55%;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.55)) drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+
+/* Algunos logos (Kansas blanco) ya vienen monocromos → sin filter */
+img.mf-project-brand--nofilter {
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.55)) drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+
+/* Fallback <span> para marcas sin logo disponible */
+span.mf-project-brand {
+  padding: 5px 11px 6px;
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.01em;
   line-height: 1;
   color: rgba(255,255,255,0.96);
-  background: rgba(26,25,23,0.35);
-  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(26,25,23,0.38);
+  border: 1px solid rgba(255,255,255,0.3);
   border-radius: 3px;
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-  max-width: calc(100% - 28px);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background var(--dur-fast);
 }
 
-.mf-project-item:hover .mf-project-brand { background: rgba(26,25,23,0.55); }
+.mf-project-item:hover img.mf-project-brand { opacity: 1; transform: scale(1.03); }
+.mf-project-item:hover span.mf-project-brand { background: rgba(26,25,23,0.55); }
 
 @media (max-width: 640px) {
-  .mf-project-brand { font-size: 0.8rem; top: 10px; left: 10px; padding: 5px 10px; }
+  img.mf-project-brand { height: 22px; }
+  span.mf-project-brand { font-size: 0.78rem; padding: 4px 9px; }
+  .mf-project-brand { top: 9px; left: 9px; }
 }
 
 /* Caption siempre visible — no necesita hover */
@@ -1240,9 +1259,19 @@ body { background: var(--mf-ash); }
   /* Header — compacto pero con logo bien visible en mobile */
   :root { --mf-header-h: 120px; }
   .mf-header-logo { height: 96px; }
-  .mf-header { padding: 0 1.25rem; }
+  .mf-header {
+    padding: 0 1.25rem;
+    /* SIEMPRE visible en mobile — fondo sólido independiente del scroll */
+    background: rgba(26,25,23,0.92) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+  /* Anular cualquier auto-hide en mobile */
+  .mf-header.hidden { transform: none !important; }
   .mf-mobile-toggle {
-    background: rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
     border-radius: var(--r-sm);
     backdrop-filter: blur(6px);
   }
