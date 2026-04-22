@@ -43,28 +43,22 @@ function initHeroSwiper() {
 /* ── Header ──────────────────────────────────────────────────────────────── */
 function initHeader() {
   const header = document.getElementById('mf-header');
-  const nav    = document.getElementById('mf-nav');
   if (!header) return;
 
-  let lastScroll = 0, ticking = false;
-  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+  let lastScroll = window.scrollY, ticking = false;
 
   header.classList.toggle('scrolled', window.scrollY > 20);
 
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const current = window.scrollY;
-        header.classList.toggle('scrolled', current > 20);
-        const navOpen = nav?.classList.contains('open');
-        // Nunca ocultar en mobile ni cuando el nav está abierto
-        const shouldHide = !isMobile() && !navOpen && current > lastScroll && current > 150;
-        header.classList.toggle('hidden', shouldHide);
-        lastScroll = Math.max(0, current);
-        ticking = false;
-      });
-      ticking = true;
-    }
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const current = window.scrollY;
+      header.classList.toggle('scrolled', current > 20);
+      header.classList.toggle('hidden', current > lastScroll && current > 150);
+      lastScroll = Math.max(0, current);
+      ticking = false;
+    });
   }, { passive: true });
 }
 
