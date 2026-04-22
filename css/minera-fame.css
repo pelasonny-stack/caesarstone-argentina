@@ -630,7 +630,7 @@ body { background: var(--mf-ash); }
 
 .mf-material-card:hover .mf-material-cta { color: #fff; }
 
-/* ─── MARCAS ─────────────────────────────────────────────────────────────── */
+/* ─── MARCAS (MARQUEE DINÁMICO) ──────────────────────────────────────────── */
 .mf-marcas-section {
   background: var(--c-paper);
   border-top: 1px solid var(--c-line);
@@ -641,33 +641,50 @@ body { background: var(--mf-ash); }
 .mf-marcas-section .mf-title { text-align: center; }
 .mf-marcas-section .mf-section-header { text-align: center; }
 
-.mf-marcas-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
+.mf-marcas-marquee {
   margin-top: var(--space-8);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
   overflow: hidden;
+  background: #fff;
+  /* fade en los bordes para loop continuo */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+.mf-marcas-track {
+  display: flex;
+  width: max-content;
+  align-items: stretch;
+  animation: mf-marquee 38s linear infinite;
+  will-change: transform;
+}
+
+.mf-marcas-track:hover { animation-play-state: paused; }
+
+@keyframes mf-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mf-marcas-track { animation: none; }
 }
 
 .mf-marca-item {
-  flex: 1;
-  min-width: 160px;
+  flex: 0 0 auto;
+  width: clamp(180px, 22vw, 260px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem 1.75rem;
+  padding: 2.25rem 2rem;
   border-right: 1px solid var(--c-line);
-  transition: background var(--dur-fast), transform var(--dur-fast);
+  transition: background var(--dur-fast);
   position: relative;
 }
 
-.mf-marca-item:last-child { border-right: none; }
-
 .mf-marca-item:hover {
   background: rgba(138,90,56,0.05);
-  transform: translateY(-2px);
 }
 
 .mf-marca-item img {
@@ -813,6 +830,26 @@ body { background: var(--mf-ash); }
 }
 
 .mf-project-item:hover img { transform: scale(1.04); }
+
+/* Sello de agua de marca — esquina superior derecha */
+.mf-project-watermark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 26px;
+  width: auto;
+  opacity: 0.78;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity var(--dur-fast);
+}
+
+.mf-project-item:hover .mf-project-watermark { opacity: 1; }
+
+@media (max-width: 640px) {
+  .mf-project-watermark { height: 20px; top: 8px; right: 8px; }
+}
 
 /* Caption siempre visible — no necesita hover */
 .mf-project-caption {
@@ -1183,11 +1220,29 @@ body { background: var(--mf-ash); }
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .mf-projects-grid { columns: 3; }
-  .mf-marcas-grid .mf-marca-item { min-width: 100px; }
 }
 
 @media (max-width: 900px) {
-  /* Header */
+  /* Header — altura y logo mucho más compactos en mobile */
+  :root { --mf-header-h: 92px; }
+  .mf-header-logo { height: 68px; }
+  .mf-header { padding: 0 1.25rem; }
+  .mf-mobile-toggle {
+    background: rgba(0,0,0,0.25);
+    border-radius: var(--r-sm);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Overlay mobile — gradiente vertical fuerte para que los títulos no se pierdan */
+  .mf-slide-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(26,25,23,0.45) 0%,
+      rgba(26,25,23,0.55) 45%,
+      rgba(26,25,23,0.82) 100%
+    );
+  }
+
   .mf-header-nav { display: none; }
   .mf-header-nav.open {
     display: flex;
@@ -1241,9 +1296,9 @@ body { background: var(--mf-ash); }
   .mf-materials-grid { grid-template-columns: 1fr 1fr; }
   .mf-material-card.featured { grid-column: span 2; grid-row: span 1; min-height: 260px; }
 
-  /* Marcas */
-  .mf-marcas-grid { flex-wrap: wrap; }
-  .mf-marca-item { min-width: calc(33.33% - 1px); border-bottom: 1px solid var(--c-line); }
+  /* Marcas — marquee más compacto en mobile */
+  .mf-marca-item { width: clamp(150px, 40vw, 200px); padding: 1.75rem 1.25rem; }
+  .mf-marca-item img { height: 52px; }
 
   /* Fachada */
   .mf-fachada-section { grid-template-columns: 1fr; }
@@ -1269,8 +1324,8 @@ body { background: var(--mf-ash); }
   .mf-materials-grid { grid-template-columns: 1fr; gap: 8px; }
   .mf-material-card.featured { grid-column: span 1; min-height: 240px; }
 
-  /* Marcas */
-  .mf-marca-item { min-width: calc(50% - 1px); }
+  /* Marcas — velocidad más rápida en phones */
+  .mf-marcas-track { animation-duration: 28s; }
 
   /* Proyectos */
   .mf-projects-grid { columns: 2; }
@@ -1372,8 +1427,9 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 @media (max-width: 480px) {
   .mf-container { padding-left: 16px; padding-right: 16px; }
 
-  /* Header: logo más compacto */
-  .mf-header-logo img { height: 112px; }
+  /* Header: logo más compacto en phones */
+  :root { --mf-header-h: 76px; }
+  .mf-header-logo { height: 54px; }
 
   /* Hero: altura más corta en pantallas chicas */
   .mf-hero-swiper-section { min-height: 440px; }
@@ -1387,8 +1443,9 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   .mf-materials-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
   .mf-material-card.featured { grid-column: span 1 !important; min-height: 220px; }
 
-  /* Marcas: 2 cols */
-  .mf-marca-item { min-width: calc(50% - 1px); }
+  /* Marcas: items más angostos */
+  .mf-marca-item { width: clamp(140px, 55vw, 180px); padding: 1.5rem 1rem; }
+  .mf-marca-item img { height: 44px; }
 
   /* Proyectos: 1 col en phones chicos */
   .mf-projects-grid { columns: 1; }
@@ -1410,8 +1467,8 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   /* Stats: una sola col vertical */
   .mf-stat { min-width: 100% !important; }
 
-  /* Marcas: 1 col */
-  .mf-marca-item { min-width: 100%; }
+  /* Marcas: items muy angostos para marquee en phones mini */
+  .mf-marca-item { width: 140px; padding: 1.25rem 0.75rem; }
 }
 
 /* --- Landscape mobile --------------------------------------------------- */
@@ -1443,9 +1500,6 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
   /* Proyectos */
   .mf-projects-grid { columns: 1; }
-
-  /* Marcas */
-  .mf-marca-item { min-width: calc(50% - 1px); }
 
   /* Fachada */
   .mf-fachada-visual { height: 220px; }
