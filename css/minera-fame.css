@@ -989,15 +989,42 @@ span.mf-project-brand {
 
 .mf-social-link svg { width: 18px; height: 18px; }
 
+.mf-contact-maps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 .mf-contact-map {
+  position: relative;
   border-radius: var(--r-lg);
   overflow: hidden;
   height: 220px;
-  margin-top: 1rem;
   border: 1px solid var(--c-line);
 }
 
 .mf-contact-map iframe { width: 100%; height: 100%; border: none; }
+
+.mf-contact-map-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(26,25,23,0.8);
+  color: #fff;
+  padding: 4px 9px;
+  border-radius: 3px;
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 640px) {
+  .mf-contact-maps { grid-template-columns: 1fr; }
+  .mf-contact-map { height: 200px; }
+}
 
 /* Form */
 .mf-form {
