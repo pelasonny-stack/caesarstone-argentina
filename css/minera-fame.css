@@ -97,14 +97,14 @@ body { background: var(--mf-ash); }
 .mf-logo-link { display: flex; align-items: center; }
 
 .mf-header-logo {
-  height: 52px;
+  height: 68px;
   width: auto;
   object-fit: contain;
   object-position: left;
   filter: brightness(0) invert(1);
   transition: height var(--dur-med) ease;
 }
-.mf-header.scrolled .mf-header-logo { height: 44px; }
+.mf-header.scrolled .mf-header-logo { height: 56px; }
 
 .mf-header-nav {
   display: flex;
@@ -1435,7 +1435,7 @@ span.mf-project-brand--letter {
   :root { --mf-header-h: 72px; }
   .mf-header-ribbon { display: none; }
   .mf-header-main { padding: 0 1.25rem; }
-  .mf-header-logo { height: 40px; }
+  .mf-header-logo { height: 54px; }
   .mf-header {
     padding: 0;
     background: rgba(26,25,23,0.92) !important;
@@ -1632,8 +1632,8 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 /* --- 480px: phones chicos ----------------------------------------------- */
 @media (max-width: 480px) {
   /* Header: logo visible pero compacto en phones */
-  :root { --mf-header-h: 64px; }
-  .mf-header-logo { height: 36px; }
+  :root { --mf-header-h: 68px; }
+  .mf-header-logo { height: 46px; }
 
   /* Hero */
   .mf-hero-swiper-section { min-height: 440px; }

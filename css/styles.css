@@ -328,11 +328,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-full {
-  height: 26px;
+  height: 36px;
   width: auto;
   display: block;
   /* El PNG es oscuro — en hero se invierte a blanco */
-  transition: filter var(--dur-fast);
+  transition: filter var(--dur-fast), height var(--dur-med);
+}
+
+#header-wrapper.headroom--not-top .logo-full {
+  height: 30px;
 }
 
 /* Row 1 right: general links + partner label */
@@ -2729,7 +2733,7 @@ input, select, textarea { font-size: 16px; }
 /* --- 640px: phones ------------------------------------------------------ */
 @media (max-width: 640px) {
   /* Header logo un poco más chico */
-  .logo-full { height: 22px; }
+  .logo-full { height: 30px; }
 
   /* Stats grid: 1 col pero con separadores horizontales */
   .stats-grid {
@@ -2791,7 +2795,7 @@ input, select, textarea { font-size: 16px; }
 
   /* Header mejor ajuste */
   #header { padding: 0 16px; }
-  .logo-full { height: 20px; }
+  .logo-full { height: 26px; }
 
   /* Hero CTA más compacto */
   .btn-framed { padding: 11px 22px; font-size: 0.65rem; gap: 6px; }
