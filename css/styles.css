@@ -554,12 +554,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Video mobile: oculto por defecto (desktop usa iframe Vimeo). En mobile
    se muestra en lugar del iframe para evitar recorte agresivo del 16:9. */
-.hero-slide-bg.video-bg .hero-mobile-video {
+.hero-slide-bg.video-bg .hero-mobile-img {
   display: none;
 }
 @media (max-width: 768px) {
   .hero-slide-bg.video-bg iframe { display: none; }
-  .hero-slide-bg.video-bg .hero-mobile-video {
+  .hero-slide-bg.video-bg .hero-mobile-img {
     display: block;
     position: absolute;
     inset: 0;
