@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initMobileNav();
   initHeroSwiper();
+  initProjectsSwiper();
   initStatCounters();
   initGSAP();
   initContactForm();
@@ -37,6 +38,44 @@ function initHeroSwiper() {
     a11y: {
       prevSlideMessage: 'Slide anterior',
       nextSlideMessage: 'Slide siguiente',
+    },
+  });
+}
+
+/* ── Projects Swiper ─────────────────────────────────────────────────────── */
+function initProjectsSwiper() {
+  const el = document.querySelector('.mf-projects-swiper');
+  if (!el || typeof Swiper === 'undefined') return;
+
+  new Swiper(el, {
+    slidesPerView: 1.15,
+    spaceBetween: 12,
+    grabCursor: true,
+    loop: true,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    breakpoints: {
+      480:  { slidesPerView: 2,    spaceBetween: 12 },
+      768:  { slidesPerView: 2.5,  spaceBetween: 14 },
+      1024: { slidesPerView: 3,    spaceBetween: 16 },
+      1280: { slidesPerView: 4,    spaceBetween: 16 },
+    },
+    navigation: {
+      nextEl: '.mf-projects-btn-next',
+      prevEl: '.mf-projects-btn-prev',
+    },
+    pagination: {
+      el: '.mf-projects-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
+    keyboard: { enabled: true },
+    a11y: {
+      prevSlideMessage: 'Proyecto anterior',
+      nextSlideMessage: 'Proyecto siguiente',
     },
   });
 }
@@ -159,15 +198,6 @@ function initGSAP() {
   gsap.from('.mf-marca-item', {
     y: 20, opacity: 0, duration: 0.5, ease: 'expo.out', stagger: 0.06,
     scrollTrigger: { trigger: '.mf-marcas-marquee', start: 'top 85%' },
-  });
-
-  /* Project items */
-  gsap.utils.toArray('.mf-project-item').forEach((item, i) => {
-    gsap.from(item, {
-      y: 28, opacity: 0, duration: 0.55, ease: 'expo.out',
-      scrollTrigger: { trigger: item, start: 'top 92%' },
-      delay: (i % 4) * 0.05,
-    });
   });
 
   /* Fachada section */

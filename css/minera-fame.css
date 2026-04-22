@@ -930,12 +930,56 @@ body { background: var(--mf-ash); }
   line-height: 1.75;
 }
 
-/* ─── PROYECTOS GRID ─────────────────────────────────────────────────────── */
-.mf-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+/* ─── PROYECTOS SWIPER ───────────────────────────────────────────────────── */
+.mf-projects-swiper {
   margin-top: var(--space-8);
+  padding: 0 0 3rem;
+  position: relative;
+}
+
+.mf-projects-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.mf-projects-swiper .swiper-slide {
+  height: auto;
+}
+
+.mf-projects-btn-prev,
+.mf-projects-btn-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(26,25,23,0.8);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  transition: background var(--dur-fast), border-color var(--dur-fast);
+}
+
+.mf-projects-btn-prev::after,
+.mf-projects-btn-next::after {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.mf-projects-btn-prev:hover,
+.mf-projects-btn-next:hover {
+  background: var(--mf-terracotta, #a83305);
+  border-color: var(--mf-terracotta, #a83305);
+}
+
+.mf-projects-pagination {
+  bottom: 0 !important;
+}
+
+.mf-projects-pagination .swiper-pagination-bullet {
+  background: var(--mf-ink, #1a1917);
+  opacity: 0.3;
+}
+
+.mf-projects-pagination .swiper-pagination-bullet-active {
+  background: var(--mf-terracotta, #a83305);
+  opacity: 1;
 }
 
 .mf-project-item {
@@ -1426,9 +1470,6 @@ span.mf-project-brand--letter {
 .mf-klindex-cta svg { width: 15px; height: 15px; }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .mf-projects-grid { grid-template-columns: repeat(3, 1fr); }
-}
 
 @media (max-width: 900px) {
   /* Header — siempre visible + estirado en mobile (no colapsa al scrollear) */
@@ -1522,9 +1563,6 @@ span.mf-project-brand--letter {
   .mf-fachada-section { grid-template-columns: 1fr; }
   .mf-fachada-visual { height: 300px; }
 
-  /* Proyectos */
-  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); }
-
   /* Contact */
   .mf-contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
@@ -1544,9 +1582,6 @@ span.mf-project-brand--letter {
 
   /* Marcas — velocidad más rápida en phones */
   .mf-marcas-track { animation-duration: 28s; }
-
-  /* Proyectos */
-  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Footer */
   .mf-footer-grid { grid-template-columns: 1fr; }
@@ -1602,8 +1637,6 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   /* Materiales: 2 cols mantiene pero featured span 1 */
   .mf-materials-grid { grid-template-columns: 1fr 1fr; }
 
-  /* Proyectos: 2 columnas masonry */
-  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
   /* Contact map */
   .mf-contact-map { height: 220px; }
@@ -1625,8 +1658,6 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   /* Materiales featured vuelve a full width */
   .mf-material-card.featured { min-height: 220px; }
 
-  /* Proyectos: se mantienen 2 cols */
-  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* --- 480px: phones chicos ----------------------------------------------- */
@@ -1655,8 +1686,6 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   .mf-marca-item { width: clamp(140px, 55vw, 180px); padding: 1.5rem 1rem; }
   .mf-marca-item img { height: 44px; }
 
-  /* Proyectos: 1 col en phones chicos */
-  .mf-projects-grid { columns: 1; }
 
   /* Fachada */
   .mf-fachada-visual { height: 220px; }
