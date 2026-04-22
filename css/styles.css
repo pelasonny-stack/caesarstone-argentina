@@ -2506,14 +2506,12 @@ input, select, textarea { font-size: 16px; }
 
   /* Forzar break de partner-heading para evitar overflow */
   .partner-heading { font-size: clamp(1.6rem, 6vw, 2.2rem); }
-  .partner-heading br { display: none; }
 
   /* Title text hero más controlado */
   .title-text {
     font-size: clamp(2rem, 10vw, 3rem);
     margin-bottom: 20px;
   }
-  .title-text br { display: none; }
 
   /* Hero eyebrow más sutil */
   .hero-eyebrow-label { font-size: 0.625rem; margin-bottom: 10px; }
