@@ -1171,38 +1171,70 @@ span.mf-project-brand--letter {
 .mf-contact-maps {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  gap: 1.25rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
 .mf-contact-map {
   position: relative;
   border-radius: var(--r-lg);
   overflow: hidden;
-  height: 220px;
+  aspect-ratio: 16 / 9;
   border: 1px solid var(--c-line);
+  background: var(--c-line);
 }
 
-.mf-contact-map iframe { width: 100%; height: 100%; border: none; }
+.mf-contact-map iframe { width: 100%; height: 100%; border: none; display: block; }
 
 .mf-contact-map-label {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  left: 12px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   background: rgba(26,25,23,0.8);
   color: #fff;
-  padding: 4px 9px;
+  padding: 5px 10px;
   border-radius: 3px;
   backdrop-filter: blur(6px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mf-contact-map-cta {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(26,25,23,0.85);
+  color: #fff;
+  padding: 7px 11px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: background var(--dur-fast), transform var(--dur-fast);
+  z-index: 2;
+}
+
+.mf-contact-map-cta:hover {
+  background: var(--mf-terracotta, #a83305);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .mf-contact-maps { gap: 1rem; }
 }
 
 @media (max-width: 640px) {
-  .mf-contact-maps { grid-template-columns: 1fr; }
-  .mf-contact-map { height: 200px; }
+  .mf-contact-maps { grid-template-columns: 1fr; gap: 0.875rem; }
+  .mf-contact-map { aspect-ratio: 16 / 10; }
 }
 
 /* Form */
@@ -1637,9 +1669,6 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   /* Materiales: 2 cols mantiene pero featured span 1 */
   .mf-materials-grid { grid-template-columns: 1fr 1fr; }
 
-
-  /* Contact map */
-  .mf-contact-map { height: 220px; }
 
   /* Footer 2 cols mejor balance */
   .mf-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
