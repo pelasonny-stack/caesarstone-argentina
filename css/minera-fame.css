@@ -783,11 +783,11 @@ body { background: var(--mf-ash); }
 .mf-marca-item {
   flex: 0 0 auto;
   width: clamp(240px, 25vw, 300px);
-  aspect-ratio: 16 / 10;
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 2.25rem;
+  padding: 2.25rem 2.25rem;
   background: #fff;
   border: 1px solid var(--c-line-soft);
   border-radius: var(--r-lg);
@@ -797,6 +797,7 @@ body { background: var(--mf-ash); }
               border-color var(--dur-fast);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .mf-marca-item::before {
@@ -865,6 +866,7 @@ body { background: var(--mf-ash); }
 @media (max-width: 768px) {
   .mf-marca-item {
     width: clamp(200px, 55vw, 240px);
+    min-height: 160px;
     padding: 1.5rem 1.75rem;
   }
   .mf-marca-item img { height: clamp(56px, 14vw, 72px); }
