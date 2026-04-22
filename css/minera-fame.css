@@ -35,11 +35,14 @@ body { background: var(--mf-ash); }
 
 .mf-header.hidden { transform: translateY(-100%); }
 
-/* Cuando el menú mobile está abierto, anulamos el transform del header para
-   que el hijo position:fixed se dimensione respecto al viewport (no al
-   header, que se convertiría en containing block al tener transform) */
+/* Cuando el menú mobile está abierto, anulamos transform Y backdrop-filter del
+   header. Ambos crean containing block para descendientes position:fixed, lo que
+   haria que el nav desplegado se posicione respecto al header (120px) en vez del
+   viewport → nav con altura 0. */
 .mf-header:has(.mf-header-nav.open) {
   transform: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   z-index: 1200;
 }
 
