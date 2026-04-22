@@ -742,9 +742,10 @@ body { background: var(--mf-ash); }
 
 /* ─── MARCAS (MARQUEE DINÁMICO) ──────────────────────────────────────────── */
 .mf-marcas-section {
-  background: var(--c-paper);
+  background: linear-gradient(180deg, var(--c-paper) 0%, #f5f2ed 100%);
   border-top: 1px solid var(--c-line-soft);
   border-bottom: 1px solid var(--c-line-soft);
+  padding-block: clamp(4rem, 8vw, 6rem);
 }
 
 .mf-marcas-section .mf-eyebrow { justify-content: center; }
@@ -753,21 +754,18 @@ body { background: var(--mf-ash); }
 
 .mf-marcas-marquee {
   margin-top: var(--space-8);
-  border: 1px solid var(--c-line);
-  border-radius: var(--r-lg);
   overflow: hidden;
-  background: #fff;
-  /* fade en los bordes para loop continuo */
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  padding: 1rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
 }
 
 .mf-marcas-track {
   display: flex;
   width: max-content;
   align-items: stretch;
-  animation: mf-marquee 28s linear infinite;
-  gap: 1rem;
+  animation: mf-marquee 32s linear infinite;
+  gap: 1.5rem;
   will-change: transform;
 }
 
@@ -784,54 +782,93 @@ body { background: var(--mf-ash); }
 
 .mf-marca-item {
   flex: 0 0 auto;
-  width: clamp(180px, 22vw, 260px);
+  width: clamp(240px, 25vw, 300px);
+  aspect-ratio: 16 / 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.25rem 2rem;
-  border-right: 1px solid var(--c-line);
-  transition: background var(--dur-fast);
+  padding: 2rem 2.25rem;
+  background: #fff;
+  border: 1px solid var(--c-line-soft);
+  border-radius: var(--r-lg);
+  box-shadow: 0 1px 2px rgba(26,25,23,0.04), 0 6px 16px -8px rgba(26,25,23,0.08);
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out),
+              border-color var(--dur-fast);
   position: relative;
+  overflow: hidden;
+}
+
+.mf-marca-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 120%, rgba(138,90,56,0.09), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--dur-med);
+  pointer-events: none;
 }
 
 .mf-marca-item:hover {
-  background: rgba(138,90,56,0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(26,25,23,0.06), 0 20px 38px -14px rgba(26,25,23,0.18);
+  border-color: rgba(138,90,56,0.25);
 }
+
+.mf-marca-item:hover::before { opacity: 1; }
 
 .mf-marca-item img {
-  height: 72px;
+  height: clamp(72px, 8vw, 96px);
   width: auto;
-  max-width: 100%;
+  max-width: 82%;
   object-fit: contain;
-  transition: transform var(--dur-med);
+  transition: transform var(--dur-med) var(--ease-out);
+  position: relative;
+  z-index: 1;
 }
 
-.mf-marca-item:hover img { transform: scale(1.04); }
+.mf-marca-item:hover img { transform: scale(1.06); }
 
 .mf-marca-featured {
-  background: linear-gradient(180deg, rgba(138,90,56,0.08), rgba(138,90,56,0.02));
-  border-right: 1px solid var(--c-line-soft);
+  background:
+    linear-gradient(155deg, #fff 0%, rgba(168, 51, 5, 0.04) 75%, rgba(168, 51, 5, 0.09) 100%);
+  border: 1px solid rgba(168, 51, 5, 0.28);
+  box-shadow: 0 2px 4px rgba(168, 51, 5, 0.08), 0 10px 28px -12px rgba(168, 51, 5, 0.2);
 }
 
 .mf-marca-featured img {
-  height: 88px;
-  transform: scale(1);
+  height: clamp(92px, 10vw, 120px);
+  max-width: 78%;
 }
 
-.mf-marca-featured:hover img { transform: scale(1.06); }
+.mf-marca-featured:hover {
+  border-color: rgba(168, 51, 5, 0.55);
+  box-shadow: 0 3px 6px rgba(168, 51, 5, 0.12), 0 24px 42px -14px rgba(168, 51, 5, 0.28);
+}
 
 .mf-marca-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  background: var(--mf-terracotta);
+  background: var(--mf-terracotta, #a83305);
   color: #fff;
-  padding: 2px 7px;
+  padding: 4px 10px;
   border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(168, 51, 5, 0.35);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .mf-marca-item {
+    width: clamp(200px, 55vw, 240px);
+    padding: 1.5rem 1.75rem;
+  }
+  .mf-marca-item img { height: clamp(56px, 14vw, 72px); }
+  .mf-marca-featured img { height: clamp(72px, 17vw, 90px); }
 }
 
 /* ─── SERVICIOS TIMELINE ─────────────────────────────────────────────────── */
