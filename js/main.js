@@ -195,6 +195,23 @@ function buildProductSwiper(filter = 'all') {
 
   const items = filterProducts(filter);
 
+  if (!items.length) {
+    wrapper.innerHTML = `
+      <div class="swiper-slide stone-empty">
+        <div class="stone-empty-inner">
+          <div class="stone-empty-icon">✦</div>
+          <p class="stone-empty-text">No hay modelos con ese filtro.</p>
+          <button type="button" class="stone-empty-reset" data-filter="all">Ver todos los modelos</button>
+        </div>
+      </div>`;
+    if (productSwiperInstance) { productSwiperInstance.destroy(true, true); productSwiperInstance = null; }
+    wrapper.querySelector('.stone-empty-reset')?.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.toggle('active', t.dataset.filter === 'all'));
+      buildProductSwiper('all');
+    });
+    return;
+  }
+
   wrapper.innerHTML = items.map((p, i) => {
     const lazyAttr = i < 4 ? '' : 'loading="lazy"';
     const badges = [];
@@ -209,9 +226,8 @@ function buildProductSwiper(filter = 'all') {
           <img src="${p.img}" alt="${p.name}" ${lazyAttr}>
         </div>
         <div class="stone-bottom">
-          <a class="stone-title" href="#" onclick="openModal('${p.id}'); return false;">
-            ${p.code ? p.code + ' · ' : ''}${p.name}
-          </a>
+          ${p.code ? `<span class="stone-code">${p.code}</span>` : ''}
+          <button class="stone-title" type="button" data-id="${p.id}">${p.name}</button>
           <div class="stone-terms">
             <div class="material-name">${p.collection}</div>
           </div>
@@ -252,13 +268,25 @@ function buildProductSwiper(filter = 'all') {
       if (e.key === 'Enter' || e.key === ' ') openModal(slide.dataset.id);
     });
   });
+
+  /* Remove shimmer once each image loads */
+  wrapper.querySelectorAll('.thumb-wrap').forEach(wrap => {
+    const img = wrap.querySelector('img');
+    if (!img) return;
+    if (img.complete && img.naturalWidth) {
+      wrap.classList.add('is-loaded');
+    } else {
+      img.addEventListener('load', () => wrap.classList.add('is-loaded'), { once: true });
+      img.addEventListener('error', () => wrap.classList.add('is-loaded'), { once: true });
+    }
+  });
 }
 
 /* ── Hero Swiper ─────────────────────────────────────────────────────────────── */
 function initHeroSwiper() {
   new Swiper('.hero-swiper', {
     loop: true,
-    autoplay: { delay: 9000, disableOnInteraction: false },
+    autoplay: { delay: 11000, disableOnInteraction: false, pauseOnMouseEnter: true },
     speed: 1000,
     effect: 'fade',
     fadeEffect: { crossFade: true },
@@ -331,10 +359,13 @@ function initMobileNav() {
 /* ── Filter tabs ─────────────────────────────────────────────────────────────── */
 function initFilterTabs() {
   document.querySelectorAll('.filter-tab').forEach(tab => {
+    const f = tab.dataset.filter;
+    const n = f === 'all' ? PRODUCTS.length : PRODUCTS.filter(p => p.tone === f).length;
+    tab.insertAdjacentHTML('beforeend', ` <span class="filter-tab-count">${n}</span>`);
     tab.addEventListener('click', () => {
       document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      buildProductSwiper(tab.dataset.filter);
+      buildProductSwiper(f);
     });
   });
 }
@@ -384,7 +415,15 @@ function initModal() {
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   document.getElementById('modal-close')?.addEventListener('click', closeModal);
-  overlay.querySelector('.modal-cta')?.addEventListener('click', closeModal);
+  overlay.querySelector('.modal-cta')?.addEventListener('click', () => {
+    const name = document.getElementById('modal-name-el')?.textContent || '';
+    const code = document.getElementById('modal-code-inline')?.textContent || '';
+    const subject = document.getElementById('cf-subject');
+    const msg = document.getElementById('cf-msg');
+    if (subject) subject.value = 'Solicitar muestra';
+    if (msg) msg.value = `Hola, me interesa solicitar una muestra de ${name}${code ? ' ' + code : ''}.`;
+    closeModal();
+  });
 }
 
 function openModal(id) {
@@ -421,7 +460,12 @@ function openModal(id) {
   if (caesarLink) caesarLink.href = catalogueUrl;
 
   const qrImg = document.getElementById('modal-qr-img');
-  if (qrImg) qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=80x80&color=1a1917&bgcolor=ffffff&data=${encodeURIComponent(catalogueUrl)}`;
+  if (qrImg) {
+    const waText = `Hola Caesarstone Argentina, quiero más información sobre ${p.name}${p.code ? ' (' + p.code + ')' : ''}.`;
+    const waUrl = `https://wa.me/5491159311038?text=${encodeURIComponent(waText)}`;
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&color=1a1917&bgcolor=ffffff&data=${encodeURIComponent(waUrl)}`;
+    qrImg.alt = `QR para consultar ${p.name} por WhatsApp`;
+  }
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -585,6 +629,7 @@ function initContactForm() {
 
       if (resp.ok) {
         form.reset();
+        form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
         status.className = 'form-status success';
         status.innerHTML = `<svg width="16" height="16"><use href="#check"/></svg> ¡Mensaje enviado! Te contactaremos a la brevedad.`;
       } else {

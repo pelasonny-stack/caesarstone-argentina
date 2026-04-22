@@ -2,10 +2,10 @@
 
 /* ─── GLOBALS ────────────────────────────────────────────────────────────── */
 :root {
-  --mf-header-h: 176px;
+  --mf-header-h: 102px;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: var(--mf-header-h, 176px); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--mf-header-h, 88px); }
 body { background: var(--mf-ash); }
 
 .section-header,
@@ -16,15 +16,62 @@ body { background: var(--mf-ash); }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 0 clamp(1rem, 4vw, 3rem);
   height: var(--mf-header-h);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   background: rgba(42,31,23,0.0);
   transition: background var(--dur-med) ease,
               box-shadow var(--dur-med) ease,
               transform var(--dur-med) var(--ease-out);
+}
+
+.mf-header-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 26px;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  background: rgba(0,0,0,0.32);
+  color: rgba(255,255,255,0.78);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mf-ribbon-label {
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.mf-ribbon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity var(--dur-fast);
+}
+
+.mf-ribbon-link strong { font-weight: 700; }
+.mf-ribbon-link:hover { opacity: 0.85; }
+.mf-ribbon-link svg { opacity: 0.7; }
+
+.mf-ribbon-sep { opacity: 0.4; }
+
+.mf-ribbon-brands {
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+.mf-header-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
 .mf-header.scrolled {
@@ -50,12 +97,14 @@ body { background: var(--mf-ash); }
 .mf-logo-link { display: flex; align-items: center; }
 
 .mf-header-logo {
-  height: 152px;
+  height: 52px;
   width: auto;
   object-fit: contain;
   object-position: left;
   filter: brightness(0) invert(1);
+  transition: height var(--dur-med) ease;
 }
+.mf-header.scrolled .mf-header-logo { height: 44px; }
 
 .mf-header-nav {
   display: flex;
@@ -505,31 +554,108 @@ body { background: var(--mf-ash); }
   width: 16px; height: 16px;
 }
 
+/* ─── HERO SCROLL HINT ───────────────────────────────────────────────────── */
+.mf-hero-scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 4;
+  transition: color var(--dur-med), background var(--dur-med);
+}
+
+.mf-hero-scroll-hint svg {
+  animation: mf-scroll-bounce 1.8s ease-in-out infinite;
+}
+
+.mf-hero-scroll-hint:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@keyframes mf-scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mf-hero-scroll-hint svg { animation: none; }
+}
+
+@media (max-width: 480px) {
+  .mf-hero-scroll-hint { display: none; }
+}
+
 /* ─── DIFERENCIALES ──────────────────────────────────────────────────────── */
 .mf-differentials {
   border-top: 1px solid var(--c-line);
   padding-top: 0;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .mf-diff-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1.5rem 0;
   border-bottom: 1px solid var(--c-line);
+}
+
+.mf-diff-num {
+  font-family: var(--font-serif, var(--font-sans));
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--mf-terracotta);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  min-width: 2.25rem;
 }
 
 .mf-diff-title {
   font-family: var(--font-sans);
   font-size: 1rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--c-ink);
   margin-bottom: 0.4rem;
   letter-spacing: 0.01em;
+}
+
+.mf-diff-title strong {
+  font-weight: 700;
 }
 
 .mf-diff-text {
   font-size: var(--text-sm);
   color: var(--c-mid);
   line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .mf-differentials {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+  }
+  .mf-diff-item {
+    padding: 1.75rem 0;
+  }
 }
 
 /* ─── MATERIALES BENTO ───────────────────────────────────────────────────── */
@@ -617,8 +743,8 @@ body { background: var(--mf-ash); }
 /* ─── MARCAS (MARQUEE DINÁMICO) ──────────────────────────────────────────── */
 .mf-marcas-section {
   background: var(--c-paper);
-  border-top: 1px solid var(--c-line);
-  border-bottom: 1px solid var(--c-line);
+  border-top: 1px solid var(--c-line-soft);
+  border-bottom: 1px solid var(--c-line-soft);
 }
 
 .mf-marcas-section .mf-eyebrow { justify-content: center; }
@@ -640,7 +766,8 @@ body { background: var(--mf-ash); }
   display: flex;
   width: max-content;
   align-items: stretch;
-  animation: mf-marquee 38s linear infinite;
+  animation: mf-marquee 28s linear infinite;
+  gap: 1rem;
   will-change: transform;
 }
 
@@ -680,6 +807,18 @@ body { background: var(--mf-ash); }
 }
 
 .mf-marca-item:hover img { transform: scale(1.04); }
+
+.mf-marca-featured {
+  background: linear-gradient(180deg, rgba(138,90,56,0.08), rgba(138,90,56,0.02));
+  border-right: 1px solid var(--c-line-soft);
+}
+
+.mf-marca-featured img {
+  height: 88px;
+  transform: scale(1);
+}
+
+.mf-marca-featured:hover img { transform: scale(1.06); }
 
 .mf-marca-badge {
   position: absolute;
@@ -791,29 +930,31 @@ body { background: var(--mf-ash); }
   line-height: 1.75;
 }
 
-/* ─── PROYECTOS MASONRY ──────────────────────────────────────────────────── */
+/* ─── PROYECTOS GRID ─────────────────────────────────────────────────────── */
 .mf-projects-grid {
-  columns: 4;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   margin-top: var(--space-8);
 }
 
 .mf-project-item {
-  break-inside: avoid;
   overflow: hidden;
   border-radius: var(--r-md);
-  margin-bottom: 10px;
   position: relative;
   cursor: default;
+  aspect-ratio: 4/5;
 }
 
-.mf-project-item img {
+.mf-project-item > img:not(.mf-project-brand) {
   width: 100%;
+  height: 100%;
   display: block;
+  object-fit: cover;
   transition: transform var(--dur-slow) var(--ease-out);
 }
 
-.mf-project-item:hover img { transform: scale(1.04); }
+.mf-project-item:hover > img:not(.mf-project-brand) { transform: scale(1.04); }
 
 /* Sello de agua por marca — logo real o fallback texto */
 .mf-project-brand {
@@ -859,18 +1000,14 @@ span.mf-project-brand {
   white-space: nowrap;
 }
 
-/* Variante monograma — 1 letra grande, sin caja, estilo sello clásico */
+/* Variante monograma — 1 letra dentro del mismo sello tipográfico que los logos */
 span.mf-project-brand--letter {
-  padding: 0;
-  background: none;
-  border: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  font-size: 3rem;
-  font-weight: 300;
-  line-height: 0.85;
-  color: rgba(255,255,255,0.88);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.45);
+  padding: 5px 13px 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(255,255,255,0.96);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
 .mf-project-item:hover img.mf-project-brand { opacity: 1; transform: scale(1.03); }
@@ -1038,6 +1175,19 @@ span.mf-project-brand--letter {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--c-mid);
+}
+
+.mf-form .form-req {
+  color: var(--mf-terracotta);
+  margin-left: 2px;
+}
+
+.mf-form .form-opt {
+  color: var(--c-mid);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  margin-left: 4px;
+  opacity: 0.75;
 }
 
 .mf-form .form-input,
@@ -1277,15 +1427,17 @@ span.mf-project-brand--letter {
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .mf-projects-grid { columns: 3; }
+  .mf-projects-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 900px) {
   /* Header — siempre visible + estirado en mobile (no colapsa al scrollear) */
-  :root { --mf-header-h: 120px; }
-  .mf-header-logo { height: 96px; }
+  :root { --mf-header-h: 72px; }
+  .mf-header-ribbon { display: none; }
+  .mf-header-main { padding: 0 1.25rem; }
+  .mf-header-logo { height: 40px; }
   .mf-header {
-    padding: 0 1.25rem;
+    padding: 0;
     background: rgba(26,25,23,0.92) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1371,7 +1523,7 @@ span.mf-project-brand--letter {
   .mf-fachada-visual { height: 300px; }
 
   /* Proyectos */
-  .mf-projects-grid { columns: 2; }
+  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Contact */
   .mf-contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1394,7 +1546,7 @@ span.mf-project-brand--letter {
   .mf-marcas-track { animation-duration: 28s; }
 
   /* Proyectos */
-  .mf-projects-grid { columns: 2; }
+  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Footer */
   .mf-footer-grid { grid-template-columns: 1fr; }
@@ -1451,7 +1603,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   .mf-materials-grid { grid-template-columns: 1fr 1fr; }
 
   /* Proyectos: 2 columnas masonry */
-  .mf-projects-grid { columns: 2; column-gap: 12px; }
+  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
   /* Contact map */
   .mf-contact-map { height: 220px; }
@@ -1474,14 +1626,14 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   .mf-material-card.featured { min-height: 220px; }
 
   /* Proyectos: se mantienen 2 cols */
-  .mf-projects-grid { columns: 2; }
+  .mf-projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* --- 480px: phones chicos ----------------------------------------------- */
 @media (max-width: 480px) {
   /* Header: logo visible pero compacto en phones */
-  :root { --mf-header-h: 100px; }
-  .mf-header-logo { height: 76px; }
+  :root { --mf-header-h: 64px; }
+  .mf-header-logo { height: 36px; }
 
   /* Hero */
   .mf-hero-swiper-section { min-height: 440px; }

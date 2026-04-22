@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatCounters();
   initGSAP();
   initContactForm();
+  initMaterialCardPrefill();
 });
 
 /* ── Hero Swiper ─────────────────────────────────────────────────────────── */
@@ -20,7 +21,7 @@ function initHeroSwiper() {
     loop: true,
     speed: 1000,
     autoplay: {
-      delay: 6500,
+      delay: 9000,
       disableOnInteraction: false,
       pauseOnMouseEnter: true,
     },
@@ -179,6 +180,24 @@ function initGSAP() {
   window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
 }
 
+/* ── Material card prefill ─────────────────────────────────────────────────── */
+function initMaterialCardPrefill() {
+  document.querySelectorAll('.mf-material-card[data-material]').forEach(card => {
+    card.addEventListener('click', () => {
+      const mat = card.dataset.material;
+      const sel = document.getElementById('mf-material');
+      const msg = document.getElementById('mf-msg');
+      if (sel) {
+        const opt = Array.from(sel.options).find(o => o.value === mat || o.text === mat);
+        if (opt) sel.value = opt.value || opt.text;
+      }
+      if (msg && !msg.value) {
+        msg.value = `Hola, quiero más información sobre ${mat}.`;
+      }
+    });
+  });
+}
+
 /* ── Contact form ─────────────────────────────────────────────────────────── */
 function initContactForm() {
   const form = document.getElementById('mf-contact-form');
@@ -239,6 +258,7 @@ function initContactForm() {
 
       if (resp.ok) {
         form.reset();
+        form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
         status.className = 'form-status success';
         status.innerHTML = `<svg width="16" height="16"><use href="#check"/></svg> ¡Mensaje enviado! Nos pondremos en contacto a la brevedad.`;
       } else {

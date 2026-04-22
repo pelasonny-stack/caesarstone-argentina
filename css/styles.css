@@ -3,7 +3,7 @@
 
 /* ─── BASE RESET (reemplaza dependencias de Bootstrap) ──────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: var(--header-height, 120px); }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height, 80px) + 8px); }
 body { margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 img, svg, video, iframe { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -173,12 +173,14 @@ a:focus-visible {
   --c-bg:         #ffffff;
   --c-light:      #f8f7f5;
   --c-border:     rgba(33, 37, 41, 0.12);
+  --c-border-soft: rgba(33, 37, 41, 0.06);
   --c-muted:      #6c757d;
   --c-accent:     #DC4405;  /* orange-red: caesarstone Pro button color */
+  --c-accent-ink: #a83305;  /* hover darker — para texto, evita chillar */
   --c-dark:       #1a1917;
 
   /* Header */
-  --header-height: 120px;
+  --header-height: 80px;
 
   /* Easing */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -354,14 +356,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-partner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--c-muted);
   transition: color var(--dur-fast);
 }
 
+.header-partner-link strong {
+  font-weight: 700;
+  color: var(--c-body);
+}
+
+.header-partner-link svg {
+  opacity: 0.65;
+  transition: transform var(--dur-fast), opacity var(--dur-fast);
+}
+
 .header-partner-link:hover { color: var(--c-body); }
+.header-partner-link:hover svg { opacity: 1; transform: translate(1px, -1px); }
 
 /* Row 2: main navigation */
 #header-main {
@@ -440,6 +456,19 @@ h1, h2, h3, h4, h5, h6 {
   gap: 14px;
 }
 
+.btn-header-wa {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #25D366;
+  padding: 7px 12px; border-radius: 999px;
+  background: rgba(37,211,102,0.08);
+  border: 1px solid rgba(37,211,102,0.35);
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+.btn-header-wa:hover { background: #25D366; color: #fff; }
+#header-wrapper:not(.headroom--not-top) .btn-header-wa { color: #fff; background: rgba(37,211,102,0.18); border-color: rgba(37,211,102,0.6); }
+#header-wrapper:not(.headroom--not-top) .btn-header-wa:hover { background: #25D366; color: #fff; }
+
 .btn-header-cta {
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -503,6 +532,52 @@ h1, h2, h3, h4, h5, h6 {
 .hero-swiper {
   width: 100%;
   height: 100%;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 5;
+  transition: color var(--dur-med), background var(--dur-med);
+}
+
+.hero-scroll-hint svg {
+  animation: hero-scroll-bounce 1.8s ease-in-out infinite;
+}
+
+.hero-scroll-hint:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-hint svg { animation: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-scroll-hint { display: none; }
 }
 
 .hero-swiper .swiper-slide {
@@ -716,6 +791,15 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 32px;
 }
 
+.filter-tab-count {
+  display: inline-block;
+  margin-left: 0.25em;
+  font-size: 0.72em;
+  color: var(--c-muted);
+  font-weight: 500;
+}
+.filter-tab.active .filter-tab-count { color: inherit; opacity: 0.7; }
+
 .filter-tab {
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -786,6 +870,33 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 1px 2px rgba(26,25,23,0.06), 0 8px 20px -8px rgba(26,25,23,0.12);
 }
 
+.thumb-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(230,225,220,0.35) 8%, rgba(200,195,190,0.55) 18%, rgba(230,225,220,0.35) 33%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s linear infinite;
+  z-index: 0;
+}
+
+.thumb-wrap img {
+  z-index: 1;
+}
+
+.thumb-wrap.is-loaded::before {
+  display: none;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb-wrap::before { animation: none; }
+}
+
 /* Aspect ratio para las cards verticales del catálogo */
 .ratio.ratio-stone-vertical {
   --bs-aspect-ratio: calc(454 / 275 * 100%);
@@ -814,17 +925,32 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 12px;
 }
 
+.stone-code {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
 .stone-title {
   display: block;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 400;
+  letter-spacing: 0.005em;
   color: var(--c-body);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  padding: 0; border: 0; background: transparent;
+  text-align: left; cursor: pointer;
   transition: color var(--dur-fast);
 }
 
-.stone:hover .stone-title { color: var(--c-accent); }
+.stone:hover .stone-title,
+.stone-title:hover,
+.stone-title:focus-visible { color: #000; }
 
 .material-name {
   font-size: 0.75rem;
@@ -960,7 +1086,7 @@ h1, h2, h3, h4, h5, h6 {
 .image-accordion {
   padding: 72px 0 80px;
   background: var(--c-bg);
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--c-border-soft);
 }
 
 .image-accordion .section-header {
@@ -1050,7 +1176,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-section {
   padding: 80px 0;
   background: var(--c-bg);
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--c-border-soft);
 }
 
 .about-grid {
@@ -1135,7 +1261,7 @@ h1, h2, h3, h4, h5, h6 {
   align-self: flex-start;
 }
 
-.btn-dark:hover { background: var(--c-accent); color: #fff; }
+.btn-dark:hover { background: var(--c-accent-ink); color: #fff; }
 .btn-dark svg   { width: 15px; height: 15px; }
 
 /* ── Minera Fame partner — rediseño editorial oscuro ─────────────── */
@@ -1247,7 +1373,31 @@ h1, h2, h3, h4, h5, h6 {
 
 .partner-mosaic-main,
 .partner-mosaic-thumb {
+  position: relative;
   overflow: hidden;
+  margin: 0;
+}
+
+.partner-mosaic-caption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.partner-mosaic-thumb .partner-mosaic-caption {
+  font-size: 0.65rem;
+  padding: 3px 8px;
 }
 
 .partner-mosaic-main img,
@@ -1270,6 +1420,89 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .partner-mosaic-thumb { flex: 1; }
+
+/* ─── STONE EMPTY STATE ──────────────────────────────────────────────────── */
+.stone-empty {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  width: 100% !important;
+}
+
+.stone-empty-inner {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--c-muted);
+}
+
+.stone-empty-icon {
+  font-size: 2rem;
+  opacity: 0.35;
+  margin-bottom: 12px;
+}
+
+.stone-empty-text {
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+
+.stone-empty-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--c-ink, #1a1917);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--dur-fast);
+}
+
+.stone-empty-reset:hover { background: var(--c-accent, #c96a2c); }
+
+/* ─── TRUST STRIP ────────────────────────────────────────────────────────── */
+.trust-strip {
+  background: var(--c-paper, #fff);
+  border-bottom: 1px solid var(--c-line, #e6e1d8);
+  padding: 14px 0;
+}
+
+.trust-strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px 28px;
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--c-ink, #1a1917);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.trust-item svg {
+  color: var(--c-accent, #c96a2c);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .trust-strip { padding: 12px 0; }
+  .trust-strip-inner { gap: 10px 18px; }
+  .trust-item { font-size: 0.75rem; }
+  .trust-item svg { width: 14px; height: 14px; }
+}
 
 /* ─── STATS BAR ─────────────────────────────────────────────────────────────── */
 .stats-bar {
@@ -1311,7 +1544,7 @@ h1, h2, h3, h4, h5, h6 {
 .contact-section {
   padding: 80px 0;
   background: var(--c-bg);
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--c-border-soft);
 }
 
 .contact-grid {
@@ -1360,7 +1593,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: color var(--dur-fast);
 }
 
-.contact-value a:hover { color: var(--c-accent); }
+.contact-value a:hover { color: var(--c-accent-ink); }
 
 .social-links {
   display: flex;
@@ -1411,6 +1644,21 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--c-muted);
 }
 
+.form-req {
+  color: var(--c-accent, #c96a2c);
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.form-opt {
+  color: var(--c-muted);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  margin-left: 4px;
+  opacity: 0.75;
+}
+
 .form-control {
   background: transparent;
   border: none;
@@ -1457,7 +1705,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   border: none;
 }
 
-.btn-submit:hover { background: var(--c-accent); }
+.btn-submit:hover { background: var(--c-accent-ink); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 .btn-submit svg { width: 15px; height: 15px; }
 
@@ -2199,9 +2447,23 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   .partner-stat-value { font-size: 1.75rem; }
   .partner-mosaic { height: 260px; }
 
-  /* Accordion: stack vertically */
-  .accordion-track { flex-direction: column; height: auto; }
-  .accordion-panel { flex: none !important; height: 180px; }
+  /* Accordion: 2×2 grid with visible captions */
+  .accordion-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    height: auto;
+  }
+  .accordion-panel {
+    flex: none !important;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .accordion-panel-label {
+    opacity: 1 !important;
+    font-size: 0.95rem !important;
+  }
+  .accordion-panel img { opacity: 1 !important; }
 
   /* About drop-cap: disable on small screens to avoid layout issues */
   .about-text p:first-of-type::first-letter {
@@ -2331,8 +2593,8 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     margin: 0;
   }
 
-  /* Accordion */
-  .accordion-panel { height: 160px; }
+  /* Accordion: aspect-ratio sustituye height */
+  .accordion-panel { height: auto; aspect-ratio: 1; }
 
   /* Hero buttons */
   .btn-framed { padding: 11px 20px; font-size: 0.7rem; }
@@ -2495,7 +2757,7 @@ input, select, textarea { font-size: 16px; }
   .ip-visual { aspect-ratio: 4/3; }
 
   /* Accordion: más altura útil por panel */
-  .accordion-panel { height: 200px; }
+  .accordion-panel { height: auto; aspect-ratio: 1; }
   .accordion-panel-label { font-size: 0.95rem; }
   .accordion-panel.active .accordion-panel-label,
   .accordion-panel:hover .accordion-panel-label { font-size: 1.15rem; }
@@ -2541,7 +2803,7 @@ input, select, textarea { font-size: 16px; }
   .stat-value { font-size: 1.75rem; }
 
   /* Accordion panels aún más chicos */
-  .accordion-panel { height: 160px; }
+  .accordion-panel { height: auto; aspect-ratio: 1; }
 
   /* Contact map más chico */
   .contact-map { height: 180px; margin-top: 20px; }
@@ -2583,7 +2845,7 @@ input, select, textarea { font-size: 16px; }
   .filter-tab { padding: 6px 14px; font-size: 0.7rem; }
 
   /* Accordion: aún más compacto */
-  .accordion-panel { height: 140px; }
+  .accordion-panel { height: auto; aspect-ratio: 1; }
   .accordion-panel-number { top: 12px; left: 14px; font-size: 0.6rem; }
   .accordion-panel-overlay { padding: 18px 14px; }
 
