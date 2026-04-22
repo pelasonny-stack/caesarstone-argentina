@@ -344,10 +344,34 @@ function initAccordion() {
   const panels = document.querySelectorAll('.accordion-panel');
   if (!panels.length) return;
 
-  panels.forEach(panel => {
-    panel.addEventListener('click', () => {
-      panels.forEach(p => p.classList.remove('active'));
-      panel.classList.add('active');
+  const activate = (idx) => {
+    panels.forEach((p, i) => {
+      const active = i === idx;
+      p.classList.toggle('active', active);
+      p.setAttribute('aria-expanded', active);
+      p.tabIndex = active ? 0 : -1;
+    });
+  };
+
+  panels.forEach((panel, i) => {
+    panel.setAttribute('role', 'button');
+    panel.setAttribute('aria-expanded', panel.classList.contains('active'));
+    panel.tabIndex = panel.classList.contains('active') ? 0 : -1;
+    const label = panel.querySelector('.accordion-panel-label')?.textContent;
+    if (label) panel.setAttribute('aria-label', label);
+
+    panel.addEventListener('click', () => activate(i));
+    panel.addEventListener('keydown', e => {
+      let next;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % panels.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + panels.length) % panels.length;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = panels.length - 1;
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(i); return; }
+      else return;
+      e.preventDefault();
+      activate(next);
+      panels[next].focus();
     });
   });
 }
@@ -360,6 +384,7 @@ function initModal() {
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   document.getElementById('modal-close')?.addEventListener('click', closeModal);
+  overlay.querySelector('.modal-cta')?.addEventListener('click', closeModal);
 }
 
 function openModal(id) {
@@ -581,8 +606,9 @@ function initContactForm() {
 
 /* ── Active nav link on scroll ──────────────────────────────────────────────── */
 function initActiveNav() {
-  const sections = document.querySelectorAll('section[id], div[id]');
   const links    = document.querySelectorAll('.header-nav a[href^="#"]');
+  const ids      = Array.from(links).map(a => a.getAttribute('href').slice(1)).filter(Boolean);
+  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {

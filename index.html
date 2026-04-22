@@ -33,9 +33,14 @@
   <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/logos/favicon.svg">
 
+  <!-- Preconnect to CDN -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://player.vimeo.com">
+
   <!-- Preload -->
   <link rel="preload" as="font" href="assets/fonts/frutiger-pro/FrutigerLTPro-Roman.woff2" type="font/woff2" crossorigin>
   <link rel="preload" as="font" href="assets/fonts/publico-banner/PublicoBanner.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/hero/about-caesarstone.jpg" media="(max-width: 768px)">
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -54,7 +59,7 @@
     "url": "https://caesarstone.com.ar",
     "logo": "https://caesarstone.com.ar/assets/logos/caesarstone-logo.png",
     "image": "https://caesarstone.com.ar/assets/hero/hero-wildtaj.webp",
-    "telephone": "+54-11-3174-9906",
+    "telephone": "+54-11-5931-1038",
     "email": "info@minerafame.com",
     "priceRange": "$$$",
     "address": {
@@ -92,17 +97,17 @@
     "description": "11 modelos de porcelana Caesarstone disponibles con stock inmediato",
     "numberOfItems": 11,
     "itemListElement": [
-      { "@type": "ListItem", "position": 1,  "name": "Opal Taj",           "url": "https://www.caesarstone.com/design/stones/584-opal-taj/" },
-      { "@type": "ListItem", "position": 2,  "name": "Fossillia",          "url": "https://www.caesarstone.com/design/stones/545-fossillia/" },
-      { "@type": "ListItem", "position": 3,  "name": "Striata",            "url": "https://www.caesarstone.com/design/stones/513-striata/" },
-      { "@type": "ListItem", "position": 4,  "name": "Thalassa",           "url": "https://www.caesarstone.com/design/stones/" },
-      { "@type": "ListItem", "position": 5,  "name": "Mosstone",           "url": "https://www.caesarstone.com/design/stones/" },
-      { "@type": "ListItem", "position": 6,  "name": "Carrara Ice",        "url": "https://www.caesarstone.com/design/stones/" },
-      { "@type": "ListItem", "position": 7,  "name": "Isobellia",          "url": "https://www.caesarstone.com/design/stones/" },
-      { "@type": "ListItem", "position": 8,  "name": "Lithic Coin",        "url": "https://www.caesarstone.com/design/stones/" },
-      { "@type": "ListItem", "position": 9,  "name": "Lithic Latte",       "url": "https://www.caesarstone.com/design/stones/" },
-      { "@type": "ListItem", "position": 10, "name": "Beige Ciment",       "url": "https://www.caesarstone.com/design/stones/" },
-      { "@type": "ListItem", "position": 11, "name": "Calcutta Borghini",  "url": "https://www.caesarstone.com/design/stones/" }
+      { "@type": "ListItem", "position": 1,  "name": "Opal Taj" },
+      { "@type": "ListItem", "position": 2,  "name": "Fossillia" },
+      { "@type": "ListItem", "position": 3,  "name": "Striata" },
+      { "@type": "ListItem", "position": 4,  "name": "Thalassa" },
+      { "@type": "ListItem", "position": 5,  "name": "Mosstone" },
+      { "@type": "ListItem", "position": 6,  "name": "Carrara Ice" },
+      { "@type": "ListItem", "position": 7,  "name": "Isobellia" },
+      { "@type": "ListItem", "position": 8,  "name": "Lithic Coin" },
+      { "@type": "ListItem", "position": 9,  "name": "Lithic Latte" },
+      { "@type": "ListItem", "position": 10, "name": "Beige Ciment" },
+      { "@type": "ListItem", "position": 11, "name": "Calcutta Borghini" }
     ]
   }
   </script>
@@ -198,7 +203,7 @@
       <!-- Slide 1: Video Vimeo 1099102411 (desktop) + MP4 Drive (mobile) -->
       <div class="swiper-slide">
         <div class="hero-slide-bg video-bg">
-          <img class="hero-mobile-img" src="assets/hero/about-caesarstone.jpg" alt="" aria-hidden="true">
+          <img class="hero-mobile-img" src="assets/hero/about-caesarstone.jpg" width="1778" height="1000" alt="" aria-hidden="true">
           <iframe
             src="https://player.vimeo.com/video/1099102411?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
             frameborder="0"
@@ -225,12 +230,13 @@
       <!-- Slide 2: Video Vimeo 1091739592 -->
       <div class="swiper-slide">
         <div class="hero-slide-bg video-bg">
-          <img class="hero-mobile-poster" src="assets/hero/onyxa-render.jpg" alt="" aria-hidden="true">
+          <img class="hero-mobile-img" src="assets/hero/onyxa-render.jpg" width="1920" height="1080" alt="" aria-hidden="true">
           <iframe
             src="https://player.vimeo.com/video/1091739592?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
             frameborder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             title="Caesarstone espacios"
+            loading="lazy"
             aria-hidden="true"></iframe>
         </div>
         <div class="hold-container">
@@ -557,7 +563,7 @@
           <svg class="contact-icon" width="20" height="20"><use href="#message-circle"/></svg>
           <div>
             <div class="contact-label">WhatsApp</div>
-            <div class="contact-value"><a href="https://wa.me/5491131749906" target="_blank" rel="noopener">+54 11 3174-9906</a></div>
+            <div class="contact-value"><a href="https://wa.me/5491159311038" target="_blank" rel="noopener">+54 11 5931-1038</a></div>
           </div>
         </div>
 
@@ -584,7 +590,7 @@
           <a href="https://www.facebook.com/MineraFame" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
             <svg width="18" height="18"><use href="#facebook"/></svg>
           </a>
-          <a href="https://wa.me/5491131749906" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+          <a href="https://wa.me/5491159311038" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
             <svg width="18" height="18"><use href="#whatsapp"/></svg>
           </a>
         </div>
@@ -697,14 +703,14 @@
         <ul class="footer-links">
           <li><a href="tel:+541131749906">+54 11 3174-9906</a></li>
           <li><a href="mailto:info@minerafame.com">info@minerafame.com</a></li>
-          <li><a href="https://wa.me/5491131749906" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://wa.me/5491159311038" target="_blank" rel="noopener">WhatsApp</a></li>
           <li>Puán 5403, Caseros, BA</li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2025 Caesarstone Argentina — Distribuido por Minera Fame S.A.</span>
+      <span class="footer-copy">&copy; 2026 Caesarstone Argentina — Distribuido por Minera Fame S.A.</span>
       <div class="footer-social">
         <a href="https://www.instagram.com/marmoleriaminerafame/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg width="18" height="18"><use href="#instagram"/></svg>
@@ -712,7 +718,7 @@
         <a href="https://www.facebook.com/MineraFame" target="_blank" rel="noopener" aria-label="Facebook">
           <svg width="18" height="18"><use href="#facebook"/></svg>
         </a>
-        <a href="https://wa.me/5491131749906" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a href="https://wa.me/5491159311038" target="_blank" rel="noopener" aria-label="WhatsApp">
           <svg width="18" height="18"><use href="#whatsapp"/></svg>
         </a>
       </div>
@@ -805,8 +811,7 @@
           <div class="modal-contact-web">MINERAFAME.COM</div>
         </div>
         <div class="modal-contact-actions">
-          <a href="#contacto" class="btn-dark modal-cta"
-             onclick="document.getElementById('product-modal').classList.remove('open'); document.body.style.overflow=''">
+          <a href="#contacto" class="btn-dark modal-cta">
             Solicitar muestra
             <svg width="14" height="14"><use href="#arrow-right"/></svg>
           </a>

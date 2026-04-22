@@ -5,6 +5,7 @@
   --mf-header-h: 176px;
 }
 
+html { scroll-behavior: smooth; scroll-padding-top: var(--mf-header-h, 176px); }
 body { background: var(--mf-ash); }
 
 .section-header,
@@ -111,13 +112,6 @@ body { background: var(--mf-ash); }
 .mf-hero-swiper .swiper-slide {
   height: 100%;
   width: 100%;
-}
-
-.mf-hero-single {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
 .mf-slide-bg {
@@ -475,33 +469,6 @@ body { background: var(--mf-ash); }
   max-height: 88%;
   aspect-ratio: auto;
   object-fit: contain;
-}
-
-.mf-empresa-badge {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: var(--mf-earth);
-  border-radius: var(--r-md);
-  padding: 14px 20px;
-  text-align: center;
-}
-
-.mf-empresa-badge-num {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--c-paper);
-  line-height: 1;
-}
-
-.mf-empresa-badge-label {
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(245,242,240,0.5);
-  margin-top: 4px;
 }
 
 .mf-empresa-content {
@@ -1390,7 +1357,6 @@ span.mf-project-brand--letter {
 
   /* Empresa */
   .mf-empresa-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .mf-empresa-badge { bottom: 12px; right: 12px; }
 
   /* Materiales */
   .mf-materials-grid { grid-template-columns: 1fr 1fr; }
@@ -1466,9 +1432,6 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 /* --- 768px: ajustes de tablet estrecha / phones grandes ---------------- */
 @media (max-width: 768px) {
-  /* Container padding uniforme */
-  .mf-container { padding-left: 20px; padding-right: 20px; }
-
   /* Hero — logo Caesarstone dentro del slide visible pero más compacto */
   .mf-slide-logo { height: 32px; margin-bottom: 1rem; }
   .mf-slide-content h1 { font-size: clamp(1.85rem, 7.5vw, 2.5rem); }
@@ -1484,14 +1447,8 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
     font-size: 2.5rem; padding-right: 6px;
   }
 
-  /* Diferencial: 2 cols → 1 col con más aire */
-  .mf-diff-grid { grid-template-columns: 1fr !important; gap: 1.75rem !important; }
-
   /* Materiales: 2 cols mantiene pero featured span 1 */
   .mf-materials-grid { grid-template-columns: 1fr 1fr; }
-
-  /* Servicios timeline: mantener vertical */
-  .mf-servicios-grid { grid-template-columns: 1fr !important; }
 
   /* Proyectos: 2 columnas masonry */
   .mf-projects-grid { columns: 2; column-gap: 12px; }
@@ -1505,9 +1462,6 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 /* --- 640px: phones ------------------------------------------------------ */
 @media (max-width: 640px) {
-  .mf-section-title { font-size: clamp(1.4rem, 6vw, 2rem); }
-  .mf-section-eyebrow { font-size: 0.625rem; }
-
   /* Hero — altura fija para que Swiper mantenga la pagination anclada */
   .mf-hero-swiper-section { height: 100svh; min-height: 500px; }
   .mf-slide-content {
@@ -1525,18 +1479,20 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 /* --- 480px: phones chicos ----------------------------------------------- */
 @media (max-width: 480px) {
-  .mf-container { padding-left: 16px; padding-right: 16px; }
-
   /* Header: logo visible pero compacto en phones */
   :root { --mf-header-h: 100px; }
   .mf-header-logo { height: 76px; }
 
-  /* Hero: altura más corta en pantallas chicas */
+  /* Hero */
   .mf-hero-swiper-section { min-height: 440px; }
   .mf-slide-content h1 { font-size: clamp(1.4rem, 8.5vw, 1.9rem); }
+  .mf-slide-title { font-size: clamp(2.2rem, 10vw, 3rem); }
+  .mf-slide-actions { flex-direction: column; }
+  .mf-btn-light, .mf-btn-ghost { text-align: center; justify-content: center; }
 
-  /* Stats: ya wrap al 50% — asegurarlo */
-  .mf-stat { min-width: calc(50% - 1px) !important; padding: 1rem 0.75rem; }
+  /* Stats: wrap al 50% + bordes */
+  .mf-stat { min-width: calc(50% - 1px) !important; padding: 1rem 0.75rem; border-bottom: 1px solid rgba(26,25,23,0.1); }
+  .mf-stat:last-child { border-bottom: none; }
   .mf-stat-value { font-size: 1.5rem; }
 
   /* Materiales: 1 col */
@@ -1550,19 +1506,19 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
   /* Proyectos: 1 col en phones chicos */
   .mf-projects-grid { columns: 1; }
 
+  /* Fachada */
+  .mf-fachada-visual { height: 220px; }
+
   /* Footer 1 col */
   .mf-footer-grid { grid-template-columns: 1fr; gap: 24px; }
 
   /* CTAs full-width */
-  .mf-btn-primary,
-  .mf-btn-outline { width: 100%; justify-content: center; }
+  .mf-btn-primary { width: 100%; justify-content: center; }
 }
 
 /* --- 380px: teléfonos muy angostos (iPhone SE, etc) --------------------- */
 @media (max-width: 380px) {
-  .mf-container { padding-left: 14px; padding-right: 14px; }
   .mf-slide-content h1 { font-size: clamp(1.25rem, 8vw, 1.65rem); }
-  .mf-section-title { font-size: clamp(1.2rem, 5.5vw, 1.7rem); }
 
   /* Stats: una sola col vertical */
   .mf-stat { min-width: 100% !important; }
@@ -1583,24 +1539,5 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 /* --- Pointer: coarse (touch) — off hover zooms -------------------------- */
 @media (hover: none) and (pointer: coarse) {
-  .mf-proyecto-card:hover img,
   .mf-material-card:hover img { transform: none; }
-}
-
-
-@media (max-width: 480px) {
-  /* Hero */
-  .mf-slide-title { font-size: clamp(2.2rem, 10vw, 3rem); }
-  .mf-slide-actions { flex-direction: column; }
-  .mf-btn-light, .mf-btn-ghost { text-align: center; justify-content: center; }
-
-  /* Stats */
-  .mf-stat { min-width: 100%; border-bottom: 1px solid rgba(26,25,23,0.1); }
-  .mf-stat:last-child { border-bottom: none; }
-
-  /* Proyectos */
-  .mf-projects-grid { columns: 1; }
-
-  /* Fachada */
-  .mf-fachada-visual { height: 220px; }
 }
