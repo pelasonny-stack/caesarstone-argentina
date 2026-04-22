@@ -2,7 +2,7 @@
 
 /* ─── GLOBALS ────────────────────────────────────────────────────────────── */
 :root {
-  --mf-header-h: 102px;
+  --mf-header-h: 178px;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: var(--mf-header-h, 88px); }
@@ -97,14 +97,14 @@ body { background: var(--mf-ash); }
 .mf-logo-link { display: flex; align-items: center; }
 
 .mf-header-logo {
-  height: 68px;
+  height: 136px;
   width: auto;
   object-fit: contain;
   object-position: left;
   filter: brightness(0) invert(1);
   transition: height var(--dur-med) ease;
 }
-.mf-header.scrolled .mf-header-logo { height: 56px; }
+.mf-header.scrolled .mf-header-logo { height: 112px; }
 
 .mf-header-nav {
   display: flex;
@@ -1432,10 +1432,10 @@ span.mf-project-brand--letter {
 
 @media (max-width: 900px) {
   /* Header — siempre visible + estirado en mobile (no colapsa al scrollear) */
-  :root { --mf-header-h: 72px; }
+  :root { --mf-header-h: 120px; }
   .mf-header-ribbon { display: none; }
   .mf-header-main { padding: 0 1.25rem; }
-  .mf-header-logo { height: 54px; }
+  .mf-header-logo { height: 108px; }
   .mf-header {
     padding: 0;
     background: rgba(26,25,23,0.92) !important;
@@ -1632,8 +1632,8 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 /* --- 480px: phones chicos ----------------------------------------------- */
 @media (max-width: 480px) {
   /* Header: logo visible pero compacto en phones */
-  :root { --mf-header-h: 68px; }
-  .mf-header-logo { height: 46px; }
+  :root { --mf-header-h: 104px; }
+  .mf-header-logo { height: 92px; }
 
   /* Hero */
   .mf-hero-swiper-section { min-height: 440px; }
