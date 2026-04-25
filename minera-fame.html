@@ -404,8 +404,8 @@
 
   </div>
 
-  <!-- Template hidratado por hydrator.js: si el JSON tiene N items, wipea las 6 cards de arriba y appendea N. Si JSON no carga, las 6 hardcoded quedan como fallback no-JS. -->
-  <template data-edit-template="materials.items" data-edit-target=".mf-materials-grid" data-edit-mode="replace">
+  <!-- Template hidratado por hydrator.js: si el JSON tiene N items, wipea las 6 cards de arriba y appendea hasta 6. Si JSON no carga, las 6 hardcoded quedan como fallback no-JS. -->
+  <template data-edit-template="materials.items" data-edit-target=".mf-materials-grid" data-edit-mode="replace" data-edit-template-limit="6">
     <a class="mf-material-card" data-edit-class-toggle="featured:item.featured" data-edit-bind-href="item.href" data-edit-bind-data-material="item.materialAttr">
       <img loading="lazy" data-edit="item.img.src" data-edit-attr="src" data-edit-bind-alt="item.img.alt">
       <div class="mf-material-overlay">
@@ -415,6 +415,14 @@
       </div>
     </a>
   </template>
+
+  <!-- CTA "ver todos" — solo visible si hay >6 items en JSON -->
+  <div class="mf-materials-more" data-edit-show-len-gt="materials.items:6" hidden>
+    <a class="mf-btn-primary mf-materials-more-btn" data-edit-bind-href="materials.showAllUrl">
+      <span data-edit="materials.showAllLabel">Ver todos los materiales</span>
+      <svg width="16" height="16"><use href="#arrow-right"/></svg>
+    </a>
+  </div>
 </section>
 
 <!-- ── SERVICIOS ──────────────────────────────────────────────────────────── -->

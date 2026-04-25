@@ -86,6 +86,18 @@
     el.hidden = !v;
   }
 
+  function applyShowLenGt(el, root, ctx) {
+    // data-edit-show-len-gt="path:N" — show si Array(path).length > N
+    const v = el.getAttribute('data-edit-show-len-gt');
+    if (!v) return;
+    const idx = v.lastIndexOf(':');
+    if (idx === -1) return;
+    const path = v.slice(0, idx).trim();
+    const n = parseInt(v.slice(idx + 1).trim(), 10);
+    const val = resolvePath(root, path, ctx);
+    el.hidden = !(Array.isArray(val) && val.length > n);
+  }
+
   function applyClassToggles(el, root, ctx) {
     // data-edit-class-toggle="className:path[, className2:path2]" — toggle class si path truthy
     const v = el.getAttribute('data-edit-class-toggle');
@@ -100,6 +112,7 @@
 
   function processElement(el, root, ctx) {
     if (el.hasAttribute('data-edit-show')) applyShow(el, root, ctx);
+    if (el.hasAttribute('data-edit-show-len-gt')) applyShowLenGt(el, root, ctx);
     if (el.hasAttribute('data-edit-class-toggle')) applyClassToggles(el, root, ctx);
     applyBinds(el, ctx, root);
     if (el.hasAttribute('data-edit')) {
@@ -119,10 +132,13 @@
       const targetEl = target ? document.querySelector(target) : tpl.parentNode;
       const mode = tpl.getAttribute('data-edit-mode') || 'replace-template';
       if (mode === 'replace' && targetEl) targetEl.innerHTML = '';
-      arr.forEach(item => {
+      // data-edit-template-limit="N" → solo hidrata primeros N items
+      const limit = parseInt(tpl.getAttribute('data-edit-template-limit') || '0', 10);
+      const items = limit > 0 ? arr.slice(0, limit) : arr;
+      items.forEach(item => {
         const clone = tpl.content.cloneNode(true);
         processTemplates(clone, data, item);
-        clone.querySelectorAll('[data-edit], [data-edit-show], [data-edit-class-toggle]').forEach(el => processElement(el, data, item));
+        clone.querySelectorAll('[data-edit], [data-edit-show], [data-edit-show-len-gt], [data-edit-class-toggle]').forEach(el => processElement(el, data, item));
         Array.from(clone.querySelectorAll('*'))
           .filter(el => Array.from(el.attributes).some(a => a.name.startsWith('data-edit-bind')))
           .forEach(el => processElement(el, data, item));
@@ -142,7 +158,7 @@
     }
     if (data.documentTitle) document.title = data.documentTitle;
     processTemplates(document, data, null);
-    document.querySelectorAll('[data-edit], [data-edit-show], [data-edit-class-toggle]').forEach(el => processElement(el, data, null));
+    document.querySelectorAll('[data-edit], [data-edit-show], [data-edit-show-len-gt], [data-edit-class-toggle]').forEach(el => processElement(el, data, null));
     Array.from(document.querySelectorAll('*'))
       .filter(el => Array.from(el.attributes).some(a => a.name.startsWith('data-edit-bind')))
       .forEach(el => processElement(el, data, null));

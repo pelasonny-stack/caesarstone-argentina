@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos los materiales — Minera Fame S.A.</title>
+  <meta name="description" content="Catálogo completo de materiales de Minera Fame S.A.: mármol, granito, cuarzo, cuarcita, travertino, Caesarstone Sinterizado y más. Importadores directos.">
+
+  <link rel="canonical" href="https://minerafame.com/materiales.html">
+  <meta name="theme-color" content="#8a5a38">
+  <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/logos/favicon.svg">
+  <link rel="stylesheet" href="css/minera-fame.css">
+</head>
+
+<body>
+
+<!-- SVG sprite (icons) — duplicado de minera-fame.html -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+</svg>
+
+<!-- ── HEADER (mismo que minera-fame.html) ─────────────────────────────────── -->
+<header class="mf-header" id="mf-header" role="banner">
+  <div class="mf-header-ribbon" aria-label="Marcas representadas">
+    <span class="mf-ribbon-label" data-edit="ribbon.label">Trabajamos todas las marcas:</span>
+    <a class="mf-ribbon-link" data-edit-bind-href="ribbon.primaryLink.href">
+      <strong data-edit="ribbon.primaryLink.label">Caesarstone</strong>
+      <svg width="10" height="10" aria-hidden="true"><use href="#arrow-up-right"/></svg>
+    </a>
+    <span class="mf-ribbon-sep">·</span>
+    <span class="mf-ribbon-brands" data-edit="ribbon.brands">Silestone · Dekton · Neolith · Laminam · Intecstone</span>
+  </div>
+
+  <div class="mf-header-main">
+    <a href="minera-fame.html" class="mf-logo-link" aria-label="Minera Fame — Inicio">
+      <img class="mf-header-logo" src="assets/logos/minera-fame.png" alt="Minera Fame S.A." data-edit="header.logo.src" data-edit-bind-alt="header.logo.alt">
+    </a>
+
+    <nav class="mf-header-nav" aria-label="Navegación principal">
+      <a href="minera-fame.html#empresa">Empresa</a>
+      <a href="minera-fame.html#materiales">Materiales</a>
+      <a href="minera-fame.html#proyectos">Proyectos</a>
+      <a href="minera-fame.html#servicios">Servicios</a>
+      <a href="index.html">Caesarstone</a>
+      <a href="minera-fame.html#contacto" class="mf-header-cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── ALL MATERIALS GRID ─────────────────────────────────────────────────── -->
+<main role="main">
+  <section class="mf-section mf-section-alt" aria-labelledby="mat-all-title">
+    <div class="mf-section-header">
+      <div class="mf-eyebrow" data-edit="materials.eyebrow">Catálogo</div>
+      <h1 class="mf-title" id="mat-all-title">Todos los materiales</h1>
+      <p class="mf-desc" data-edit="materials.desc">Desde el mármol clásico hasta la porcelana técnica más avanzada.</p>
+    </div>
+
+    <!-- Container vacío — hydrator llena con N items del JSON.
+         Si JSON no carga, queda vacío con mensaje fallback. -->
+    <div class="mf-materials-grid" id="materials-grid-all">
+      <p style="grid-column:1/-1;text-align:center;color:var(--c-muted);padding:var(--space-8)">
+        Cargando materiales… si esto persiste, recargá la página o
+        <a href="minera-fame.html#materiales">volvé al catálogo</a>.
+      </p>
+    </div>
+
+    <template data-edit-template="materials.items" data-edit-target="#materials-grid-all" data-edit-mode="replace">
+      <a class="mf-material-card" data-edit-class-toggle="featured:item.featured" data-edit-bind-href="item.href" data-edit-bind-data-material="item.materialAttr">
+        <img loading="lazy" data-edit="item.img.src" data-edit-attr="src" data-edit-bind-alt="item.img.alt">
+        <div class="mf-material-overlay">
+          <div class="mf-material-tag" data-edit="item.tag" data-edit-show="item.tag"></div>
+          <div class="mf-material-name" data-edit="item.name"></div>
+          <div class="mf-material-cta"><span data-edit="item.ctaLabel"></span> <svg width="14" height="14"><use href="#arrow-right"/></svg></div>
+        </div>
+      </a>
+    </template>
+
+    <div style="text-align:center;margin-top:var(--space-8)">
+      <a href="minera-fame.html" class="mf-btn-ghost">← Volver al inicio</a>
+    </div>
+  </section>
+</main>
+
+<!-- ── FOOTER (simplificado) ──────────────────────────────────────────────── -->
+<footer class="mf-footer" role="contentinfo">
+  <div class="mf-footer-bottom">
+    <span class="mf-footer-copy" data-edit="footer.copy">© 2026 Minera Fame S.A. — Representante oficial Caesarstone Argentina</span>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ────────────────────────────────────────────────────────────── -->
+<script src="js/hydrator.js"></script>
+<script>
+  (async () => {
+    if (!window.fetchSiteData || !window.hydrate) return;
+    const data = await window.fetchSiteData('mf');
+    if (data) window.hydrate(data);
+  })();
+</script>
+
+</body>
+</html>

@@ -303,7 +303,9 @@
           "src": "assets/uploads/mf/20260425-051859-skillimagen-1.png"
         }
       }
-    ]
+    ],
+    "showAllLabel": "Ver todos los materiales",
+    "showAllUrl": "materiales.html"
   },
   "fachada": {
     "img": {

@@ -121,6 +121,8 @@
         { "path": "materials.eyebrow", "type": "text", "label": "Eyebrow" },
         { "path": "materials.title",   "type": "text", "label": "Título" },
         { "path": "materials.desc",    "type": "text-multiline", "label": "Descripción" },
+        { "path": "materials.showAllLabel", "type": "text", "label": "CTA 'Ver todos' — texto (visible cuando hay >6 items)" },
+        { "path": "materials.showAllUrl",   "type": "href", "label": "CTA 'Ver todos' — destino (default: materiales.html)" },
         {
           "path": "materials.items",
           "type": "array",
