@@ -403,6 +403,18 @@
     </a>
 
   </div>
+
+  <!-- Template hidratado por hydrator.js: si el JSON tiene N items, wipea las 6 cards de arriba y appendea N. Si JSON no carga, las 6 hardcoded quedan como fallback no-JS. -->
+  <template data-edit-template="materials.items" data-edit-target=".mf-materials-grid" data-edit-mode="replace">
+    <a class="mf-material-card" data-edit-class-toggle="featured:item.featured" data-edit-bind-href="item.href" data-edit-bind-data-material="item.materialAttr">
+      <img loading="lazy" data-edit="item.img.src" data-edit-attr="src" data-edit-bind-alt="item.img.alt">
+      <div class="mf-material-overlay">
+        <div class="mf-material-tag" data-edit="item.tag" data-edit-show="item.tag"></div>
+        <div class="mf-material-name" data-edit="item.name"></div>
+        <div class="mf-material-cta"><span data-edit="item.ctaLabel"></span> <svg width="14" height="14"><use href="#arrow-right"/></svg></div>
+      </div>
+    </a>
+  </template>
 </section>
 
 <!-- ── SERVICIOS ──────────────────────────────────────────────────────────── -->

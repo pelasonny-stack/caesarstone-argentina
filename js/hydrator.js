@@ -86,8 +86,21 @@
     el.hidden = !v;
   }
 
+  function applyClassToggles(el, root, ctx) {
+    // data-edit-class-toggle="className:path[, className2:path2]" — toggle class si path truthy
+    const v = el.getAttribute('data-edit-class-toggle');
+    if (!v) return;
+    v.split(',').map(s => s.trim()).filter(Boolean).forEach(pair => {
+      const [className, path] = pair.split(':').map(s => s.trim());
+      if (!className || !path) return;
+      const truthy = !!resolvePath(root, path, ctx);
+      el.classList.toggle(className, truthy);
+    });
+  }
+
   function processElement(el, root, ctx) {
     if (el.hasAttribute('data-edit-show')) applyShow(el, root, ctx);
+    if (el.hasAttribute('data-edit-class-toggle')) applyClassToggles(el, root, ctx);
     applyBinds(el, ctx, root);
     if (el.hasAttribute('data-edit')) {
       const path = el.getAttribute('data-edit');
@@ -109,7 +122,7 @@
       arr.forEach(item => {
         const clone = tpl.content.cloneNode(true);
         processTemplates(clone, data, item);
-        clone.querySelectorAll('[data-edit], [data-edit-show]').forEach(el => processElement(el, data, item));
+        clone.querySelectorAll('[data-edit], [data-edit-show], [data-edit-class-toggle]').forEach(el => processElement(el, data, item));
         Array.from(clone.querySelectorAll('*'))
           .filter(el => Array.from(el.attributes).some(a => a.name.startsWith('data-edit-bind')))
           .forEach(el => processElement(el, data, item));
@@ -129,7 +142,7 @@
     }
     if (data.documentTitle) document.title = data.documentTitle;
     processTemplates(document, data, null);
-    document.querySelectorAll('[data-edit], [data-edit-show]').forEach(el => processElement(el, data, null));
+    document.querySelectorAll('[data-edit], [data-edit-show], [data-edit-class-toggle]').forEach(el => processElement(el, data, null));
     Array.from(document.querySelectorAll('*'))
       .filter(el => Array.from(el.attributes).some(a => a.name.startsWith('data-edit-bind')))
       .forEach(el => processElement(el, data, null));
