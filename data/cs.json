@@ -3,7 +3,7 @@
   "_meta": {
     "site": "cs",
     "updatedAt": "2026-04-25T00:00:00Z",
-    "updatedBy": "initial-extraction",
+    "updatedBy": "e2e-test-cms",
     "commit": "init"
   },
   "documentTitle": "Caesarstone Argentina — Sinterizado Premium | Minera Fame",
@@ -15,11 +15,31 @@
       "href": "minera-fame.html"
     },
     "nav": [
-      { "id": "coleccion",    "label": "Colección",    "href": "#coleccion" },
-      { "id": "aplicaciones", "label": "Aplicaciones", "href": "#aplicaciones" },
-      { "id": "acerca",       "label": "Acerca de",    "href": "#acerca" },
-      { "id": "minera-fame",  "label": "Minera Fame",  "href": "minera-fame.html" },
-      { "id": "contacto",     "label": "Contacto",     "href": "#contacto" }
+      {
+        "id": "coleccion",
+        "label": "Colección",
+        "href": "#coleccion"
+      },
+      {
+        "id": "aplicaciones",
+        "label": "Aplicaciones",
+        "href": "#aplicaciones"
+      },
+      {
+        "id": "acerca",
+        "label": "Acerca de",
+        "href": "#acerca"
+      },
+      {
+        "id": "minera-fame",
+        "label": "Minera Fame",
+        "href": "minera-fame.html"
+      },
+      {
+        "id": "contacto",
+        "label": "Contacto",
+        "href": "#contacto"
+      }
     ],
     "ctaWhatsapp": {
       "label": "WhatsApp",
@@ -68,18 +88,36 @@
     ]
   },
   "trustStrip": [
-    { "icon": "check", "label": "Distribuidor oficial" },
-    { "icon": "check", "label": "Asesoramiento técnico" }
+    {
+      "icon": "check",
+      "label": "Distribuidor oficial"
+    },
+    {
+      "icon": "check",
+      "label": "Asesoramiento técnico"
+    }
   ],
   "collection": {
     "eyebrow": "Colección Argentina",
     "title": "Sinterizado con stock inmediato",
     "desc": "11 modelos disponibles en Buenos Aires. Cada superficie replica la autenticidad de las piedras más bellas del mundo con la durabilidad técnica del sinterizado.",
     "filters": [
-      { "id": "all",    "label": "Todos" },
-      { "id": "blanco", "label": "Blancos & Marfil" },
-      { "id": "gris",   "label": "Grises & Neutros" },
-      { "id": "color",  "label": "Con color" }
+      {
+        "id": "all",
+        "label": "Todos"
+      },
+      {
+        "id": "blanco",
+        "label": "Blancos & Marfil"
+      },
+      {
+        "id": "gris",
+        "label": "Grises & Neutros"
+      },
+      {
+        "id": "color",
+        "label": "Con color"
+      }
     ],
     "defaultChars": [
       "Resistente a golpes y rayones",
@@ -273,28 +311,58 @@
   "imageParagraph": [
     {
       "id": "tech",
-      "img": { "src": "assets/hero/hero-main.jpg", "alt": "Resistencia al uso diario" },
+      "img": {
+        "src": "assets/hero/hero-main.jpg",
+        "alt": "Resistencia al uso diario"
+      },
       "eyebrow": "Tecnología",
       "title": "Resistencia sin compromiso",
       "desc": "El sinterizado técnico Caesarstone combina la belleza visual de las piedras naturales con una durabilidad superior. Resistente a arañazos, manchas, calor extremo y bacterias.",
       "specs": [
-        { "label": "Dureza Mohs",         "valueHtml": "7 – 8" },
-        { "label": "Absorción de agua",   "valueHtml": "&lt; 0,1%" },
-        { "label": "Resistencia química", "valueHtml": "Clase A" },
-        { "label": "Temperatura",         "valueHtml": "Hasta 300 °C" }
+        {
+          "label": "Dureza Mohs",
+          "valueHtml": "7 – 8"
+        },
+        {
+          "label": "Absorción de agua",
+          "valueHtml": "&lt; 0,1%"
+        },
+        {
+          "label": "Resistencia química",
+          "valueHtml": "Clase A"
+        },
+        {
+          "label": "Temperatura",
+          "valueHtml": "Hasta 300 °C"
+        }
       ]
     },
     {
       "id": "formats",
-      "img": { "src": "assets/hero/ambient-2.jpg", "alt": "Formato gran escala" },
+      "img": {
+        "src": "assets/hero/ambient-2.jpg",
+        "alt": "Formato gran escala"
+      },
       "eyebrow": "Formatos",
       "title": "Grandes formatos, diseños continuos",
       "desc": "Losas de 3200 × 1600 mm permiten diseños sin juntas visibles. El efecto visual de un material que fluye de manera continua en cocinas, baños y revestimientos.",
       "specs": [
-        { "label": "Formato",        "valueHtml": "3200 × 1600 mm" },
-        { "label": "Espesor",        "valueHtml": "12 mm" },
-        { "label": "Terminaciones",  "valueHtml": "Pulida / Natural" },
-        { "label": "Certificación",  "valueHtml": "ISO 13006" }
+        {
+          "label": "Formato",
+          "valueHtml": "3200 × 1600 mm"
+        },
+        {
+          "label": "Espesor",
+          "valueHtml": "12 mm"
+        },
+        {
+          "label": "Terminaciones",
+          "valueHtml": "Pulida / Natural"
+        },
+        {
+          "label": "Certificación",
+          "valueHtml": "ISO 13006"
+        }
       ]
     }
   ],
@@ -302,47 +370,134 @@
     "eyebrow": "Aplicaciones",
     "title": "Superficies para cada espacio",
     "panels": [
-      { "id": "cocinas",        "img": { "src": "assets/hero/render-kitchen.jpg",  "alt": "Cocinas" },        "label": "Cocinas",        "number": "01", "active": true },
-      { "id": "banos",          "img": { "src": "assets/hero/ambient-4.jpg",       "alt": "Baños" },          "label": "Baños",          "number": "02" },
-      { "id": "revestimientos", "img": { "src": "assets/hero/render-space.jpg",    "alt": "Revestimientos" }, "label": "Revestimientos", "number": "03" },
-      { "id": "comercial",      "img": { "src": "assets/hero/ambient-3.jpg",       "alt": "Comercial" },      "label": "Comercial",      "number": "04" }
+      {
+        "id": "cocinas",
+        "img": {
+          "src": "assets/hero/render-kitchen.jpg",
+          "alt": "Cocinas"
+        },
+        "label": "Cocinas",
+        "number": "01",
+        "active": true
+      },
+      {
+        "id": "banos",
+        "img": {
+          "src": "assets/hero/ambient-4.jpg",
+          "alt": "Baños"
+        },
+        "label": "Baños",
+        "number": "02"
+      },
+      {
+        "id": "revestimientos",
+        "img": {
+          "src": "assets/hero/render-space.jpg",
+          "alt": "Revestimientos"
+        },
+        "label": "Revestimientos",
+        "number": "03"
+      },
+      {
+        "id": "comercial",
+        "img": {
+          "src": "assets/hero/ambient-3.jpg",
+          "alt": "Comercial"
+        },
+        "label": "Comercial",
+        "number": "04"
+      }
     ]
   },
   "stats": [
-    { "id": "modelos",      "count": 11, "suffix": "",  "label": "Modelos en stock" },
-    { "id": "anios",        "count": 40, "suffix": "+", "label": "Años en el mercado" },
-    { "id": "distribucion", "count": null, "valueOverride": "AR", "label": "Distribución nacional" }
+    {
+      "id": "modelos",
+      "count": 11,
+      "suffix": "",
+      "label": "Modelos en stock"
+    },
+    {
+      "id": "anios",
+      "count": 40,
+      "suffix": "+",
+      "label": "Años en el mercado"
+    },
+    {
+      "id": "distribucion",
+      "count": null,
+      "valueOverride": "AR",
+      "label": "Distribución nacional"
+    }
   ],
   "about": {
     "eyebrow": "Quiénes somos",
     "title": "Una marca global, presente en Argentina",
-    "img": { "src": "assets/hero/isobellia-render.jpg", "alt": "Superficies Caesarstone" },
-    "badge": { "value": "1987", "label": "Fundada en Israel" },
+    "img": {
+      "src": "assets/hero/isobellia-render.jpg",
+      "alt": "Superficies Caesarstone"
+    },
+    "badge": {
+      "value": "1987",
+      "label": "Fundada en Israel"
+    },
     "paragraphs": [
       "Caesarstone fue fundada en 1987 en el Kibbutz Sdot Yam, Israel, con la misión de revolucionar las superficies de diseño. Hoy es la marca global de referencia en superficies de ingeniería, presente en más de 50 países.",
       "Sus superficies combinan la belleza visual de las piedras naturales con una durabilidad técnica sin igual: resistentes a arañazos, manchas, calor y bacterias. Sin mantenimiento especial, con décadas de vida útil.",
       "La colección disponible en Argentina incluye 11 modelos de sinterizado — el material más avanzado del catálogo global, disponible con stock inmediato gracias a Minera Fame S.A."
     ],
-    "cta": { "label": "Ver colección", "href": "#coleccion" }
+    "cta": {
+      "label": "Ver colección",
+      "href": "#coleccion"
+    }
   },
   "partner": {
-    "logo": { "src": "assets/logos/minera-fame-50.png", "alt": "Minera Fame S.A. — 50 años" },
+    "logo": {
+      "src": "assets/logos/minera-fame-50.png",
+      "alt": "Minera Fame S.A. — 50 años"
+    },
     "headingHtml": "El representante<br>oficial en Argentina",
     "desc": "Más de 50 años transformando espacios con los mejores materiales del mundo. Stock inmediato de Caesarstone, asesoramiento técnico y distribución en todo el país desde Caseros, Buenos Aires.",
     "stats": [
-      { "value": "50+", "label": "Años de experiencia" },
-      { "value": "11",  "label": "Modelos en stock" },
-      { "value": "AR",  "label": "Distribución nacional" }
+      {
+        "value": "50+",
+        "label": "Años de experiencia"
+      },
+      {
+        "value": "11",
+        "label": "Modelos en stock"
+      },
+      {
+        "value": "AR",
+        "label": "Distribución nacional"
+      }
     ],
-    "cta": { "label": "Conocer Minera Fame", "href": "minera-fame.html" },
+    "cta": {
+      "label": "Conocer Minera Fame",
+      "href": "minera-fame.html"
+    },
     "mosaic": {
       "main": {
-        "img": { "src": "assets/projects/w1.jpg", "alt": "Residencial premium" },
+        "img": {
+          "src": "assets/projects/w1.jpg",
+          "alt": "Residencial premium"
+        },
         "caption": "Residencial premium · Buenos Aires"
       },
       "thumbs": [
-        { "img": { "src": "assets/projects/d3.jpg", "alt": "Hotelería" }, "caption": "Hotelería" },
-        { "img": { "src": "assets/projects/w3.jpg", "alt": "Corporativo" }, "caption": "Corporativo" }
+        {
+          "img": {
+            "src": "assets/projects/d3.jpg",
+            "alt": "Hotelería"
+          },
+          "caption": "Hotelería"
+        },
+        {
+          "img": {
+            "src": "assets/projects/w3.jpg",
+            "alt": "Corporativo"
+          },
+          "caption": "Corporativo"
+        }
       ]
     }
   },
@@ -387,9 +542,21 @@
       "value": "Lunes a viernes, 8:00 – 17:00 hs"
     },
     "socials": [
-      { "id": "instagram", "icon": "instagram", "href": "https://www.instagram.com/marmoleriaminerafame/" },
-      { "id": "facebook",  "icon": "facebook",  "href": "https://www.facebook.com/MineraFame" },
-      { "id": "whatsapp",  "icon": "whatsapp",  "href": "https://wa.me/5491159311038" }
+      {
+        "id": "instagram",
+        "icon": "instagram",
+        "href": "https://www.instagram.com/marmoleriaminerafame/"
+      },
+      {
+        "id": "facebook",
+        "icon": "facebook",
+        "href": "https://www.facebook.com/MineraFame"
+      },
+      {
+        "id": "whatsapp",
+        "icon": "whatsapp",
+        "href": "https://wa.me/5491159311038"
+      }
     ],
     "form": {
       "action": "https://formspree.io/f/FORMSPREE_ID",
@@ -433,51 +600,105 @@
     ]
   },
   "footer": {
-    "logo": { "src": "assets/logos/caesarstone-logo.png", "alt": "Caesarstone" },
+    "logo": {
+      "src": "assets/logos/caesarstone-logo.png",
+      "alt": "Caesarstone"
+    },
     "taglineHtml": "Superficies de sinterizado premium.<br>Representado por Minera Fame S.A. en Argentina.",
     "columns": [
       {
         "id": "coleccion",
         "title": "Colección Argentina",
         "links": [
-          { "label": "Ver los 11 modelos",         "href": "#coleccion" },
-          { "label": "Especificaciones técnicas",  "href": "#aplicaciones" }
+          {
+            "label": "Ver los 11 modelos",
+            "href": "#coleccion"
+          },
+          {
+            "label": "Especificaciones técnicas",
+            "href": "#aplicaciones"
+          }
         ]
       },
       {
         "id": "global",
         "title": "caesarstone.com",
         "links": [
-          { "label": "Catálogo completo", "href": "https://www.caesarstone.com/color-catalog/", "external": true },
-          { "label": "Inspiración",       "href": "https://www.caesarstone.com/inspiration/", "external": true }
+          {
+            "label": "Catálogo completo",
+            "href": "https://www.caesarstone.com/color-catalog/",
+            "external": true
+          },
+          {
+            "label": "Inspiración",
+            "href": "https://www.caesarstone.com/inspiration/",
+            "external": true
+          }
         ]
       },
       {
         "id": "empresa",
         "title": "Empresa",
         "links": [
-          { "label": "Acerca de",          "href": "#acerca" },
-          { "label": "Minera Fame S.A.",   "href": "minera-fame.html" },
-          { "label": "Sitio global",       "href": "https://www.caesarstone.com/", "external": true },
-          { "label": "Sustentabilidad",    "href": "https://www.caesarstone.com/sustainability/", "external": true }
+          {
+            "label": "Acerca de",
+            "href": "#acerca"
+          },
+          {
+            "label": "Minera Fame S.A.",
+            "href": "minera-fame.html"
+          },
+          {
+            "label": "Sitio global",
+            "href": "https://www.caesarstone.com/",
+            "external": true
+          },
+          {
+            "label": "Sustentabilidad",
+            "href": "https://www.caesarstone.com/sustainability/",
+            "external": true
+          }
         ]
       },
       {
         "id": "contacto",
         "title": "Contacto",
         "items": [
-          { "label": "+54 11 3174-9906",   "href": "tel:+541131749906" },
-          { "label": "info@minerafame.com","href": "mailto:info@minerafame.com" },
-          { "label": "WhatsApp",           "href": "https://wa.me/5491159311038" },
-          { "label": "Puán 5403, Caseros, BA" }
+          {
+            "label": "+54 11 3174-9906",
+            "href": "tel:+541131749906"
+          },
+          {
+            "label": "info@minerafame.com",
+            "href": "mailto:info@minerafame.com"
+          },
+          {
+            "label": "WhatsApp",
+            "href": "https://wa.me/5491159311038"
+          },
+          {
+            "label": "Puán 5403, Caseros, BA"
+          }
         ]
       }
     ],
     "copy": "© 2026 Caesarstone Argentina — Distribuido por Minera Fame S.A.",
     "socials": [
-      { "id": "instagram", "icon": "instagram", "href": "https://www.instagram.com/marmoleriaminerafame/" },
-      { "id": "facebook",  "icon": "facebook",  "href": "https://www.facebook.com/MineraFame" },
-      { "id": "whatsapp",  "icon": "whatsapp",  "href": "https://wa.me/5491159311038" }
+      {
+        "id": "instagram",
+        "icon": "instagram",
+        "href": "https://www.instagram.com/marmoleriaminerafame/"
+      },
+      {
+        "id": "facebook",
+        "icon": "facebook",
+        "href": "https://www.facebook.com/MineraFame"
+      },
+      {
+        "id": "whatsapp",
+        "icon": "whatsapp",
+        "href": "https://wa.me/5491159311038"
+      }
     ]
   },
   "waFab": {
