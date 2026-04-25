@@ -1,18 +1,25 @@
 {
   "version": 1,
   "site": "mf",
+  "groups": [
+    { "id": "identidad",  "label": "Identidad de la marca",   "sections": ["header"] },
+    { "id": "principal",  "label": "Lo primero que ven",      "sections": ["hero", "stats", "empresa", "materials"] },
+    { "id": "secundario", "label": "Otras secciones",         "sections": ["fachada", "csBanner"] },
+    { "id": "contacto",   "label": "Contacto y pie",          "sections": ["contact", "footer"] }
+  ],
   "sections": [
     {
       "id": "header",
-      "label": "Header",
+      "label": "Header (arriba de todo)",
+      "icon": "🏷️",
       "fields": [
-        { "path": "documentTitle",        "type": "text",     "label": "Título de la página", "maxLength": 120 },
-        { "path": "ribbon.label",         "type": "text",     "label": "Ribbon — label" },
-        { "path": "ribbon.primaryLink.label","type": "text",  "label": "Ribbon — link principal (texto)" },
-        { "path": "ribbon.primaryLink.href", "type": "href",  "label": "Ribbon — link principal (href)" },
-        { "path": "ribbon.brands",        "type": "text",     "label": "Ribbon — lista de marcas" },
-        { "path": "header.logo.src",      "type": "imageSrc", "label": "Logo header" },
-        { "path": "header.logo.alt",      "type": "text",     "label": "Alt logo" },
+        { "path": "documentTitle",        "type": "text",     "label": "Título que aparece en la pestaña del navegador", "description": "Texto chiquito arriba del navegador y en Google.", "maxLength": 120 },
+        { "path": "ribbon.label",         "type": "text",     "label": "Texto del cartel finito de arriba (sobre el header)" },
+        { "path": "ribbon.primaryLink.label","type": "text",  "label": "Texto del link destacado del ribbon" },
+        { "path": "ribbon.primaryLink.href", "type": "href",  "label": "Adónde lleva el link del ribbon" },
+        { "path": "ribbon.brands",        "type": "text",     "label": "Marcas listadas en la barra superior", "description": "Separadas por punto (·)" },
+        { "path": "header.logo.src",      "type": "imageSrc", "label": "Logo arriba a la izquierda" },
+        { "path": "header.logo.alt",      "type": "text",     "label": "Descripción del logo (accesibilidad)" },
         {
           "path": "header.nav",
           "type": "array",
@@ -29,7 +36,8 @@
     },
     {
       "id": "hero",
-      "label": "Hero (slider)",
+      "label": "Hero — slider grande de la home",
+      "icon": "🎬",
       "fields": [
         {
           "path": "hero.slides",
@@ -59,7 +67,8 @@
     },
     {
       "id": "stats",
-      "label": "Stats bar",
+      "label": "Stats bar (números grandes)",
+      "icon": "📊",
       "fields": [
         {
           "path": "statsBar",
@@ -77,7 +86,8 @@
     },
     {
       "id": "empresa",
-      "label": "Empresa",
+      "label": "Empresa — quiénes somos",
+      "icon": "🏢",
       "fields": [
         { "path": "empresa.logo.src", "type": "imageSrc", "label": "Logo Minera Fame" },
         { "path": "empresa.logo.alt", "type": "text",     "label": "Alt logo" },
@@ -116,7 +126,8 @@
     },
     {
       "id": "materials",
-      "label": "Materiales",
+      "label": "Materiales — catálogo",
+      "icon": "🪨",
       "fields": [
         { "path": "materials.eyebrow", "type": "text", "label": "Eyebrow" },
         { "path": "materials.title",   "type": "text", "label": "Título" },
@@ -145,6 +156,7 @@
     {
       "id": "fachada",
       "label": "Fachada Ventilada",
+      "icon": "🧱",
       "fields": [
         { "path": "fachada.img.src",  "type": "imageSrc", "label": "Imagen" },
         { "path": "fachada.img.alt",  "type": "text",     "label": "Alt" },
@@ -163,7 +175,8 @@
     },
     {
       "id": "csBanner",
-      "label": "Banner Caesarstone",
+      "label": "Banner Caesarstone (sección oscura)",
+      "icon": "✨",
       "fields": [
         { "path": "csBanner.eyebrow",  "type": "text", "label": "Eyebrow" },
         { "path": "csBanner.title",    "type": "text", "label": "Título" },
@@ -175,6 +188,7 @@
     {
       "id": "contact",
       "label": "Contacto",
+      "icon": "📞",
       "fields": [
         { "path": "contact.eyebrow",   "type": "text", "label": "Eyebrow" },
         { "path": "contact.title",     "type": "text", "label": "Título" },
@@ -226,7 +240,8 @@
     },
     {
       "id": "footer",
-      "label": "Footer",
+      "label": "Footer (pie del sitio)",
+      "icon": "📄",
       "fields": [
         { "path": "footer.logo.src",     "type": "imageSrc",  "label": "Logo" },
         { "path": "footer.logo.alt",     "type": "text",      "label": "Alt logo" },
