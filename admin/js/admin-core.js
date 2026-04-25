@@ -414,20 +414,32 @@
       const human = humanizePath(d.path);
       const before = humanizeValue(d.before);
       const after  = humanizeValue(d.after);
+      const sectionTag = human.section
+        ? `<span class="diff-section">${escapeHtml(human.icon || '')} ${escapeHtml(human.section)}</span>`
+        : '';
+      const techWarn = human.isTechnical
+        ? `<div class="diff-tech-warn">⚠ Campo técnico interno. Cambialo solo si sabés qué hacés.</div>`
+        : '';
       return `
-      <div class="diff-item">
-        <div class="diff-path">${escapeHtml(human.label)}<span class="diff-section"> · ${escapeHtml(human.section)}</span></div>
-        <div class="diff-before">${before}</div>
-        <div class="diff-arrow">→</div>
-        <div class="diff-after">${after}</div>
+      <div class="diff-item${human.isTechnical ? ' is-technical' : ''}">
+        <div class="diff-path">${escapeHtml(human.label)}${sectionTag ? ' ' + sectionTag : ''}</div>
+        ${techWarn}
+        <div class="diff-row">
+          <div class="diff-before">${before}</div>
+          <div class="diff-arrow">→</div>
+          <div class="diff-after">${after}</div>
+        </div>
       </div>`;
     }).join('') + (state.pendingUploads.length ? `<p class="diff-uploads">📷 <b>${state.pendingUploads.length}</b> imagen(es) nueva(s) que se van a subir.</p>` : '');
+    const totalChanges = diff.length + state.pendingUploads.length;
+    const titleText = totalChanges === 1 ? 'Vas a guardar 1 cambio' : `Vas a guardar ${totalChanges} cambios`;
+    const helperFooter = `<p class="diff-helper">Una vez confirmado, tu sitio se actualiza en <b>1 a 10 minutos</b>. Podés volver a editar cuando quieras.</p>`;
     const ok = await modal({
-      title: `Guardar ${diff.length} cambios`,
-      bodyHtml: bodyHtml || '<p>Sólo subir imágenes pendientes.</p>',
+      title: titleText,
+      bodyHtml: (bodyHtml || '<p>Solo subir imágenes pendientes.</p>') + helperFooter,
       buttons: [
         { label: 'Cancelar', value: false },
-        { label: 'Confirmar', primary: true, value: true },
+        { label: 'Confirmar y publicar', primary: true, value: true },
       ],
     });
     if (!ok) return;
@@ -534,26 +546,36 @@
 
   /* path → human label lookup */
   function humanizePath(path) {
-    if (!state.schema) return { label: path, section: '' };
+    if (!state.schema) return { label: path, section: '', isTechnical: true };
     const normalized = path.replace(/\[\d+\]/g, '[]');
+    // Extract first array index para "ítem N"
+    const idxMatch = path.match(/\[(\d+)\]/);
+    const itemNum = idxMatch ? `ítem ${parseInt(idxMatch[1], 10) + 1}` : '';
     for (const sec of state.schema.sections || []) {
       for (const f of sec.fields || []) {
         const fNorm = f.path.replace(/\[\d+\]/g, '[]');
-        if (fNorm === normalized) return { label: f.label, section: sec.label };
+        if (fNorm === normalized) return { label: f.label, section: sec.label, icon: sec.icon };
         if (f.type === 'array' && normalized.startsWith(fNorm + '[]')) {
-          const sub = normalized.slice(fNorm.length + 2);
+          // strip "fNorm[]." → "id" (bug previo: dejaba el "." adelante)
+          const sub = normalized.slice(fNorm.length + 2).replace(/^\./, '');
+          if (!sub) return { label: f.label + (itemNum ? ` · ${itemNum}` : ''), section: sec.label, icon: sec.icon };
           const subSchema = Array.isArray(f.itemSchema) ? f.itemSchema : [f.itemSchema];
           const match = subSchema.find(s => s && s.path === sub);
-          if (match) return { label: `${f.label} → ${match.label}`, section: sec.label };
+          if (match) {
+            return { label: `${f.label}${itemNum ? ` (${itemNum})` : ''} — ${match.label}`, section: sec.label, icon: sec.icon };
+          }
+          // nested deeper (img.src, etc.)
           for (const s of subSchema) {
             if (s && s.path && sub.startsWith(s.path + '.')) {
-              return { label: `${f.label} → ${s.label}`, section: sec.label };
+              return { label: `${f.label}${itemNum ? ` (${itemNum})` : ''} — ${s.label}`, section: sec.label, icon: sec.icon };
             }
           }
+          // fallback dentro del array: muestra al menos el label del array
+          return { label: `${f.label}${itemNum ? ` (${itemNum})` : ''} — ${sub}`, section: sec.label, icon: sec.icon, isTechnical: true };
         }
       }
     }
-    return { label: path, section: '' };
+    return { label: path, section: '', isTechnical: true };
   }
 
   function humanizeValue(v) {
