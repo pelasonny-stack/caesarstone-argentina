@@ -101,8 +101,11 @@
   });
 
   /* ── Logout ── */
-  refs.btnLogout.addEventListener('click', () => {
-    if (state.dirtyPaths.size && !confirm('Tenés cambios sin guardar. ¿Salir igual?')) return;
+  refs.btnLogout.addEventListener('click', async () => {
+    if (state.dirtyPaths.size) {
+      const ok = await confirmModal('Tenés cambios sin guardar. ¿Salir igual?');
+      if (!ok) return;
+    }
     sessionStorage.removeItem(TOKEN_KEY);
     sessionStorage.removeItem(`${TOKEN_KEY}-exp`);
     sessionStorage.removeItem(DRAFT_KEY);

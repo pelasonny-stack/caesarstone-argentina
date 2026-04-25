@@ -465,6 +465,10 @@ body[data-view="mobile-gate"] #view-editor { display: none; }
   flex: 1;
   font-size: 13px;
   color: var(--c-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
 }
 .array-item-actions {
   display: flex; gap: var(--sp-1);

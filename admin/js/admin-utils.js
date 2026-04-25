@@ -66,6 +66,8 @@
   };
 
   utils.sluggify = (s) => String(s)
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')  // strip diacritics (ñ, á, ü, etc.)
     .toLowerCase()
     .replace(/\.[^.]+$/, '')
     .replace(/[^a-z0-9]+/g, '-')
@@ -147,9 +149,13 @@
       root.appendChild(overlay);
     });
 
+  utils.escapeHtml = (s) => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
   utils.confirmModal = (msg) => utils.modal({
     title: 'Confirmar',
-    bodyHtml: `<p>${msg}</p>`,
+    bodyHtml: `<p>${utils.escapeHtml(msg)}</p>`,
     buttons: [
       { label: 'Cancelar', value: false },
       { label: 'Confirmar', primary: true, value: true },
