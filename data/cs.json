@@ -371,7 +371,7 @@
     "title": "Superficies para cada espacio",
     "panels": [
       {
-        "id": "cocinas",
+        "id": "cocinass",
         "img": {
           "src": "assets/hero/render-kitchen.jpg",
           "alt": "Cocinas"
