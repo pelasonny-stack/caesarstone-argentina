@@ -1,13 +1,14 @@
 /* ── Caesarstone Argentina — main.js ── */
 
-const DEFAULT_CHARS = [
+/* ── Fallbacks: si data/cs.json no carga, el sitio sigue funcionando con esto ── */
+let DEFAULT_CHARS = [
   'Resistente a golpes y rayones',
   'Resistente al calor extremo',
   'No poroso, higiénico y resistente a manchas',
   'Para interior / exterior (resiste rayos UV)',
 ];
 
-const PRODUCTS = [
+let PRODUCTS = [
   {
     id: 'opal-taj',
     code: '584',
@@ -728,12 +729,9 @@ function initActiveNav() {
 }
 
 /* ── Init ─────────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  initHeroSwiper();
-  buildProductSwiper('all');
+document.addEventListener('DOMContentLoaded', async () => {
   initHeader();
   initMobileNav();
-  initFilterTabs();
   initAccordion();
   initModal();
   initLightbox();
@@ -741,4 +739,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initActiveNav();
   initReveal();
+
+  /* CMS hydration: si data/cs.json carga, sobreescribe PRODUCTS/DEFAULT_CHARS y aplica al DOM */
+  if (window.fetchSiteData && window.hydrate) {
+    const data = await window.fetchSiteData('cs');
+    if (data) {
+      if (Array.isArray(data?.collection?.products)) PRODUCTS = data.collection.products;
+      if (Array.isArray(data?.collection?.defaultChars)) DEFAULT_CHARS = data.collection.defaultChars;
+      window.hydrate(data);
+    }
+  }
+
+  /* Hero + catálogo dependen del data ya resuelto (o del fallback) */
+  initHeroSwiper();
+  initFilterTabs();
+  buildProductSwiper('all');
 });

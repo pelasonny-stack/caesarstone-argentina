@@ -1,0 +1,504 @@
+{
+  "_schemaVersion": 1,
+  "_meta": {
+    "site": "cs",
+    "updatedAt": "2026-04-25T00:00:00Z",
+    "updatedBy": "initial-extraction",
+    "commit": "init"
+  },
+  "documentTitle": "Caesarstone Argentina — Sinterizado Premium | Minera Fame",
+  "header": {
+    "regionBadge": "Argentina",
+    "partnerLink": {
+      "prefix": "Distribuidor Oficial:",
+      "name": "Minera Fame S.A.",
+      "href": "minera-fame.html"
+    },
+    "nav": [
+      { "id": "coleccion",    "label": "Colección",    "href": "#coleccion" },
+      { "id": "aplicaciones", "label": "Aplicaciones", "href": "#aplicaciones" },
+      { "id": "acerca",       "label": "Acerca de",    "href": "#acerca" },
+      { "id": "minera-fame",  "label": "Minera Fame",  "href": "minera-fame.html" },
+      { "id": "contacto",     "label": "Contacto",     "href": "#contacto" }
+    ],
+    "ctaWhatsapp": {
+      "label": "WhatsApp",
+      "href": "https://wa.me/5491159311038?text=Hola%20Caesarstone%20Argentina%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+    },
+    "ctaPrimary": {
+      "label": "Solicitar muestras",
+      "href": "#contacto"
+    }
+  },
+  "hero": {
+    "scrollHint": "Explorar",
+    "slides": [
+      {
+        "id": "designed-to-last",
+        "kind": "video",
+        "videoUrl": "https://player.vimeo.com/video/1099102411?background=1&autoplay=1&loop=1&muted=1&playsinline=1",
+        "videoTitle": "Caesarstone porcelana",
+        "posterImg": "assets/hero/about-caesarstone.jpg",
+        "eyebrow": "Colección Sinterizado",
+        "titleHtml": "Diseñado<br>para durar",
+        "ctaLabel": "Ver los 11 modelos",
+        "ctaHref": "#coleccion"
+      },
+      {
+        "id": "11-modelos",
+        "kind": "video",
+        "videoUrl": "https://player.vimeo.com/video/1091739592?background=1&autoplay=1&loop=1&muted=1&playsinline=1",
+        "videoTitle": "Caesarstone espacios",
+        "posterImg": "assets/hero/onyxa-render.jpg",
+        "eyebrow": "Stock inmediato en Argentina",
+        "titleHtml": "11 modelos<br>en catálogo",
+        "ctaLabel": "Ver la colección",
+        "ctaHref": "#coleccion"
+      },
+      {
+        "id": "belleza-piedra",
+        "kind": "image",
+        "posterImg": "assets/hero/ambient-kitchen-1.jpg",
+        "posterAlt": "Cocina con porcelana Caesarstone",
+        "eyebrow": "Sinterizado técnico premium",
+        "titleHtml": "La belleza<br>de la piedra",
+        "ctaLabel": "Ver la tecnología",
+        "ctaHref": "#acerca"
+      }
+    ]
+  },
+  "trustStrip": [
+    { "icon": "check", "label": "Distribuidor oficial" },
+    { "icon": "check", "label": "Asesoramiento técnico" }
+  ],
+  "collection": {
+    "eyebrow": "Colección Argentina",
+    "title": "Sinterizado con stock inmediato",
+    "desc": "11 modelos disponibles en Buenos Aires. Cada superficie replica la autenticidad de las piedras más bellas del mundo con la durabilidad técnica del sinterizado.",
+    "filters": [
+      { "id": "all",    "label": "Todos" },
+      { "id": "blanco", "label": "Blancos & Marfil" },
+      { "id": "gris",   "label": "Grises & Neutros" },
+      { "id": "color",  "label": "Con color" }
+    ],
+    "defaultChars": [
+      "Resistente a golpes y rayones",
+      "Resistente al calor extremo",
+      "No poroso, higiénico y resistente a manchas",
+      "Para interior / exterior (resiste rayos UV)"
+    ],
+    "products": [
+      {
+        "id": "opal-taj",
+        "code": "584",
+        "name": "Opal Taj",
+        "collection": "Supernatural",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Honed Finish (mate)\nLuster Effect (brillo)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Una base neutra terrosa con vetas en tonos taupé y beige, con remolinos color crema de apariencia plumosa que aportan fluidez y movimiento.",
+        "img": "assets/products/opal-taj.webp",
+        "heroImg": "assets/products/hero/opal-taj.jpg",
+        "labelImg": "assets/products/opal-taj-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/584-opal-taj/",
+        "isNew": true,
+        "tone": "blanco"
+      },
+      {
+        "id": "fossillia",
+        "code": "545",
+        "name": "Fossillia",
+        "collection": "Supernatural",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Honed Finish (mate)\nSculpted Effect (Efecto Esculpido)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Una suave base de espuma de mar con capas de intrincados remolinos blancos, finas vetas color liquen y sutiles motas granulares.",
+        "img": "assets/products/fossillia.jpg",
+        "heroImg": "assets/products/hero/fossillia.jpg",
+        "labelImg": "assets/products/fossillia-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/545-fossillia/",
+        "tone": "blanco"
+      },
+      {
+        "id": "striata",
+        "code": "513",
+        "name": "Striata",
+        "collection": "Supernatural Ultra",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Ultra Rough Finish\n(acabado ultra rugoso)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Base gris ahumado con una estructura compleja de finas vetas oscuras, manchas de pátina, limo oxidado y rayas blancas calcáreas.",
+        "img": "assets/products/striata.jpg",
+        "heroImg": "assets/products/hero/striata.jpg",
+        "labelImg": "assets/products/striata-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/513-striata/",
+        "tone": "gris"
+      },
+      {
+        "id": "thalassa",
+        "code": "546",
+        "name": "Thalassa",
+        "collection": "Supernatural",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Stone Finish (acabado piedra)\nSculpted Effect (efecto esculpido)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Una cálida base de piedra caliza arenosa con sinuosos remolinos de líneas blancas que evocan antiguos fósiles de conchas marinas, enriquecida con granos minerales en beige oscuro.",
+        "img": "assets/products/thalassa.webp",
+        "heroImg": "assets/products/hero/thalassa.webp",
+        "labelImg": "assets/products/thalassa-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/546-thalassa/",
+        "tone": "color"
+      },
+      {
+        "id": "mosstone",
+        "code": "542",
+        "name": "Mosstone",
+        "collection": "Premium",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Stone Finish\n(acabado piedra)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Una base lechosa moteada con infusiones de color salvia tenue y musgo oscuro. Las zonas más claras se ven realzadas por grandes y animados agregados. Impurezas yodadas y vetas de óxido.",
+        "img": "assets/products/mosstone.jpg",
+        "heroImg": "assets/products/hero/mosstone.jpg",
+        "labelImg": "assets/products/mosstone-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/542-mosstone/",
+        "tone": "color"
+      },
+      {
+        "id": "carrara-ice",
+        "code": "914",
+        "name": "Carrara Ice",
+        "collection": "Supernatural",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Silk Finish\n(acabado seda)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Una superficie blanca con delicadas vetas grises inspirada en el clásico mármol de Carrara.",
+        "img": "assets/products/carrara-ice.webp",
+        "heroImg": "assets/products/hero/carrara-ice.webp",
+        "labelImg": "assets/products/carrara-ice-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/914-carrara-ice/",
+        "tone": "blanco"
+      },
+      {
+        "id": "isobellia",
+        "code": "508",
+        "name": "Isobellia",
+        "collection": "Supernatural",
+        "procedencia": "Importado\n(Lioli Porcelain\nby Caesarstone)",
+        "finish": "Silk Finish\n(acabado seda)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Base neutra de color blanquecino, repleta de un animado entrecruzamiento de vetas de gran tamaño y finas líneas craqueladas que presentan una superposición de cobre antiguo.",
+        "img": "assets/products/isobellia.jpg",
+        "heroImg": "assets/products/hero/isobellia.jpg",
+        "labelImg": "assets/products/isobellia-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/508-isobellia/",
+        "tone": "blanco"
+      },
+      {
+        "id": "lithic-coin",
+        "code": null,
+        "name": "Lithic Coin",
+        "collection": "Concrete Series",
+        "procedencia": "Importado\n(Lioli Porcelain\nby Caesarstone)",
+        "finish": "Structure Matt\n(estructura mate)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Su tono gris neutro de gran formato. Su estética de cemento con acabado mate rústico ofrece sobriedad y resistencia, ideal para superficies continuas modernas.",
+        "img": "assets/products/lithic-coin.jpg",
+        "labelImg": "assets/products/lithic-coin-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/lithic-coin/",
+        "tone": "gris"
+      },
+      {
+        "id": "lithic-latte",
+        "code": null,
+        "name": "Lithic Latte",
+        "collection": "Premium",
+        "procedencia": "Importado\n(Lioli Porcelain\nby Caesarstone)",
+        "finish": "Structure Matt\n(estructura mate)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Superficie cementicia beige de gran formato. Su tono cálido y acabado mate rústico aportan naturalidad, logrando ambientes contemporáneos con una máxima continuidad visual.",
+        "img": "assets/products/lithic-latte.jpg",
+        "labelImg": "assets/products/lithic-latte-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/lithic-latte/",
+        "tone": "gris"
+      },
+      {
+        "id": "beige-ciment",
+        "code": "412",
+        "name": "Beige Ciment",
+        "collection": "Premium",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Ultra Rough Finish\n(acabado ultra rugoso)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Un fondo de color beige cremoso que equilibra la presencia textural de las piedras desgastadas.",
+        "img": "assets/products/beige-ciment.jpg",
+        "heroImg": "assets/products/hero/beige-ciment.jpg",
+        "labelImg": "assets/products/beige-ciment-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/412-beige-ciment/",
+        "tone": "gris"
+      },
+      {
+        "id": "calcutta-borghini",
+        "code": null,
+        "name": "Calcutta Borghini",
+        "collection": "Bookmatch",
+        "procedencia": "Importado\n(Lioli porcelain\nby Caesarstone)",
+        "finish": "Rustic Matt\n(mate rústico)",
+        "size": "3200 × 1600 mm",
+        "thickness": "12 mm",
+        "desc": "Base blanca pura con vetas fluidas en gris y dorado. Diseño clásico de mármol cuyo acabado lustroso realza la profundidad de vetas naturales.",
+        "img": "assets/products/calcutta-borghini.jpg",
+        "labelImg": "assets/products/calcutta-borghini-pdf.jpg",
+        "caesarUrl": "https://www.caesarstone.com/design/stones/calcutta-borghini/",
+        "chars": [
+          "Resistente a arañazos",
+          "Resistente al calor extremo",
+          "No poroso, higiénico y resistente a manchas",
+          "Para interior / exterior (resiste rayos UV)"
+        ],
+        "tone": "blanco"
+      }
+    ]
+  },
+  "imageParagraph": [
+    {
+      "id": "tech",
+      "img": { "src": "assets/hero/hero-main.jpg", "alt": "Resistencia al uso diario" },
+      "eyebrow": "Tecnología",
+      "title": "Resistencia sin compromiso",
+      "desc": "El sinterizado técnico Caesarstone combina la belleza visual de las piedras naturales con una durabilidad superior. Resistente a arañazos, manchas, calor extremo y bacterias.",
+      "specs": [
+        { "label": "Dureza Mohs",         "valueHtml": "7 – 8" },
+        { "label": "Absorción de agua",   "valueHtml": "&lt; 0,1%" },
+        { "label": "Resistencia química", "valueHtml": "Clase A" },
+        { "label": "Temperatura",         "valueHtml": "Hasta 300 °C" }
+      ]
+    },
+    {
+      "id": "formats",
+      "img": { "src": "assets/hero/ambient-2.jpg", "alt": "Formato gran escala" },
+      "eyebrow": "Formatos",
+      "title": "Grandes formatos, diseños continuos",
+      "desc": "Losas de 3200 × 1600 mm permiten diseños sin juntas visibles. El efecto visual de un material que fluye de manera continua en cocinas, baños y revestimientos.",
+      "specs": [
+        { "label": "Formato",        "valueHtml": "3200 × 1600 mm" },
+        { "label": "Espesor",        "valueHtml": "12 mm" },
+        { "label": "Terminaciones",  "valueHtml": "Pulida / Natural" },
+        { "label": "Certificación",  "valueHtml": "ISO 13006" }
+      ]
+    }
+  ],
+  "applications": {
+    "eyebrow": "Aplicaciones",
+    "title": "Superficies para cada espacio",
+    "panels": [
+      { "id": "cocinas",        "img": { "src": "assets/hero/render-kitchen.jpg",  "alt": "Cocinas" },        "label": "Cocinas",        "number": "01", "active": true },
+      { "id": "banos",          "img": { "src": "assets/hero/ambient-4.jpg",       "alt": "Baños" },          "label": "Baños",          "number": "02" },
+      { "id": "revestimientos", "img": { "src": "assets/hero/render-space.jpg",    "alt": "Revestimientos" }, "label": "Revestimientos", "number": "03" },
+      { "id": "comercial",      "img": { "src": "assets/hero/ambient-3.jpg",       "alt": "Comercial" },      "label": "Comercial",      "number": "04" }
+    ]
+  },
+  "stats": [
+    { "id": "modelos",      "count": 11, "suffix": "",  "label": "Modelos en stock" },
+    { "id": "anios",        "count": 40, "suffix": "+", "label": "Años en el mercado" },
+    { "id": "distribucion", "count": null, "valueOverride": "AR", "label": "Distribución nacional" }
+  ],
+  "about": {
+    "eyebrow": "Quiénes somos",
+    "title": "Una marca global, presente en Argentina",
+    "img": { "src": "assets/hero/isobellia-render.jpg", "alt": "Superficies Caesarstone" },
+    "badge": { "value": "1987", "label": "Fundada en Israel" },
+    "paragraphs": [
+      "Caesarstone fue fundada en 1987 en el Kibbutz Sdot Yam, Israel, con la misión de revolucionar las superficies de diseño. Hoy es la marca global de referencia en superficies de ingeniería, presente en más de 50 países.",
+      "Sus superficies combinan la belleza visual de las piedras naturales con una durabilidad técnica sin igual: resistentes a arañazos, manchas, calor y bacterias. Sin mantenimiento especial, con décadas de vida útil.",
+      "La colección disponible en Argentina incluye 11 modelos de sinterizado — el material más avanzado del catálogo global, disponible con stock inmediato gracias a Minera Fame S.A."
+    ],
+    "cta": { "label": "Ver colección", "href": "#coleccion" }
+  },
+  "partner": {
+    "logo": { "src": "assets/logos/minera-fame-50.png", "alt": "Minera Fame S.A. — 50 años" },
+    "headingHtml": "El representante<br>oficial en Argentina",
+    "desc": "Más de 50 años transformando espacios con los mejores materiales del mundo. Stock inmediato de Caesarstone, asesoramiento técnico y distribución en todo el país desde Caseros, Buenos Aires.",
+    "stats": [
+      { "value": "50+", "label": "Años de experiencia" },
+      { "value": "11",  "label": "Modelos en stock" },
+      { "value": "AR",  "label": "Distribución nacional" }
+    ],
+    "cta": { "label": "Conocer Minera Fame", "href": "minera-fame.html" },
+    "mosaic": {
+      "main": {
+        "img": { "src": "assets/projects/w1.jpg", "alt": "Residencial premium" },
+        "caption": "Residencial premium · Buenos Aires"
+      },
+      "thumbs": [
+        { "img": { "src": "assets/projects/d3.jpg", "alt": "Hotelería" }, "caption": "Hotelería" },
+        { "img": { "src": "assets/projects/w3.jpg", "alt": "Corporativo" }, "caption": "Corporativo" }
+      ]
+    }
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Hablemos de tu proyecto",
+    "infoTitle": "Minera Fame S.A.",
+    "locations": [
+      {
+        "id": "caseros",
+        "label": "Casa Central — Caseros",
+        "address": "Puán 5403, Caseros, Buenos Aires, Argentina",
+        "phone": "+54 11 3174-9906",
+        "phoneHref": "tel:+541131749906"
+      },
+      {
+        "id": "pacheco",
+        "label": "Sucursal — Ricardo Rojas (Pacheco)",
+        "address": "Quirno Costa 6345, Ricardo Rojas (Pacheco), Buenos Aires, Argentina",
+        "phone": "+54 11 3583-6485",
+        "phoneHref": "tel:+541135836485"
+      }
+    ],
+    "channels": [
+      {
+        "id": "whatsapp",
+        "icon": "whatsapp",
+        "label": "WhatsApp",
+        "value": "+54 11 5931-1038",
+        "href": "https://wa.me/5491159311038"
+      },
+      {
+        "id": "email",
+        "icon": "mail",
+        "label": "Email",
+        "value": "info@minerafame.com",
+        "href": "mailto:info@minerafame.com"
+      }
+    ],
+    "hours": {
+      "label": "Horarios",
+      "value": "Lunes a viernes, 8:00 – 17:00 hs"
+    },
+    "socials": [
+      { "id": "instagram", "icon": "instagram", "href": "https://www.instagram.com/marmoleriaminerafame/" },
+      { "id": "facebook",  "icon": "facebook",  "href": "https://www.facebook.com/MineraFame" },
+      { "id": "whatsapp",  "icon": "whatsapp",  "href": "https://wa.me/5491159311038" }
+    ],
+    "form": {
+      "action": "https://formspree.io/f/FORMSPREE_ID",
+      "fallbackEmail": "info@minerafame.com",
+      "labels": {
+        "name": "Nombre",
+        "namePlaceholder": "Tu nombre completo",
+        "email": "Email",
+        "emailPlaceholder": "tu@email.com",
+        "phone": "Teléfono",
+        "phonePlaceholder": "+54 11 XXXX-XXXX",
+        "subject": "Motivo",
+        "subjectPlaceholder": "Seleccionar motivo…",
+        "message": "Mensaje",
+        "messagePlaceholder": "¿En qué proyecto podemos ayudarte?",
+        "submit": "Enviar mensaje"
+      },
+      "subjects": [
+        "Solicitar muestra",
+        "Consulta por proyecto",
+        "Información técnica",
+        "Cotización",
+        "Otro"
+      ]
+    },
+    "maps": [
+      {
+        "id": "caseros",
+        "label": "Casa Central — Caseros",
+        "embedQuery": "Puan 5403,+Caseros,+Buenos+Aires",
+        "directionsHref": "https://www.google.com/maps/dir/?api=1&destination=Puan+5403,+Caseros,+Buenos+Aires",
+        "directionsLabel": "Cómo llegar"
+      },
+      {
+        "id": "pacheco",
+        "label": "Sucursal — Pacheco",
+        "embedQuery": "Quirno+Costa+6345,+Ricardo+Rojas,+Pacheco,+Buenos+Aires",
+        "directionsHref": "https://www.google.com/maps/dir/?api=1&destination=Quirno+Costa+6345,+Ricardo+Rojas,+Pacheco",
+        "directionsLabel": "Cómo llegar"
+      }
+    ]
+  },
+  "footer": {
+    "logo": { "src": "assets/logos/caesarstone-logo.png", "alt": "Caesarstone" },
+    "taglineHtml": "Superficies de sinterizado premium.<br>Representado por Minera Fame S.A. en Argentina.",
+    "columns": [
+      {
+        "id": "coleccion",
+        "title": "Colección Argentina",
+        "links": [
+          { "label": "Ver los 11 modelos",         "href": "#coleccion" },
+          { "label": "Especificaciones técnicas",  "href": "#aplicaciones" }
+        ]
+      },
+      {
+        "id": "global",
+        "title": "caesarstone.com",
+        "links": [
+          { "label": "Catálogo completo", "href": "https://www.caesarstone.com/color-catalog/", "external": true },
+          { "label": "Inspiración",       "href": "https://www.caesarstone.com/inspiration/", "external": true }
+        ]
+      },
+      {
+        "id": "empresa",
+        "title": "Empresa",
+        "links": [
+          { "label": "Acerca de",          "href": "#acerca" },
+          { "label": "Minera Fame S.A.",   "href": "minera-fame.html" },
+          { "label": "Sitio global",       "href": "https://www.caesarstone.com/", "external": true },
+          { "label": "Sustentabilidad",    "href": "https://www.caesarstone.com/sustainability/", "external": true }
+        ]
+      },
+      {
+        "id": "contacto",
+        "title": "Contacto",
+        "items": [
+          { "label": "+54 11 3174-9906",   "href": "tel:+541131749906" },
+          { "label": "info@minerafame.com","href": "mailto:info@minerafame.com" },
+          { "label": "WhatsApp",           "href": "https://wa.me/5491159311038" },
+          { "label": "Puán 5403, Caseros, BA" }
+        ]
+      }
+    ],
+    "copy": "© 2026 Caesarstone Argentina — Distribuido por Minera Fame S.A.",
+    "socials": [
+      { "id": "instagram", "icon": "instagram", "href": "https://www.instagram.com/marmoleriaminerafame/" },
+      { "id": "facebook",  "icon": "facebook",  "href": "https://www.facebook.com/MineraFame" },
+      { "id": "whatsapp",  "icon": "whatsapp",  "href": "https://wa.me/5491159311038" }
+    ]
+  },
+  "waFab": {
+    "href": "https://wa.me/5491159311038?text=Hola%20Minera%20Fame%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Caesarstone",
+    "ariaLabel": "Escribir por WhatsApp"
+  },
+  "modal": {
+    "logoImg": "assets/logos/caesarstone-logo.png",
+    "collectionLabel": "Colección",
+    "specs": {
+      "procedencia": "Procedencia",
+      "espesor": "Espesor",
+      "acabado": "Acabado",
+      "tamanoLabelHtml": "Tamaño de<br>placa completa",
+      "caracteristicas": "Características"
+    },
+    "ctaSample": "Solicitar muestra",
+    "qrLabelHtml": "Consultá por<br>WhatsApp",
+    "catalogueUrl": "https://emea.caesarstone.com/catalogue/?material=porcelain",
+    "whatsappBase": "https://wa.me/5491159311038",
+    "contactPhone": "11-3174-9906",
+    "contactWebsite": "MINERAFAME.COM"
+  }
+}
