@@ -2032,8 +2032,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
 .modal-zoom {
   position: absolute;
-  top: 12px;
-  right: 54px;
+  bottom: 12px;
+  right: 12px;
+  top: auto;
   width: 30px; height: 30px;
   display: flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,0.85);
@@ -2640,7 +2641,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   .product-modal-overlay { padding: 10px; }
   .product-modal { max-height: 95dvh; overflow-y: auto; border-radius: 12px; }
   .modal-close { top: 10px; right: 10px; width: 28px; height: 28px; }
-  .modal-zoom { top: 10px; right: 46px; width: 28px; height: 28px; }
+  .modal-zoom { top: auto; bottom: 10px; right: 10px; width: 28px; height: 28px; }
   .modal-stone-hero { height: 170px; border-radius: 10px 10px 0 0; }
   .modal-hero-overlay { padding: 12px 14px 14px; }
   .modal-name { font-size: clamp(1.4rem, 7vw, 1.85rem); letter-spacing: 0.03em; }
@@ -2712,7 +2713,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   .product-modal-overlay { padding: 0; align-items: flex-end; }
   .product-modal { max-height: 96dvh; border-radius: 14px 14px 0 0; border-bottom: none; overflow-y: auto; }
   .modal-close { top: 8px; right: 8px; width: 30px; height: 30px; background: rgba(255,255,255,0.92); }
-  .modal-zoom { top: 8px; right: 46px; width: 30px; height: 30px; background: rgba(255,255,255,0.92); }
+  .modal-zoom { top: auto; bottom: 8px; right: 8px; width: 30px; height: 30px; background: rgba(255,255,255,0.92); }
   .modal-stone-hero { height: 150px; border-radius: 14px 14px 0 0; }
   .modal-hero-overlay { padding: 10px 12px 12px; }
   .modal-name { font-size: clamp(1.25rem, 8vw, 1.55rem); }
