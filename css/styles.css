@@ -962,24 +962,8 @@ h1, h2, h3, h4, h5, h6 {
   backface-visibility: hidden;
   transform: translateZ(0);
 }
-.thumb-wrap img {
-  filter: contrast(1.04) saturate(1.06);
-  transition: transform var(--dur-slow) var(--ease-emphasized), filter var(--dur-medium);
-}
 .stone:hover .thumb-wrap img {
-  transform: scale(1.06);
-  filter: contrast(1.08) saturate(1.12);
-}
-/* Stone grain overlay — premium texture treatment */
-.thumb-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  transform: scale(1.04);
 }
 
 /* Zoom button (lightbox trigger) */
