@@ -142,7 +142,9 @@
         "caesarUrl": "https://www.caesarstone.com/design/stones/584-opal-taj/",
         "isNew": true,
         "tone": "blanco",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "fossillia",
@@ -159,7 +161,9 @@
         "labelImg": "assets/products/fossillia-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/545-fossillia/",
         "tone": "blanco",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "striata",
@@ -176,7 +180,9 @@
         "labelImg": "assets/products/striata-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/513-striata/",
         "tone": "gris",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "thalassa",
@@ -193,7 +199,9 @@
         "labelImg": "assets/products/thalassa-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/546-thalassa/",
         "tone": "color",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "mosstone",
@@ -210,7 +218,9 @@
         "labelImg": "assets/products/mosstone-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/542-mosstone/",
         "tone": "color",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "carrara-ice",
@@ -227,7 +237,9 @@
         "labelImg": "assets/products/carrara-ice-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/914-carrara-ice/",
         "tone": "blanco",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "isobellia",
@@ -244,7 +256,9 @@
         "labelImg": "assets/products/isobellia-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/508-isobellia/",
         "tone": "blanco",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "lithic-coin",
@@ -260,7 +274,9 @@
         "labelImg": "assets/products/lithic-coin-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/lithic-coin/",
         "tone": "gris",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "lithic-latte",
@@ -276,7 +292,9 @@
         "labelImg": "assets/products/lithic-latte-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/lithic-latte/",
         "tone": "gris",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "beige-ciment",
@@ -293,7 +311,9 @@
         "labelImg": "assets/products/beige-ciment-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/412-beige-ciment/",
         "tone": "gris",
-        "chars": []
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "calcutta-borghini",
@@ -314,7 +334,9 @@
           "No poroso, higiénico y resistente a manchas",
           "Para interior / exterior (resiste rayos UV)"
         ],
-        "tone": "blanco"
+        "tone": "blanco",
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       },
       {
         "id": "id",
@@ -334,7 +356,9 @@
         "chars": [
           "carac 1",
           "carac 2"
-        ]
+        ],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm"
       }
     ]
   },
@@ -743,8 +767,6 @@
       "espesor": "Espesor",
       "acabado": "Acabado",
       "tamanoLabelHtml": "Tamaño de<br>placa completa",
-      "sizeWidth": "1600mm",
-      "sizeHeight": "3200mm",
       "caracteristicas": "Características"
     },
     "ctaSample": "Solicitar muestra",

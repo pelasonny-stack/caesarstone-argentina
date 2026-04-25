@@ -478,6 +478,14 @@ function openModal(id) {
   document.getElementById('modal-procedencia').innerHTML = p.procedencia.replace(/\n/g, '<br>');
   document.getElementById('modal-finish').innerHTML = p.finish.replace(/\n/g, '<br>');
 
+  /* Espesor + dimensiones de plancha (per-producto) */
+  const thicknessEl = document.getElementById('modal-thickness');
+  if (thicknessEl) thicknessEl.textContent = p.thickness || '12 mm';
+  const sizeWEl = document.getElementById('modal-size-w');
+  const sizeHEl = document.getElementById('modal-size-h');
+  if (sizeWEl) sizeWEl.textContent = p.sizeWidth || '1600mm';
+  if (sizeHEl) sizeHEl.textContent = p.sizeHeight || '3200mm';
+
   /* Características */
   const chars = (Array.isArray(p.chars) && p.chars.length) ? p.chars : DEFAULT_CHARS;
   document.getElementById('modal-chars-list').innerHTML = chars
