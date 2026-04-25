@@ -151,6 +151,119 @@
     maybeRestoreDraft();
     renderUI();
     updateDirtyUI();
+    initCmdK();
+    maybeShowWelcome();
+  }
+
+  /* Welcome modal first-login */
+  function maybeShowWelcome() {
+    const KEY = `cms-welcomed-${SITE}`;
+    if (localStorage.getItem(KEY) === '1') return;
+    setTimeout(() => {
+      modal({
+        title: '👋 Bienvenido al CMS',
+        bodyHtml: `
+          <p>Acá podés <b>cambiar texto, imágenes y links</b> del sitio.</p>
+          <ol style="padding-left:20px;line-height:1.7">
+            <li>Las <b>secciones</b> están agrupadas en la izquierda. Hacé click para expandir.</li>
+            <li>Cada cambio se marca con <span style="border-left:3px solid #8B5E1E;padding:2px 6px">borde ocre</span>. Apretá <b>Guardar</b> arriba a la derecha.</li>
+            <li>Después de guardar, tu sitio se actualiza en <b>1 a 10 minutos</b>.</li>
+            <li>Apretá <b>Cmd/Ctrl + K</b> para buscar cualquier campo.</li>
+          </ol>
+          <p style="color:#6B6B68;font-size:12px;margin-top:20px">Si te trabás, todos los cambios quedan guardados como borrador en tu navegador hasta que los confirmes.</p>
+        `,
+        buttons: [{ label: 'Empezar', primary: true, value: true }],
+      });
+      localStorage.setItem(KEY, '1');
+    }, 600);
+  }
+
+  /* Cmd+K command palette */
+  function initCmdK() {
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openCmdK();
+      }
+    });
+  }
+
+  function flattenSchema(schema) {
+    const out = [];
+    (schema.sections || []).forEach(s => {
+      out.push({ kind: 'section', id: `sec-${s.id}`, label: `${s.icon || ''} ${s.label}`, hint: 'Sección' });
+      (s.fields || []).forEach(f => {
+        if (!f.label) return;
+        out.push({ kind: 'field', id: `sec-${s.id}`, label: f.label, hint: s.label, path: f.path });
+      });
+    });
+    return out;
+  }
+
+  function openCmdK() {
+    const items = flattenSchema(state.schema || {});
+    const root = document.getElementById('modal-root');
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay cmdk-overlay';
+    overlay.innerHTML = `
+      <div class="cmdk-card" role="dialog" aria-modal="true" aria-label="Buscar campo">
+        <input class="cmdk-input" placeholder="Buscar sección o campo…" autofocus>
+        <ul class="cmdk-list" role="listbox"></ul>
+        <div class="cmdk-foot">↑↓ navegar · Enter ir · Esc cerrar</div>
+      </div>
+    `;
+    const input = overlay.querySelector('.cmdk-input');
+    const list = overlay.querySelector('.cmdk-list');
+    let selected = 0;
+    let filtered = items;
+
+    const render = () => {
+      list.innerHTML = filtered.slice(0, 20).map((it, i) => `
+        <li class="cmdk-item ${i === selected ? 'is-selected' : ''}" data-i="${i}">
+          <span class="cmdk-kind">${it.kind === 'section' ? '◇' : '·'}</span>
+          <span class="cmdk-label">${escapeHtml(it.label)}</span>
+          <span class="cmdk-hint">${escapeHtml(it.hint || '')}</span>
+        </li>
+      `).join('') || '<li class="cmdk-empty">Sin resultados</li>';
+    };
+    render();
+
+    const goto = (i) => {
+      const it = filtered[i];
+      if (!it) return;
+      close();
+      const el = document.getElementById(it.id);
+      if (el) {
+        el.classList.remove('is-collapsed');
+        const tog = el.querySelector('.collapse-toggle');
+        if (tog) { tog.textContent = '−'; tog.setAttribute('aria-expanded', 'true'); }
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      filtered = q
+        ? items.filter(it => it.label.toLowerCase().includes(q) || (it.hint || '').toLowerCase().includes(q))
+        : items;
+      selected = 0;
+      render();
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); selected = Math.min(selected + 1, Math.min(filtered.length, 20) - 1); render(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); selected = Math.max(selected - 1, 0); render(); }
+      else if (e.key === 'Enter') { e.preventDefault(); goto(selected); }
+      else if (e.key === 'Escape') { close(); }
+    });
+    list.addEventListener('click', (e) => {
+      const li = e.target.closest('.cmdk-item');
+      if (!li) return;
+      goto(parseInt(li.dataset.i, 10));
+    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+
+    const close = () => overlay.remove();
+    root.appendChild(overlay);
   }
 
   async function loadContent() {
@@ -296,14 +409,19 @@
       return;
     }
 
-    // Modal diff
-    const bodyHtml = diff.map(d => `
+    // Modal diff humanizado
+    const bodyHtml = diff.map(d => {
+      const human = humanizePath(d.path);
+      const before = humanizeValue(d.before);
+      const after  = humanizeValue(d.after);
+      return `
       <div class="diff-item">
-        <div class="diff-path">${escapeHtml(d.path)}</div>
-        <div class="diff-before">${escapeHtml(JSON.stringify(d.before))}</div>
-        <div class="diff-after">${escapeHtml(JSON.stringify(d.after))}</div>
-      </div>
-    `).join('') + (state.pendingUploads.length ? `<p><b>${state.pendingUploads.length} imagen(es) pendiente(s) de subir.</b></p>` : '');
+        <div class="diff-path">${escapeHtml(human.label)}<span class="diff-section"> · ${escapeHtml(human.section)}</span></div>
+        <div class="diff-before">${before}</div>
+        <div class="diff-arrow">→</div>
+        <div class="diff-after">${after}</div>
+      </div>`;
+    }).join('') + (state.pendingUploads.length ? `<p class="diff-uploads">📷 <b>${state.pendingUploads.length}</b> imagen(es) nueva(s) que se van a subir.</p>` : '');
     const ok = await modal({
       title: `Guardar ${diff.length} cambios`,
       bodyHtml: bodyHtml || '<p>Sólo subir imágenes pendientes.</p>',
@@ -413,4 +531,44 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
   async function safeJson(r) { try { return await r.json(); } catch { return null; } }
+
+  /* path → human label lookup */
+  function humanizePath(path) {
+    if (!state.schema) return { label: path, section: '' };
+    const normalized = path.replace(/\[\d+\]/g, '[]');
+    for (const sec of state.schema.sections || []) {
+      for (const f of sec.fields || []) {
+        const fNorm = f.path.replace(/\[\d+\]/g, '[]');
+        if (fNorm === normalized) return { label: f.label, section: sec.label };
+        if (f.type === 'array' && normalized.startsWith(fNorm + '[]')) {
+          const sub = normalized.slice(fNorm.length + 2);
+          const subSchema = Array.isArray(f.itemSchema) ? f.itemSchema : [f.itemSchema];
+          const match = subSchema.find(s => s && s.path === sub);
+          if (match) return { label: `${f.label} → ${match.label}`, section: sec.label };
+          for (const s of subSchema) {
+            if (s && s.path && sub.startsWith(s.path + '.')) {
+              return { label: `${f.label} → ${s.label}`, section: sec.label };
+            }
+          }
+        }
+      }
+    }
+    return { label: path, section: '' };
+  }
+
+  function humanizeValue(v) {
+    if (v == null || v === '') return '<i style="color:#9B9995">(vacío)</i>';
+    if (typeof v === 'boolean') return v ? 'Sí' : 'No';
+    if (typeof v === 'string') {
+      if (v.startsWith('pending:')) return '<i>📷 imagen nueva</i>';
+      if (/\.(jpe?g|png|webp|svg|gif)(\?|$)/i.test(v) && !v.includes(' ')) {
+        return `<img src="${escapeHtml(v)}" alt="" style="max-height:40px;vertical-align:middle;border-radius:2px;border:1px solid #e6e4de"> <code style="font-size:10px">${escapeHtml(v.length > 50 ? v.slice(0, 50) + '…' : v)}</code>`;
+      }
+      if (v.length > 100) return escapeHtml(v.slice(0, 100) + '…');
+      return escapeHtml(v);
+    }
+    if (Array.isArray(v)) return `<code>[${v.length} ítem${v.length !== 1 ? 's' : ''}]</code>`;
+    if (typeof v === 'object') return `<code>${escapeHtml(JSON.stringify(v).slice(0, 100))}…</code>`;
+    return escapeHtml(String(v));
+  }
 })();

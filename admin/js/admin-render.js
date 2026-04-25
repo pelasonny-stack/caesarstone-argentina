@@ -778,22 +778,41 @@
   function renderSection(sectionSchema, content) {
     const sec = document.createElement('section');
     sec.id = `sec-${sectionSchema.id}`;
-    sec.className = 'editor-section';
+    sec.className = 'editor-section is-collapsed';
+    const icon = sectionSchema.icon || '';
     sec.innerHTML = `
       <header class="editor-section-head">
-        <h2></h2>
-        <button class="collapse-toggle" aria-expanded="true">−</button>
+        <h2><span class="section-icon" aria-hidden="true">${U.escapeHtml(icon)}</span> <span class="section-title-text"></span></h2>
+        <div class="section-head-actions">
+          <a class="section-view-live" target="_blank" rel="noopener" title="Ver esta sección en el sitio" aria-label="Ver esta sección en el sitio">↗</a>
+          <button class="collapse-toggle" aria-expanded="false">+</button>
+        </div>
       </header>
       <div class="editor-section-body"></div>
     `;
-    sec.querySelector('h2').textContent = sectionSchema.label;
+    sec.querySelector('.section-title-text').textContent = sectionSchema.label;
     const head = sec.querySelector('.editor-section-head');
     const toggle = sec.querySelector('.collapse-toggle');
-    head.addEventListener('click', () => {
+    head.addEventListener('click', (e) => {
+      if (e.target.closest('.section-view-live')) return;
       sec.classList.toggle('is-collapsed');
       toggle.textContent = sec.classList.contains('is-collapsed') ? '+' : '−';
       toggle.setAttribute('aria-expanded', String(!sec.classList.contains('is-collapsed')));
     });
+    // "Ver en sitio" link — usa anchor del id de sección (en sitio público)
+    const liveLink = sec.querySelector('.section-view-live');
+    const siteFile = (window.ADMIN_CONFIG?.SITE === 'mf') ? 'minera-fame.html' : 'index.html';
+    const anchorMap = {
+      header: '', hero: '#hero', trust: '', collection: '#coleccion',
+      imageParagraph: '#aplicaciones', applications: '#aplicaciones',
+      stats: '', about: '#acerca', partner: '', contact: '#contacto',
+      footer: '#footer', wafab: '', modal: '#coleccion',
+      // MF
+      ribbon: '', empresa: '#empresa', materials: '#materiales',
+      fachada: '#fachada', csBanner: '', services: '#servicios'
+    };
+    const anchor = anchorMap[sectionSchema.id] || '';
+    liveLink.href = siteFile + anchor;
     const body = sec.querySelector('.editor-section-body');
     (sectionSchema.fields || []).forEach(f => {
       body.appendChild(renderField(f, getAtPath(content, f.path), f.path));
@@ -806,14 +825,38 @@
     const nav = document.getElementById('section-nav');
     main.innerHTML = '';
     nav.innerHTML = '';
-    (schema.sections || []).forEach((s, i) => {
-      const sec = renderSection(s, content);
-      main.appendChild(sec);
-      const a = document.createElement('a');
-      a.href = `#sec-${s.id}`;
-      a.className = 'sidebar-link' + (i === 0 ? ' is-active' : '');
-      a.textContent = s.label;
-      nav.appendChild(a);
+    const sectionsById = new Map((schema.sections || []).map(s => [s.id, s]));
+    const groups = Array.isArray(schema.groups) && schema.groups.length
+      ? schema.groups
+      : [{ id: '_all', label: '', sections: (schema.sections || []).map(s => s.id) }];
+
+    groups.forEach((g, gi) => {
+      // Sidebar group header
+      if (g.label) {
+        const groupHeader = document.createElement('div');
+        groupHeader.className = 'sidebar-group-header';
+        groupHeader.textContent = g.label;
+        nav.appendChild(groupHeader);
+      }
+      // Main: separator title
+      if (g.label) {
+        const groupTitle = document.createElement('h2');
+        groupTitle.className = 'editor-group-title';
+        groupTitle.textContent = g.label;
+        main.appendChild(groupTitle);
+      }
+      g.sections.forEach((sid, si) => {
+        const s = sectionsById.get(sid);
+        if (!s) return;
+        const sec = renderSection(s, content);
+        main.appendChild(sec);
+        const a = document.createElement('a');
+        a.href = `#sec-${s.id}`;
+        a.className = 'sidebar-link' + (gi === 0 && si === 0 ? ' is-active' : '');
+        a.innerHTML = `<span class="sidebar-link-icon">${U.escapeHtml(s.icon || '·')}</span><span class="sidebar-link-label"></span>`;
+        a.querySelector('.sidebar-link-label').textContent = s.label;
+        nav.appendChild(a);
+      });
     });
     initScrollSpy();
   }
