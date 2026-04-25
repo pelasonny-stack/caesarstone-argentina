@@ -289,19 +289,6 @@
           "src": "assets/minerafame/material-granito.jpg",
           "alt": "Granito"
         }
-      },
-      {
-        "id": "idd",
-        "name": "nombre",
-        "tag": "tag",
-        "ctaLabel": "texttt",
-        "href": "",
-        "materialAttr": "",
-        "img.src": "",
-        "img.alt": "",
-        "img": {
-          "src": "assets/uploads/mf/20260425-051859-skillimagen-1.png"
-        }
       }
     ],
     "showAllLabel": "Ver todos los materiales",
