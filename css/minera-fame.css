@@ -6,7 +6,12 @@
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: var(--mf-header-h, 88px); }
-body { background: var(--mf-ash); }
+body {
+  background: var(--mf-bone);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+}
 
 .section-header,
 .mf-section-header { margin-bottom: var(--space-8); }
@@ -255,6 +260,7 @@ body { background: var(--mf-ash); }
   font-weight: 300;
   font-style: italic;
   line-height: 0.96;
+  letter-spacing: var(--mf-tracking-display);
   color: #fff;
   margin-bottom: 1.25rem;
 }
@@ -464,18 +470,20 @@ body { background: var(--mf-ash); }
   font-size: var(--text-xs);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--mf-terracotta);
+  color: var(--mf-brass);
   margin-bottom: var(--space-2);
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  transition: color var(--dur-quick);
 }
+.mf-eyebrow:hover { color: var(--mf-terracotta); }
 
 .mf-eyebrow::before {
   content: '';
   display: block;
   width: 1.5rem; height: 1px;
-  background: var(--mf-terracotta);
+  background: var(--mf-brass);
   flex-shrink: 0;
 }
 
@@ -488,12 +496,15 @@ body { background: var(--mf-ash); }
 .mf-title {
   font-family: var(--font-display);
   font-size: var(--text-h2);
-  font-weight: 300;
-  font-style: italic;
+  font-weight: 350;
+  font-style: normal;                              /* italic ahora reservado para énfasis selectivo */
   line-height: 1.1;
+  letter-spacing: var(--mf-tracking-tight);
   color: var(--mf-earth);
   margin-bottom: 0;
 }
+.mf-title em,
+.mf-title-italic { font-style: italic; font-weight: 300; }
 
 .mf-title-light { color: var(--c-ink); }
 
@@ -518,10 +529,13 @@ body { background: var(--mf-ash); }
 
 .mf-empresa-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2.5rem, 6vw, 5rem);
-  align-items: center;
+  grid-template-columns: 5fr 7fr;            /* asymmetric editorial */
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.mf-empresa-grid .mf-empresa-content {
+  padding-top: clamp(24px, 5vh, 64px);       /* offset vertical */
 }
 
 .mf-empresa-visual {
@@ -560,9 +574,24 @@ body { background: var(--mf-ash); }
 }
 
 .mf-empresa-text {
-  font-size: var(--text-body);
-  color: var(--c-mid);
+  font-size: 1.0625rem;
+  color: var(--c-graphite);
   line-height: 1.8;
+  max-width: 64ch;
+}
+/* Drop-cap heritage en primer párrafo */
+.mf-empresa-text:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 400;
+  font-style: italic;
+  float: left;
+  line-height: 0.9;
+  padding: 0.45rem 0.65rem 0 0;
+  color: var(--mf-terracotta);
+}
+@media (max-width: 640px) {
+  .mf-empresa-text:first-of-type::first-letter { font-size: 3rem; padding: 0.35rem 0.5rem 0 0; }
 }
 
 .mf-empresa-features {
@@ -728,7 +757,7 @@ body { background: var(--mf-ash); }
 
 .mf-material-card:hover {
   box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
+  /* sin translateY — el zoom de imagen + tint da feedback suficiente */
 }
 
 .mf-material-card.featured {
