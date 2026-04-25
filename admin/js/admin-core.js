@@ -11,6 +11,16 @@
   }
   const SITE = CFG.SITE;
   const WORKER_URL = CFG.WORKER_URL.replace(/\/$/, '');
+  if (WORKER_URL.includes('<') || !/^https?:\/\//.test(WORKER_URL)) {
+    document.body.innerHTML = `
+      <div style="font-family:system-ui;max-width:560px;margin:80px auto;padding:32px;border:1px solid #e6e4de;border-radius:8px">
+        <h1 style="margin-top:0">Worker no configurado</h1>
+        <p>La URL del Cloudflare Worker todavía es un placeholder.</p>
+        <p>Editá <code>admin-${SITE}-...html</code> y reemplazá <code>${escapeHtml(WORKER_URL)}</code> por la URL real del worker (ej: <code>https://caesarstone-cms.tu-subdomain.workers.dev</code>).</p>
+      </div>`;
+    return;
+  }
+  function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   const TOKEN_KEY = `cms-token-${SITE}`;
   const DRAFT_KEY = `cms-draft-${SITE}`;
 
