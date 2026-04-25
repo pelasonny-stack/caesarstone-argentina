@@ -232,6 +232,9 @@ function buildProductSwiper(filter = 'all') {
         <div class="stone-top">${badges.join('')}</div>
         <div class="thumb-wrap ratio ratio-stone-vertical">
           <img src="${p.img}" alt="${p.name}" ${lazyAttr}>
+          <button type="button" class="stone-zoom" data-id="${p.id}" aria-label="Ampliar imagen de ${p.name}">
+            <svg width="16" height="16" aria-hidden="true"><use href="#maximize"/></svg>
+          </button>
         </div>
         <div class="stone-bottom">
           ${p.code ? `<span class="stone-code">${p.code}</span>` : ''}
@@ -274,6 +277,14 @@ function buildProductSwiper(filter = 'all') {
     slide.addEventListener('click', () => openModal(slide.dataset.id));
     slide.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') openModal(slide.dataset.id);
+    });
+  });
+
+  /* Zoom button → lightbox (intercept click so modal doesn't open) */
+  wrapper.querySelectorAll('.stone-zoom').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openLightbox(btn.dataset.id);
     });
   });
 
@@ -485,6 +496,36 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
+/* ── Lightbox (zoom imagen sin descripción) ─────────────────────────────────── */
+function initLightbox() {
+  const lb = document.getElementById('stone-lightbox');
+  if (!lb) return;
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.getElementById('stone-lightbox-close')?.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+  });
+}
+
+function openLightbox(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const lb = document.getElementById('stone-lightbox');
+  const img = document.getElementById('stone-lightbox-img');
+  const cap = document.getElementById('stone-lightbox-caption');
+  img.src = p.heroImg || p.img;
+  img.alt = p.name;
+  cap.textContent = p.code ? `${p.name} · #${p.code}` : p.name;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('stone-lightbox-close')?.focus();
+}
+
+function closeLightbox() {
+  document.getElementById('stone-lightbox')?.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 /* ── Stat counters ───────────────────────────────────────────────────────────── */
 function initStatCounters() {
   const counters = document.querySelectorAll('[data-count]');
@@ -685,6 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilterTabs();
   initAccordion();
   initModal();
+  initLightbox();
   initStatCounters();
   initContactForm();
   initActiveNav();
