@@ -118,7 +118,6 @@
             { "path": "tone",        "type": "text",           "label": "Tono (blanco|gris|color)" },
             { "path": "procedencia", "type": "text-multiline", "label": "Procedencia (\\n permitido)" },
             { "path": "finish",      "type": "text-multiline", "label": "Finish (\\n permitido)" },
-            { "path": "size",        "type": "text",           "label": "Tamaño (texto descriptivo, ej: 3200 × 1600 mm)" },
             { "path": "sizeWidth",   "type": "text",           "label": "Plancha — ancho visible en modal (ej: 1600mm)" },
             { "path": "sizeHeight",  "type": "text",           "label": "Plancha — alto visible en modal (ej: 3200mm)" },
             { "path": "thickness",   "type": "text",           "label": "Espesor (ej: 12mm) — visible en modal" },
