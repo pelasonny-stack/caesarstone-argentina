@@ -161,9 +161,10 @@
 
     <!-- Row 1 right: region + partner -->
     <div id="header-general">
-      <span class="header-region-badge">Argentina</span>
-      <a href="minera-fame.html" class="header-partner-link">
-        Distribuidor Oficial: <strong>Minera Fame S.A.</strong>
+      <span class="header-region-badge" data-edit="header.regionBadge">Argentina</span>
+      <a class="header-partner-link" data-edit-bind-href="header.partnerLink.href">
+        <span data-edit="header.partnerLink.prefix">Distribuidor Oficial:</span>
+        <strong data-edit="header.partnerLink.name">Minera Fame S.A.</strong>
         <svg width="11" height="11" aria-hidden="true"><use href="#arrow-up-right"/></svg>
       </a>
     </div>
@@ -178,11 +179,11 @@
         <a href="#contacto">Contacto</a>
       </nav>
       <div class="header-actions">
-        <a href="https://wa.me/5491159311038?text=Hola%20Caesarstone%20Argentina%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn-header-wa" aria-label="WhatsApp">
+        <a target="_blank" rel="noopener" class="btn-header-wa" aria-label="WhatsApp" data-edit-bind-href="header.ctaWhatsapp.href">
           <svg width="16" height="16" aria-hidden="true"><use href="#whatsapp"/></svg>
-          <span>WhatsApp</span>
+          <span data-edit="header.ctaWhatsapp.label">WhatsApp</span>
         </a>
-        <a href="#contacto" class="btn-header-cta">Solicitar muestras</a>
+        <a class="btn-header-cta" data-edit="header.ctaPrimary.label" data-edit-bind-href="header.ctaPrimary.href">Solicitar muestras</a>
       </div>
     </div>
 
@@ -283,7 +284,7 @@
     <div class="swiper-button-prev" aria-label="Slide anterior"></div>
   </div>
   <a href="#coleccion" class="hero-scroll-hint" aria-label="Bajar a la colección">
-    <span>Explorar</span>
+    <span data-edit="hero.scrollHint">Explorar</span>
     <svg width="14" height="14" aria-hidden="true"><use href="#chevron-down"/></svg>
   </a>
 </section>
@@ -293,11 +294,11 @@
   <div class="container trust-strip-inner">
     <div class="trust-item">
       <svg width="18" height="18" aria-hidden="true"><use href="#check"/></svg>
-      <span>Distribuidor oficial</span>
+      <span data-edit="trustStrip[0].label">Distribuidor oficial</span>
     </div>
     <div class="trust-item">
       <svg width="18" height="18" aria-hidden="true"><use href="#check"/></svg>
-      <span>Asesoramiento técnico</span>
+      <span data-edit="trustStrip[1].label">Asesoramiento técnico</span>
     </div>
   </div>
 </div>
@@ -307,17 +308,17 @@
   <div class="container">
 
     <div class="section-header" data-reveal>
-      <div class="section-eyebrow">Colección Argentina</div>
-      <h2 class="section-title" id="coleccion-title">Sinterizado con stock inmediato</h2>
-      <p class="section-desc">11 modelos disponibles en Buenos Aires. Cada superficie replica la autenticidad de las piedras más bellas del mundo con la durabilidad técnica del sinterizado.</p>
+      <div class="section-eyebrow" data-edit="collection.eyebrow">Colección Argentina</div>
+      <h2 class="section-title" id="coleccion-title" data-edit="collection.title">Sinterizado con stock inmediato</h2>
+      <p class="section-desc" data-edit="collection.desc">11 modelos disponibles en Buenos Aires. Cada superficie replica la autenticidad de las piedras más bellas del mundo con la durabilidad técnica del sinterizado.</p>
     </div>
 
     <!-- Filter tabs -->
     <div class="filter-tabs" role="group" aria-label="Filtrar por tono" id="filter-tabs">
-      <button class="filter-tab active" data-filter="all">Todos</button>
-      <button class="filter-tab" data-filter="blanco">Blancos &amp; Marfil</button>
-      <button class="filter-tab" data-filter="gris">Grises &amp; Neutros</button>
-      <button class="filter-tab" data-filter="color">Con color</button>
+      <button class="filter-tab active" data-filter="all"     data-edit="collection.filters[0].label">Todos</button>
+      <button class="filter-tab"        data-filter="blanco"  data-edit="collection.filters[1].label">Blancos &amp; Marfil</button>
+      <button class="filter-tab"        data-filter="gris"    data-edit="collection.filters[2].label">Grises &amp; Neutros</button>
+      <button class="filter-tab"        data-filter="color"   data-edit="collection.filters[3].label">Con color</button>
     </div>
 
     <!-- Product Swiper — populated by main.js -->
@@ -464,25 +465,25 @@
 <section class="about-section" id="acerca" aria-labelledby="about-title">
   <div class="container">
     <div class="section-header" data-reveal>
-      <div class="section-eyebrow">Quiénes somos</div>
-      <h2 class="section-title" id="about-title">Una marca global, presente en Argentina</h2>
+      <div class="section-eyebrow" data-edit="about.eyebrow">Quiénes somos</div>
+      <h2 class="section-title" id="about-title" data-edit="about.title">Una marca global, presente en Argentina</h2>
     </div>
 
     <div class="about-grid">
       <div class="about-visual">
-        <img src="assets/hero/isobellia-render.jpg" alt="Superficies Caesarstone" loading="lazy">
+        <img data-edit="about.img.src" data-edit-bind-alt="about.img.alt" src="assets/hero/isobellia-render.jpg" alt="Superficies Caesarstone" loading="lazy">
         <div class="about-badge">
-          <div class="about-badge-value">1987</div>
-          <div class="about-badge-label">Fundada en Israel</div>
+          <div class="about-badge-value" data-edit="about.badge.value">1987</div>
+          <div class="about-badge-label" data-edit="about.badge.label">Fundada en Israel</div>
         </div>
       </div>
 
       <div class="about-text" data-reveal>
-        <p>Caesarstone fue fundada en 1987 en el Kibbutz Sdot Yam, Israel, con la misión de revolucionar las superficies de diseño. Hoy es la marca global de referencia en superficies de ingeniería, presente en más de 50 países.</p>
-        <p>Sus superficies combinan la belleza visual de las piedras naturales con una durabilidad técnica sin igual: resistentes a arañazos, manchas, calor y bacterias. Sin mantenimiento especial, con décadas de vida útil.</p>
-        <p>La colección disponible en Argentina incluye 11 modelos de sinterizado — el material más avanzado del catálogo global, disponible con stock inmediato gracias a Minera Fame S.A.</p>
-        <a href="#coleccion" class="btn-dark mt-3">
-          Ver colección
+        <p data-edit="about.paragraphs[0]">Caesarstone fue fundada en 1987 en el Kibbutz Sdot Yam, Israel, con la misión de revolucionar las superficies de diseño. Hoy es la marca global de referencia en superficies de ingeniería, presente en más de 50 países.</p>
+        <p data-edit="about.paragraphs[1]">Sus superficies combinan la belleza visual de las piedras naturales con una durabilidad técnica sin igual: resistentes a arañazos, manchas, calor y bacterias. Sin mantenimiento especial, con décadas de vida útil.</p>
+        <p data-edit="about.paragraphs[2]">La colección disponible en Argentina incluye 11 modelos de sinterizado — el material más avanzado del catálogo global, disponible con stock inmediato gracias a Minera Fame S.A.</p>
+        <a class="btn-dark mt-3" data-edit-bind-href="about.cta.href">
+          <span data-edit="about.cta.label">Ver colección</span>
           <svg width="15" height="15"><use href="#arrow-right"/></svg>
         </a>
       </div>
@@ -496,29 +497,29 @@
 
     <!-- Contenido izquierdo -->
     <div class="partner-content" data-reveal>
-      <img src="assets/logos/minera-fame-50.png" alt="Minera Fame S.A. — 50 años de experiencia" class="partner-logo-img" loading="lazy">
-      <h2 class="partner-heading" id="partner-title">
+      <img class="partner-logo-img" loading="lazy" src="assets/logos/minera-fame-50.png" alt="Minera Fame S.A. — 50 años de experiencia" data-edit="partner.logo.src" data-edit-bind-alt="partner.logo.alt">
+      <h2 class="partner-heading" id="partner-title" data-edit="partner.headingHtml" data-edit-html>
         El representante<br>oficial en Argentina
       </h2>
-      <p class="partner-desc">
+      <p class="partner-desc" data-edit="partner.desc">
         Más de 50 años transformando espacios con los mejores materiales del mundo. Stock inmediato de Caesarstone, asesoramiento técnico y distribución en todo el país desde Caseros, Buenos Aires.
       </p>
       <div class="partner-stats">
         <div class="partner-stat">
-          <span class="partner-stat-value">50+</span>
-          <span class="partner-stat-label">Años de experiencia</span>
+          <span class="partner-stat-value" data-edit="partner.stats[0].value">50+</span>
+          <span class="partner-stat-label" data-edit="partner.stats[0].label">Años de experiencia</span>
         </div>
         <div class="partner-stat">
-          <span class="partner-stat-value">11</span>
-          <span class="partner-stat-label">Modelos en stock</span>
+          <span class="partner-stat-value" data-edit="partner.stats[1].value">11</span>
+          <span class="partner-stat-label" data-edit="partner.stats[1].label">Modelos en stock</span>
         </div>
         <div class="partner-stat">
-          <span class="partner-stat-value">AR</span>
-          <span class="partner-stat-label">Distribución nacional</span>
+          <span class="partner-stat-value" data-edit="partner.stats[2].value">AR</span>
+          <span class="partner-stat-label" data-edit="partner.stats[2].label">Distribución nacional</span>
         </div>
       </div>
-      <a href="minera-fame.html" class="partner-cta">
-        Conocer Minera Fame
+      <a class="partner-cta" data-edit-bind-href="partner.cta.href">
+        <span data-edit="partner.cta.label">Conocer Minera Fame</span>
         <svg width="15" height="15"><use href="#arrow-right"/></svg>
       </a>
     </div>
@@ -726,8 +727,8 @@
   <div class="container">
     <div class="footer-top">
       <div>
-        <img src="assets/logos/caesarstone-logo.png" alt="caesarstone" class="footer-logo" height="20">
-        <p class="footer-tagline">Superficies de sinterizado premium.<br>Representado por Minera Fame S.A. en Argentina.</p>
+        <img class="footer-logo" height="20" src="assets/logos/caesarstone-logo.png" alt="caesarstone" data-edit="footer.logo.src" data-edit-bind-alt="footer.logo.alt">
+        <p class="footer-tagline" data-edit="footer.taglineHtml" data-edit-html>Superficies de sinterizado premium.<br>Representado por Minera Fame S.A. en Argentina.</p>
       </div>
 
       <div>
@@ -768,7 +769,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2026 Caesarstone Argentina — Distribuido por Minera Fame S.A.</span>
+      <span class="footer-copy" data-edit="footer.copy">© 2026 Caesarstone Argentina — Distribuido por Minera Fame S.A.</span>
       <div class="footer-social">
         <a href="https://www.instagram.com/marmoleriaminerafame/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg width="18" height="18"><use href="#instagram"/></svg>

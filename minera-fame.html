@@ -114,13 +114,13 @@
 <!-- ── HEADER ──────────────────────────────────────────────────────────────── -->
 <header class="mf-header" id="mf-header" role="banner">
   <div class="mf-header-ribbon" aria-label="Marcas representadas">
-    <span class="mf-ribbon-label">Trabajamos todas las marcas:</span>
-    <a href="index.html" class="mf-ribbon-link">
-      <strong>Caesarstone</strong>
+    <span class="mf-ribbon-label" data-edit="ribbon.label">Trabajamos todas las marcas:</span>
+    <a class="mf-ribbon-link" data-edit-bind-href="ribbon.primaryLink.href">
+      <strong data-edit="ribbon.primaryLink.label">Caesarstone</strong>
       <svg width="10" height="10" aria-hidden="true"><use href="#arrow-up-right"/></svg>
     </a>
     <span class="mf-ribbon-sep">·</span>
-    <span class="mf-ribbon-brands">Silestone · Dekton · Neolith · Laminam · Intecstone</span>
+    <span class="mf-ribbon-brands" data-edit="ribbon.brands">Silestone · Dekton · Neolith · Laminam · Intecstone</span>
   </div>
 
   <div class="mf-header-main">
@@ -264,10 +264,10 @@
     </div>
 
     <div class="mf-empresa-content" data-reveal>
-      <div class="mf-eyebrow">Quiénes somos</div>
-      <h2 class="mf-title" id="empresa-title">Una empresa con raíces en la piedra</h2>
-      <p class="mf-empresa-text">MINERAFAME Mármoles y Granitos es una empresa con más de 50 años de experiencia en el mercado con reconocida trayectoria en la fabricación y colocación en obra. Somos importadores directos del 80% de los mármoles y granitos que trabajamos en nuestro taller.</p>
-      <p class="mf-empresa-text">Con una planta industrial de 3.000&nbsp;m² en Caseros, Buenos Aires, contamos con tecnología de punta que nos permite obtener bajos costos de producción y calidad superior en nuestras terminaciones. Nuestro equipo de arquitectos lo ayudará a desarrollar sus ideas, brindando soluciones integrales a sus necesidades.</p>
+      <div class="mf-eyebrow" data-edit="empresa.eyebrow">Quiénes somos</div>
+      <h2 class="mf-title" id="empresa-title" data-edit="empresa.title">Una empresa con raíces en la piedra</h2>
+      <p class="mf-empresa-text" data-edit="empresa.paragraphs[0]">MINERAFAME Mármoles y Granitos es una empresa con más de 50 años de experiencia en el mercado con reconocida trayectoria en la fabricación y colocación en obra. Somos importadores directos del 80% de los mármoles y granitos que trabajamos en nuestro taller.</p>
+      <p class="mf-empresa-text" data-edit="empresa.paragraphs[1]">Con una planta industrial de 3.000&nbsp;m² en Caseros, Buenos Aires, contamos con tecnología de punta que nos permite obtener bajos costos de producción y calidad superior en nuestras terminaciones. Nuestro equipo de arquitectos lo ayudará a desarrollar sus ideas, brindando soluciones integrales a sus necesidades.</p>
 
       <div class="mf-empresa-features">
         <div class="mf-empresa-feat">
@@ -802,8 +802,8 @@
 <footer class="mf-footer" role="contentinfo">
   <div class="mf-footer-grid">
     <div>
-      <img src="assets/logos/minera-fame.png" alt="Minera Fame S.A." class="mf-footer-logo">
-      <p class="mf-footer-tagline">Empresa marmolera con más de 50 años en Argentina.<br>Representante oficial de Caesarstone, Silestone, Dekton y Neolith.</p>
+      <img class="mf-footer-logo" src="assets/logos/minera-fame.png" alt="Minera Fame S.A." data-edit="footer.logo.src" data-edit-bind-alt="footer.logo.alt">
+      <p class="mf-footer-tagline" data-edit="footer.taglineHtml" data-edit-html>Empresa marmolera con más de 50 años en Argentina.<br>Representante oficial de Caesarstone, Silestone, Dekton y Neolith.</p>
     </div>
 
     <div>
@@ -832,7 +832,7 @@
   </div>
 
   <div class="mf-footer-bottom">
-    <span class="mf-footer-copy">&copy; 2026 Minera Fame S.A. — Representante oficial Caesarstone Argentina</span>
+    <span class="mf-footer-copy" data-edit="footer.copy">© 2026 Minera Fame S.A. — Representante oficial Caesarstone Argentina</span>
     <div class="mf-footer-social">
       <a href="https://www.instagram.com/marmoleriaminerafame/" target="_blank" rel="noopener" aria-label="Instagram">
         <svg width="18" height="18"><use href="#instagram"/></svg>
@@ -851,6 +851,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js" defer></script>
+<script src="js/hydrator.js" defer></script>
 <script src="js/minera-fame.js" defer></script>
 
 </body>

@@ -1,14 +1,22 @@
 /* ── Minera Fame — minera-fame.js ── */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   initHeader();
   initMobileNav();
-  initHeroSwiper();
-  initProjectsSwiper();
-  initStatCounters();
   initGSAP();
   initContactForm();
   initMaterialCardPrefill();
+
+  /* CMS hydration: si data/mf.json carga, aplica al DOM */
+  if (window.fetchSiteData && window.hydrate) {
+    const data = await window.fetchSiteData('mf');
+    if (data) window.hydrate(data);
+  }
+
+  /* Hero + projects + stats post-fetch (cuentan items renderizados) */
+  initHeroSwiper();
+  initProjectsSwiper();
+  initStatCounters();
 });
 
 /* ── Hero Swiper ─────────────────────────────────────────────────────────── */
