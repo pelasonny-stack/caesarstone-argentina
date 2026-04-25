@@ -172,11 +172,11 @@
     <!-- Row 2: main nav + actions -->
     <div id="header-main">
       <nav class="header-nav" aria-label="Navegación principal">
-        <a href="#coleccion">Colección</a>
-        <a href="#aplicaciones">Aplicaciones</a>
-        <a href="#acerca">Acerca de</a>
-        <a href="minera-fame.html">Minera Fame</a>
-        <a href="#contacto">Contacto</a>
+        <a data-edit="header.nav[0].label" data-edit-bind-href="header.nav[0].href">Colección</a>
+        <a data-edit="header.nav[1].label" data-edit-bind-href="header.nav[1].href">Aplicaciones</a>
+        <a data-edit="header.nav[2].label" data-edit-bind-href="header.nav[2].href">Acerca de</a>
+        <a data-edit="header.nav[3].label" data-edit-bind-href="header.nav[3].href">Minera Fame</a>
+        <a data-edit="header.nav[4].label" data-edit-bind-href="header.nav[4].href">Contacto</a>
       </nav>
       <div class="header-actions">
         <a target="_blank" rel="noopener" class="btn-header-wa" aria-label="WhatsApp" data-edit-bind-href="header.ctaWhatsapp.href">
@@ -205,13 +205,15 @@
       <!-- Slide 1: Video Vimeo 1099102411 (desktop) + MP4 Drive (mobile) -->
       <div class="swiper-slide">
         <div class="hero-slide-bg video-bg">
-          <img class="hero-mobile-img" src="assets/hero/about-caesarstone.jpg" width="1778" height="1000" alt="" aria-hidden="true">
+          <img class="hero-mobile-img" width="1778" height="1000" alt="" aria-hidden="true" src="assets/hero/about-caesarstone.jpg" data-edit="hero.slides[0].posterImg" data-edit-attr="src">
           <iframe
             src="https://player.vimeo.com/video/1099102411?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
             frameborder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             title="Caesarstone sinterizado"
-            aria-hidden="true"></iframe>
+            aria-hidden="true"
+            data-edit="hero.slides[0].videoUrl" data-edit-attr="src"
+            data-edit-bind-title="hero.slides[0].videoTitle"></iframe>
         </div>
         <div class="hold-container">
           <div class="hold-wrapper container">
@@ -232,14 +234,16 @@
       <!-- Slide 2: Video Vimeo 1091739592 -->
       <div class="swiper-slide">
         <div class="hero-slide-bg video-bg">
-          <img class="hero-mobile-img" src="assets/hero/onyxa-render.jpg" width="1920" height="1080" alt="" aria-hidden="true">
+          <img class="hero-mobile-img" width="1920" height="1080" alt="" aria-hidden="true" src="assets/hero/onyxa-render.jpg" data-edit="hero.slides[1].posterImg" data-edit-attr="src">
           <iframe
             src="https://player.vimeo.com/video/1091739592?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
             frameborder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             title="Caesarstone espacios"
             loading="lazy"
-            aria-hidden="true"></iframe>
+            aria-hidden="true"
+            data-edit="hero.slides[1].videoUrl" data-edit-attr="src"
+            data-edit-bind-title="hero.slides[1].videoTitle"></iframe>
         </div>
         <div class="hold-container">
           <div class="hold-wrapper container">
@@ -260,7 +264,7 @@
       <!-- Slide 3: Imagen fija caesarstone.com -->
       <div class="swiper-slide">
         <div class="hero-slide-bg">
-          <img src="assets/hero/ambient-kitchen-1.jpg" alt="Cocina con sinterizado Caesarstone" loading="lazy">
+          <img loading="lazy" src="assets/hero/ambient-kitchen-1.jpg" alt="Cocina con sinterizado Caesarstone" data-edit="hero.slides[2].posterImg" data-edit-attr="src" data-edit-bind-alt="hero.slides[2].posterAlt">
         </div>
         <div class="hold-container">
           <div class="hold-wrapper container">
@@ -527,17 +531,17 @@
     <!-- Mosaico de obras reales -->
     <div class="partner-mosaic">
       <figure class="partner-mosaic-main">
-        <img src="assets/projects/w1.jpg" alt="Obra realizada por Minera Fame — Residencial premium" loading="lazy">
-        <figcaption class="partner-mosaic-caption">Residencial premium · Buenos Aires</figcaption>
+        <img loading="lazy" src="assets/projects/w1.jpg" alt="Obra realizada por Minera Fame — Residencial premium" data-edit="partner.mosaic.main.img.src" data-edit-bind-alt="partner.mosaic.main.img.alt">
+        <figcaption class="partner-mosaic-caption" data-edit="partner.mosaic.main.caption">Residencial premium · Buenos Aires</figcaption>
       </figure>
       <div class="partner-mosaic-side">
         <figure class="partner-mosaic-thumb">
-          <img src="assets/projects/d3.jpg" alt="Obra realizada por Minera Fame — Hotelería" loading="lazy">
-          <figcaption class="partner-mosaic-caption">Hotelería</figcaption>
+          <img loading="lazy" src="assets/projects/d3.jpg" alt="Obra realizada por Minera Fame — Hotelería" data-edit="partner.mosaic.thumbs[0].img.src" data-edit-bind-alt="partner.mosaic.thumbs[0].img.alt">
+          <figcaption class="partner-mosaic-caption" data-edit="partner.mosaic.thumbs[0].caption">Hotelería</figcaption>
         </figure>
         <figure class="partner-mosaic-thumb">
-          <img src="assets/projects/w3.jpg" alt="Obra realizada por Minera Fame — Corporativo" loading="lazy">
-          <figcaption class="partner-mosaic-caption">Corporativo</figcaption>
+          <img loading="lazy" src="assets/projects/w3.jpg" alt="Obra realizada por Minera Fame — Corporativo" data-edit="partner.mosaic.thumbs[1].img.src" data-edit-bind-alt="partner.mosaic.thumbs[1].img.alt">
+          <figcaption class="partner-mosaic-caption" data-edit="partner.mosaic.thumbs[1].caption">Corporativo</figcaption>
         </figure>
       </div>
     </div>
@@ -549,23 +553,22 @@
 <section class="contact-section" id="contacto" aria-labelledby="contacto-title">
   <div class="container">
     <div class="section-header" data-reveal>
-      <div class="section-eyebrow">Contacto</div>
-      <h2 class="section-title" id="contacto-title">Hablemos de tu proyecto</h2>
+      <div class="section-eyebrow" data-edit="contact.eyebrow">Contacto</div>
+      <h2 class="section-title" id="contacto-title" data-edit="contact.title">Hablemos de tu proyecto</h2>
     </div>
 
     <div class="contact-grid">
       <!-- Info -->
       <div data-reveal>
-        <h3 class="contact-info-title">Minera Fame S.A.</h3>
+        <h3 class="contact-info-title" data-edit="contact.infoTitle">Minera Fame S.A.</h3>
 
         <div class="contact-item">
           <svg class="contact-icon" width="20" height="20"><use href="#map-pin"/></svg>
           <div>
-            <div class="contact-label">Casa Central — Caseros</div>
+            <div class="contact-label" data-edit="contact.locations[0].label">Casa Central — Caseros</div>
             <div class="contact-value">
-              Puán 5403, Caseros<br>
-              Buenos Aires, Argentina<br>
-              <a href="tel:+541131749906">+54 11 3174-9906</a>
+              <span data-edit="contact.locations[0].address">Puán 5403, Caseros, Buenos Aires, Argentina</span><br>
+              <a data-edit="contact.locations[0].phone" data-edit-bind-href="contact.locations[0].phoneHref">+54 11 3174-9906</a>
             </div>
           </div>
         </div>
@@ -573,11 +576,10 @@
         <div class="contact-item">
           <svg class="contact-icon" width="20" height="20"><use href="#map-pin"/></svg>
           <div>
-            <div class="contact-label">Sucursal — Ricardo Rojas (Pacheco)</div>
+            <div class="contact-label" data-edit="contact.locations[1].label">Sucursal — Ricardo Rojas (Pacheco)</div>
             <div class="contact-value">
-              Quirno Costa 6345, Ricardo Rojas (Pacheco)<br>
-              Buenos Aires, Argentina<br>
-              <a href="tel:+541135836485">(011) 3583-6485</a>
+              <span data-edit="contact.locations[1].address">Quirno Costa 6345, Ricardo Rojas (Pacheco), Buenos Aires, Argentina</span><br>
+              <a data-edit="contact.locations[1].phone" data-edit-bind-href="contact.locations[1].phoneHref">+54 11 3583-6485</a>
             </div>
           </div>
         </div>
@@ -585,35 +587,35 @@
         <div class="contact-item">
           <svg class="contact-icon" width="20" height="20"><use href="#message-circle"/></svg>
           <div>
-            <div class="contact-label">WhatsApp</div>
-            <div class="contact-value"><a href="https://wa.me/5491159311038" target="_blank" rel="noopener">+54 11 5931-1038</a></div>
+            <div class="contact-label" data-edit="contact.channels[0].label">WhatsApp</div>
+            <div class="contact-value"><a target="_blank" rel="noopener" data-edit="contact.channels[0].value" data-edit-bind-href="contact.channels[0].href">+54 11 5931-1038</a></div>
           </div>
         </div>
 
         <div class="contact-item">
           <svg class="contact-icon" width="20" height="20"><use href="#mail"/></svg>
           <div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value"><a href="mailto:info@minerafame.com">info@minerafame.com</a></div>
+            <div class="contact-label" data-edit="contact.channels[1].label">Email</div>
+            <div class="contact-value"><a data-edit="contact.channels[1].value" data-edit-bind-href="contact.channels[1].href">info@minerafame.com</a></div>
           </div>
         </div>
 
         <div class="contact-item">
           <svg class="contact-icon" width="20" height="20"><use href="#clock"/></svg>
           <div>
-            <div class="contact-label">Horarios</div>
-            <div class="contact-value">Lunes a viernes, 8:00 – 17:00 hs</div>
+            <div class="contact-label" data-edit="contact.hours.label">Horarios</div>
+            <div class="contact-value" data-edit="contact.hours.value">Lunes a viernes, 8:00 – 17:00 hs</div>
           </div>
         </div>
 
         <div class="social-links">
-          <a href="https://www.instagram.com/marmoleriaminerafame/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+          <a target="_blank" rel="noopener" class="social-link" aria-label="Instagram" data-edit-bind-href="contact.socials[0].href">
             <svg width="18" height="18"><use href="#instagram"/></svg>
           </a>
-          <a href="https://www.facebook.com/MineraFame" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+          <a target="_blank" rel="noopener" class="social-link" aria-label="Facebook" data-edit-bind-href="contact.socials[1].href">
             <svg width="18" height="18"><use href="#facebook"/></svg>
           </a>
-          <a href="https://wa.me/5491159311038" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+          <a target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp" data-edit-bind-href="contact.socials[2].href">
             <svg width="18" height="18"><use href="#whatsapp"/></svg>
           </a>
         </div>
@@ -624,51 +626,60 @@
         <!-- Form: configurar Formspree reemplazando FORMSPREE_ID por el ID real.
              Fallback: si el fetch falla (por ejemplo sin ID configurado), se abre el cliente de mail. -->
         <form class="contact-form" id="contact-form"
-              action="https://formspree.io/f/FORMSPREE_ID"
               method="POST"
               data-fallback-email="info@minerafame.com"
-              novalidate>
+              novalidate
+              data-edit-bind-action="contact.form.action"
+              data-edit-bind-data-fallback-email="contact.form.fallbackEmail">
 
           <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
 
           <div class="form-group">
-            <label class="form-label" for="cf-name">Nombre <span class="form-req">*</span></label>
+            <label class="form-label" for="cf-name"><span data-edit="contact.form.labels.name">Nombre</span> <span class="form-req">*</span></label>
             <input class="form-control" type="text" id="cf-name" name="name"
-                   placeholder="Tu nombre completo" required autocomplete="name">
+                   required autocomplete="name"
+                   placeholder="Tu nombre completo"
+                   data-edit-bind-placeholder="contact.form.labels.namePlaceholder">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="cf-email">Email <span class="form-req">*</span></label>
+            <label class="form-label" for="cf-email"><span data-edit="contact.form.labels.email">Email</span> <span class="form-req">*</span></label>
             <input class="form-control" type="email" id="cf-email" name="email"
-                   placeholder="tu@email.com" required autocomplete="email">
+                   required autocomplete="email"
+                   placeholder="tu@email.com"
+                   data-edit-bind-placeholder="contact.form.labels.emailPlaceholder">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="cf-phone">Teléfono <span class="form-opt">(opcional)</span></label>
+            <label class="form-label" for="cf-phone"><span data-edit="contact.form.labels.phone">Teléfono</span> <span class="form-opt">(opcional)</span></label>
             <input class="form-control" type="tel" id="cf-phone" name="phone"
-                   placeholder="+54 11 XXXX-XXXX" autocomplete="tel">
+                   autocomplete="tel"
+                   placeholder="+54 11 XXXX-XXXX"
+                   data-edit-bind-placeholder="contact.form.labels.phonePlaceholder">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="cf-subject">Motivo de consulta</label>
+            <label class="form-label" for="cf-subject" data-edit="contact.form.labels.subject">Motivo de consulta</label>
             <select class="form-control" id="cf-subject" name="subject">
-              <option value="" disabled selected>Seleccionar motivo…</option>
-              <option>Solicitar muestra</option>
-              <option>Consulta por proyecto</option>
-              <option>Información técnica</option>
-              <option>Cotización</option>
-              <option>Otro</option>
+              <option value="" disabled selected data-edit="contact.form.labels.subjectPlaceholder">Seleccionar motivo…</option>
+              <option data-edit="contact.form.subjects[0]">Solicitar muestra</option>
+              <option data-edit="contact.form.subjects[1]">Consulta por proyecto</option>
+              <option data-edit="contact.form.subjects[2]">Información técnica</option>
+              <option data-edit="contact.form.subjects[3]">Cotización</option>
+              <option data-edit="contact.form.subjects[4]">Otro</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="cf-msg">Mensaje <span class="form-req">*</span></label>
+            <label class="form-label" for="cf-msg"><span data-edit="contact.form.labels.message">Mensaje</span> <span class="form-req">*</span></label>
             <textarea class="form-control" id="cf-msg" name="message"
-                      placeholder="¿En qué proyecto podemos ayudarte?" required></textarea>
+                      required
+                      placeholder="¿En qué proyecto podemos ayudarte?"
+                      data-edit-bind-placeholder="contact.form.labels.messagePlaceholder"></textarea>
           </div>
 
           <button type="submit" class="btn-submit" id="form-submit-btn">
-            Enviar mensaje
+            <span data-edit="contact.form.labels.submit">Enviar mensaje</span>
             <svg width="15" height="15"><use href="#arrow-right"/></svg>
           </button>
 
@@ -684,11 +695,9 @@
           title="Ubicación Casa Central — Puán 5403, Caseros"
           loading="lazy"
           allowfullscreen></iframe>
-        <div class="contact-map-label">Casa Central — Caseros</div>
-        <a class="contact-map-cta"
-           href="https://www.google.com/maps/dir/?api=1&destination=Puan+5403,+Caseros,+Buenos+Aires"
-           target="_blank" rel="noopener">
-          Cómo llegar
+        <div class="contact-map-label" data-edit="contact.maps[0].label">Casa Central — Caseros</div>
+        <a class="contact-map-cta" target="_blank" rel="noopener" data-edit-bind-href="contact.maps[0].directionsHref">
+          <span data-edit="contact.maps[0].directionsLabel">Cómo llegar</span>
           <svg width="14" height="14" aria-hidden="true"><use href="#arrow-up-right"/></svg>
         </a>
       </div>
@@ -698,11 +707,9 @@
           title="Ubicación Sucursal — Quirno Costa 6345, Ricardo Rojas, Pacheco"
           loading="lazy"
           allowfullscreen></iframe>
-        <div class="contact-map-label">Sucursal — Pacheco</div>
-        <a class="contact-map-cta"
-           href="https://www.google.com/maps/dir/?api=1&destination=Quirno+Costa+6345,+Ricardo+Rojas,+Pacheco"
-           target="_blank" rel="noopener">
-          Cómo llegar
+        <div class="contact-map-label" data-edit="contact.maps[1].label">Sucursal — Pacheco</div>
+        <a class="contact-map-cta" target="_blank" rel="noopener" data-edit-bind-href="contact.maps[1].directionsHref">
+          <span data-edit="contact.maps[1].directionsLabel">Cómo llegar</span>
           <svg width="14" height="14" aria-hidden="true"><use href="#arrow-up-right"/></svg>
         </a>
       </div>
@@ -713,9 +720,10 @@
 </main>
 
 <!-- ── WhatsApp FAB ─────────────────────────────────────────────────────────── -->
-<a href="https://wa.me/5491159311038?text=Hola%20Minera%20Fame%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Caesarstone"
-   target="_blank" rel="noopener"
+<a target="_blank" rel="noopener"
    class="wa-fab"
+   data-edit-bind-href="waFab.href"
+   data-edit-bind-aria-label="waFab.ariaLabel"
    aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
     <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
@@ -732,38 +740,38 @@
       </div>
 
       <div>
-        <div class="footer-col-title">Colección Argentina</div>
+        <div class="footer-col-title" data-edit="footer.columns[0].title">Colección Argentina</div>
         <ul class="footer-links">
-          <li><a href="#coleccion">Ver los 11 modelos</a></li>
-          <li><a href="#aplicaciones">Especificaciones técnicas</a></li>
+          <li><a data-edit="footer.columns[0].links[0].label" data-edit-bind-href="footer.columns[0].links[0].href">Ver los 11 modelos</a></li>
+          <li><a data-edit="footer.columns[0].links[1].label" data-edit-bind-href="footer.columns[0].links[1].href">Especificaciones técnicas</a></li>
         </ul>
-        <div class="footer-col-title footer-col-title--global">caesarstone.com</div>
+        <div class="footer-col-title footer-col-title--global" data-edit="footer.columns[1].title">caesarstone.com</div>
         <ul class="footer-links">
-          <li><a href="https://www.caesarstone.com/color-catalog/" target="_blank" rel="noopener" class="footer-link-external">Catálogo completo <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
-          <li><a href="https://www.caesarstone.com/inspiration/" target="_blank" rel="noopener" class="footer-link-external">Inspiración <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer-col-title">Empresa</div>
-        <ul class="footer-links">
-          <li><a href="#acerca">Acerca de</a></li>
-          <li><a href="minera-fame.html">Minera Fame S.A.</a></li>
-        </ul>
-        <div class="footer-col-title footer-col-title--global">caesarstone.com</div>
-        <ul class="footer-links">
-          <li><a href="https://www.caesarstone.com/" target="_blank" rel="noopener" class="footer-link-external">Sitio global <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
-          <li><a href="https://www.caesarstone.com/sustainability/" target="_blank" rel="noopener" class="footer-link-external">Sustentabilidad <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
+          <li><a target="_blank" rel="noopener" class="footer-link-external" data-edit-bind-href="footer.columns[1].links[0].href"><span data-edit="footer.columns[1].links[0].label">Catálogo completo</span> <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
+          <li><a target="_blank" rel="noopener" class="footer-link-external" data-edit-bind-href="footer.columns[1].links[1].href"><span data-edit="footer.columns[1].links[1].label">Inspiración</span> <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
         </ul>
       </div>
 
       <div>
-        <div class="footer-col-title">Contacto</div>
+        <div class="footer-col-title" data-edit="footer.columns[2].title">Empresa</div>
         <ul class="footer-links">
-          <li><a href="tel:+541131749906">+54 11 3174-9906</a></li>
-          <li><a href="mailto:info@minerafame.com">info@minerafame.com</a></li>
-          <li><a href="https://wa.me/5491159311038" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li>Puán 5403, Caseros, BA</li>
+          <li><a data-edit="footer.columns[2].links[0].label" data-edit-bind-href="footer.columns[2].links[0].href">Acerca de</a></li>
+          <li><a data-edit="footer.columns[2].links[1].label" data-edit-bind-href="footer.columns[2].links[1].href">Minera Fame S.A.</a></li>
+        </ul>
+        <div class="footer-col-title footer-col-title--global">caesarstone.com</div>
+        <ul class="footer-links">
+          <li><a target="_blank" rel="noopener" class="footer-link-external" data-edit-bind-href="footer.columns[2].links[2].href"><span data-edit="footer.columns[2].links[2].label">Sitio global</span> <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
+          <li><a target="_blank" rel="noopener" class="footer-link-external" data-edit-bind-href="footer.columns[2].links[3].href"><span data-edit="footer.columns[2].links[3].label">Sustentabilidad</span> <svg width="10" height="10"><use href="#arrow-up-right"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title" data-edit="footer.columns[3].title">Contacto</div>
+        <ul class="footer-links">
+          <li><a data-edit="footer.columns[3].items[0].label" data-edit-bind-href="footer.columns[3].items[0].href">+54 11 3174-9906</a></li>
+          <li><a data-edit="footer.columns[3].items[1].label" data-edit-bind-href="footer.columns[3].items[1].href">info@minerafame.com</a></li>
+          <li><a target="_blank" rel="noopener" data-edit="footer.columns[3].items[2].label" data-edit-bind-href="footer.columns[3].items[2].href">WhatsApp</a></li>
+          <li data-edit="footer.columns[3].items[3].label">Puán 5403, Caseros, BA</li>
         </ul>
       </div>
     </div>
@@ -771,13 +779,13 @@
     <div class="footer-bottom">
       <span class="footer-copy" data-edit="footer.copy">© 2026 Caesarstone Argentina — Distribuido por Minera Fame S.A.</span>
       <div class="footer-social">
-        <a href="https://www.instagram.com/marmoleriaminerafame/" target="_blank" rel="noopener" aria-label="Instagram">
+        <a target="_blank" rel="noopener" aria-label="Instagram" data-edit-bind-href="footer.socials[0].href">
           <svg width="18" height="18"><use href="#instagram"/></svg>
         </a>
-        <a href="https://www.facebook.com/MineraFame" target="_blank" rel="noopener" aria-label="Facebook">
+        <a target="_blank" rel="noopener" aria-label="Facebook" data-edit-bind-href="footer.socials[1].href">
           <svg width="18" height="18"><use href="#facebook"/></svg>
         </a>
-        <a href="https://wa.me/5491159311038" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a target="_blank" rel="noopener" aria-label="WhatsApp" data-edit-bind-href="footer.socials[2].href">
           <svg width="18" height="18"><use href="#whatsapp"/></svg>
         </a>
       </div>
@@ -800,7 +808,7 @@
       </button>
       <div class="modal-hero-overlay">
         <div class="modal-hero-top">
-          <img src="assets/logos/caesarstone-logo.png" alt="Caesarstone" class="modal-cs-logo">
+          <img alt="Caesarstone" class="modal-cs-logo" src="assets/logos/caesarstone-logo.png" data-edit="modal.logoImg" data-edit-attr="src">
           <div class="modal-hero-collection" id="modal-hero-collection"></div>
         </div>
         <div class="modal-hero-bottom">
@@ -822,11 +830,11 @@
       <!-- Col 1: Procedencia + Espesor + certificaciones -->
       <div class="modal-spec-col">
         <div class="modal-spec-block">
-          <div class="modal-spec-label">Procedencia</div>
+          <div class="modal-spec-label" data-edit="modal.specs.procedencia">Procedencia</div>
           <div class="modal-spec-value" id="modal-procedencia"></div>
         </div>
         <div class="modal-spec-block">
-          <div class="modal-spec-label">Espesor</div>
+          <div class="modal-spec-label" data-edit="modal.specs.espesor">Espesor</div>
           <div class="modal-spec-value">12mm</div>
         </div>
         <div class="modal-certs">
@@ -838,12 +846,12 @@
       <!-- Col 2: Acabado + diagrama de placa -->
       <div class="modal-spec-col">
         <div class="modal-spec-block">
-          <div class="modal-spec-label">Acabado</div>
+          <div class="modal-spec-label" data-edit="modal.specs.acabado">Acabado</div>
           <div class="modal-spec-value" id="modal-finish"></div>
         </div>
         <div class="modal-size-diagram">
           <div class="modal-size-plate">
-            <span class="modal-size-plate-label">Tamaño de<br>placa completa</span>
+            <span class="modal-size-plate-label" data-edit="modal.specs.tamanoLabelHtml" data-edit-html>Tamaño de<br>placa completa</span>
           </div>
           <div class="modal-size-dims">
             <span class="modal-size-w">1600mm</span>
@@ -854,7 +862,7 @@
 
       <!-- Col 3: Características -->
       <div class="modal-spec-col modal-chars-col">
-        <div class="modal-spec-label">Características</div>
+        <div class="modal-spec-label" data-edit="modal.specs.caracteristicas">Características</div>
         <ul class="modal-chars-list" id="modal-chars-list"></ul>
       </div>
 
@@ -862,19 +870,19 @@
       <div class="modal-spec-col modal-contact-col">
         <div class="modal-qr-area">
           <img class="modal-qr-img" id="modal-qr-img" src="" alt="QR" width="68" height="68" loading="lazy">
-          <p class="modal-qr-label">Escaneá y<br>consultá por<br>WhatsApp</p>
+          <p class="modal-qr-label" data-edit="modal.qrLabelHtml" data-edit-html>Consultá por<br>WhatsApp</p>
         </div>
         <div class="modal-contact-info">
           <div class="modal-contact-label">Comunícate con ventas</div>
           <div class="modal-contact-phone">
             <svg width="14" height="14"><use href="#whatsapp"/></svg>
-            11-3174-9906
+            <span data-edit="modal.contactPhone">11-3174-9906</span>
           </div>
-          <div class="modal-contact-web">MINERAFAME.COM</div>
+          <div class="modal-contact-web" data-edit="modal.contactWebsite">MINERAFAME.COM</div>
         </div>
         <div class="modal-contact-actions">
           <a href="#contacto" class="btn-dark modal-cta">
-            Solicitar muestra
+            <span data-edit="modal.ctaSample">Solicitar muestra</span>
             <svg width="14" height="14"><use href="#arrow-right"/></svg>
           </a>
           <a href="#" class="modal-caesar-link" id="modal-caesar-link" target="_blank" rel="noopener">
