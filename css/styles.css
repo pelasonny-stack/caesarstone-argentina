@@ -1083,17 +1083,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 400;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.005em;
   color: var(--c-body);
   margin-bottom: 6px;
   padding: 0; border: 0; background: transparent;
   text-align: left; cursor: pointer;
-  transition: color var(--dur-fast);
+  transition: color var(--dur-quick), transform var(--dur-quick);
 }
 
 .stone:hover .stone-title,
 .stone-title:hover,
-.stone-title:focus-visible { color: #000; }
+.stone-title:focus-visible {
+  color: #000;
+  transform: translateX(2px);   /* movimiento sutil editorial */
+}
 
 .material-name {
   font-size: 0.75rem;
@@ -1328,8 +1331,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 6fr 5fr;        /* asymmetric: imagen un poco más grande */
+  gap: clamp(48px, 8vw, 96px);
   align-items: center;
 }
 
@@ -1343,6 +1346,11 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
+  filter: contrast(1.04) saturate(1.06);
+  transition: transform var(--dur-editorial) var(--ease-emphasized), filter var(--dur-medium);
+}
+.about-section:hover .about-visual img {
+  transform: scale(1.02);
 }
 
 .about-badge {
@@ -2112,10 +2120,10 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 /* ── HERO — imagen de piedra como fondo ── */
 .modal-stone-hero {
   position: relative;
-  height: 210px;
+  height: clamp(280px, 38vh, 420px);  /* editorial feel: más presencia */
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 12px 12px 0 0;
+  border-radius: 2px 2px 0 0;
   background: #ccc;
 }
 .modal-stone-img {
@@ -2126,6 +2134,12 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   object-position: center;
   image-rendering: auto;
   display: block;
+  filter: contrast(1.05) saturate(1.08);
+  transform: scale(1.02);
+  transition: transform 1.6s var(--ease-emphasized);
+}
+.product-modal-overlay.open .modal-stone-img {
+  transform: scale(1);   /* slow zoom-out on modal entrance */
 }
 
 /* Overlay: oscuro abajo-izquierda para el nombre, oscuro derecha para descripción */
@@ -2196,15 +2210,16 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 }
 /* Nombre: tipografía grande, sans-serif light, todo mayúsculas — igual al PDF */
 .modal-name {
-  font-family: var(--font-sans);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 300;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 400;
+  font-style: italic;                                  /* editorial luxury */
   color: #fff;
   line-height: 1;
   margin: 0;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4);
+  letter-spacing: -0.01em;                              /* tight display */
+  text-transform: none;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.45);
 }
 .modal-code-inline {
   font-family: var(--font-sans);
@@ -2617,7 +2632,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
   /* ── Modal ≤900px: 4 cols → 2 cols + chars full + contact full ── */
   .product-modal { max-width: 100%; max-height: 94dvh; overflow-y: auto; }
-  .modal-stone-hero { height: 200px; }
+  .modal-stone-hero { height: 280px; }
   .modal-hero-overlay { padding: 14px 18px 16px; }
   .modal-hero-name-wrap { max-width: 100%; flex-wrap: wrap; row-gap: 2px; }
   .modal-name { font-size: clamp(1.7rem, 6vw, 2.4rem); letter-spacing: 0.03em; }
@@ -2703,7 +2718,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   .product-modal { max-height: 95dvh; overflow-y: auto; border-radius: 2px; }
   .modal-close { top: 10px; right: 10px; width: 28px; height: 28px; }
   .modal-zoom { top: 50%; bottom: auto; right: 10px; width: 28px; height: 28px; transform: translateY(-50%); }
-  .modal-stone-hero { height: 170px; border-radius: 10px 10px 0 0; }
+  .modal-stone-hero { height: 240px; border-radius: 2px 2px 0 0; }
   .modal-hero-overlay { padding: 12px 14px 14px; }
   .modal-name { font-size: clamp(1.4rem, 7vw, 1.85rem); letter-spacing: 0.03em; }
   .modal-code-inline { font-size: 0.85rem; }
@@ -2775,7 +2790,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   .product-modal { max-height: 96dvh; border-radius: 14px 14px 0 0; border-bottom: none; overflow-y: auto; }
   .modal-close { top: 8px; right: 8px; width: 30px; height: 30px; background: rgba(255,255,255,0.92); }
   .modal-zoom { top: 50%; bottom: auto; right: 8px; width: 30px; height: 30px; background: rgba(255,255,255,0.92); transform: translateY(-50%); }
-  .modal-stone-hero { height: 150px; border-radius: 14px 14px 0 0; }
+  .modal-stone-hero { height: 200px; border-radius: 2px 2px 0 0; }
   .modal-hero-overlay { padding: 10px 12px 12px; }
   .modal-name { font-size: clamp(1.25rem, 8vw, 1.55rem); }
   .modal-code-inline { font-size: 0.8rem; }
