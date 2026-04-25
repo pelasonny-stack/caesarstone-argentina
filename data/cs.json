@@ -326,27 +326,6 @@
         "tone": "blanco",
         "sizeWidth": "1600mm",
         "sizeHeight": "3200mm"
-      },
-      {
-        "id": "id",
-        "code": "codigo",
-        "name": "nombre",
-        "collection": "coleccion",
-        "tone": "tono",
-        "procedencia": "procedencia",
-        "finish": "finish",
-        "thickness": "espesor",
-        "desc": "descripcion",
-        "img": "assets/uploads/cs/20260425-045555-skillimagen-1.png",
-        "heroImg": "",
-        "labelImg": "",
-        "caesarUrl": "",
-        "chars": [
-          "carac 1",
-          "carac 2"
-        ],
-        "sizeWidth": "11111mm",
-        "sizeHeight": "22222mm"
       }
     ]
   },
