@@ -742,5 +742,9 @@
     "whatsappBase": "https://wa.me/5491159311038",
     "contactPhone": "11-3174-9906",
     "contactWebsite": "MINERAFAME.COM"
+  },
+  "editorialQuote": {
+    "quoteHtml": "Cada superficie es una conversación entre la <em>tradición de la piedra natural</em> y la <em>tecnología del sinterizado</em>.",
+    "cite": "— Caesarstone Design Studio"
   }
 }

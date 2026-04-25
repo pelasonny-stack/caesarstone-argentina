@@ -309,10 +309,10 @@ function initHeroSwiper() {
     autoplay: {
       delay: 6500,
       disableOnInteraction: false,
-      pauseOnMouseEnter: false,    // antes true → mouse hover sobre hero pausaba indefinidamente
+      pauseOnMouseEnter: false,
       waitForTransition: false,
     },
-    speed: 1200,
+    speed: 1400,    // editorial slow crossfade
     effect: 'fade',
     fadeEffect: { crossFade: true },
     pagination: { el: '.hero-swiper .swiper-pagination', clickable: true },

@@ -14,10 +14,16 @@
   --c-line-soft: #efece7;
   --c-accent:   #9a7a4a;
 
-  --mf-terracotta: #8a5a38;
+  --mf-terracotta: #a0623d;   /* +saturación — calidez auténtica */
+  --mf-brass:      #b08a52;   /* gold cálido — accent CTA hover, hairlines */
   --mf-earth:      #2a1f17;
+  --mf-charcoal:   #1f1c18;   /* charcoal cálido (no azulado) para dark sections */
   --mf-ash:        #e8e5df;
   --mf-ash-deep:   #c9c5bd;
+  --mf-bone:       #f7f1e8;   /* paper más cálido, suaviza el #f5f2f0 frío */
+  --mf-tracking-tight:    -0.015em;
+  --mf-tracking-display:  -0.02em;
+  --mf-tracking-eyebrow:   0.18em;
 
   --space-1:  0.5rem;
   --space-2:  1rem;

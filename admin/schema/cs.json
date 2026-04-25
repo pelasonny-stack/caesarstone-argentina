@@ -4,7 +4,7 @@
   "groups": [
     { "id": "identidad",  "label": "Identidad de la marca",      "sections": ["header"] },
     { "id": "principal",  "label": "Lo primero que ven",         "sections": ["hero", "trust", "collection"] },
-    { "id": "secundario", "label": "Otras secciones",            "sections": ["imageParagraph", "applications", "stats", "about", "partner"] },
+    { "id": "secundario", "label": "Otras secciones",            "sections": ["imageParagraph", "applications", "stats", "about", "editorialQuote", "partner"] },
     { "id": "contacto",   "label": "Contacto y pie",             "sections": ["contact", "footer", "wafab"] },
     { "id": "avanzado",   "label": "Textos fijos (avanzado)",    "sections": ["modal"] }
   ],
@@ -240,6 +240,15 @@
         },
         { "path": "about.cta.label", "type": "text", "label": "Texto del botón final" },
         { "path": "about.cta.href",  "type": "href", "label": "Adónde lleva el botón" }
+      ]
+    },
+    {
+      "id": "editorialQuote",
+      "label": "Cita editorial",
+      "icon": "❝",
+      "fields": [
+        { "path": "editorialQuote.quoteHtml", "type": "text-html", "label": "Cita grande", "description": "Aparece entre 'Sobre Caesarstone' y 'Partner'. Podés usar <em> para palabras en cursiva." },
+        { "path": "editorialQuote.cite",      "type": "text",      "label": "Autor de la cita", "description": "Ej: '— Caesarstone Design Studio'" }
       ]
     },
     {
