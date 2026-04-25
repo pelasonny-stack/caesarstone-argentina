@@ -22,6 +22,23 @@
     onChangeCb?.();
   }
 
+  /* setFieldLabel — pone texto del label + tooltip opcional desde schema.description */
+  function setFieldLabel(rootEl, schema) {
+    const lbl = rootEl.querySelector('.field-label');
+    if (!lbl) return;
+    lbl.textContent = schema.label || '';
+    if (schema.description) {
+      const help = document.createElement('button');
+      help.type = 'button';
+      help.className = 'field-help';
+      help.setAttribute('aria-label', 'Ayuda');
+      help.title = schema.description;
+      help.textContent = '?';
+      lbl.appendChild(document.createTextNode(' '));
+      lbl.appendChild(help);
+    }
+  }
+
   function emptyItemFromSchema(itemSchema) {
     if (!itemSchema) return '';
     if (!Array.isArray(itemSchema) && typeof itemSchema === 'object') {
@@ -51,7 +68,7 @@
       <input type="text">
       <span class="field-meta"><span class="char-count"></span></span>
     `;
-    f.querySelector('.field-label').textContent = schema.label;
+    setFieldLabel(f, schema);
     const input = f.querySelector('input');
     input.value = value ?? '';
     if (schema.maxLength) input.maxLength = schema.maxLength;
@@ -82,7 +99,7 @@
       <textarea rows="3"></textarea>
       <span class="field-meta"><span class="char-count"></span></span>
     `;
-    f.querySelector('.field-label').textContent = schema.label;
+    setFieldLabel(f, schema);
     const ta = f.querySelector('textarea');
     ta.value = value ?? '';
     if (schema.maxLength) ta.maxLength = schema.maxLength;
@@ -143,7 +160,7 @@
       </div>
       <span class="field-warn" hidden>Tags filtrados — solo &lt;br&gt;, &lt;strong&gt;, &lt;em&gt;.</span>
     `;
-    f.querySelector('.field-label').textContent = schema.label;
+    setFieldLabel(f, schema);
     const ta = f.querySelector('textarea');
     const prev = f.querySelector('.preview');
     const warn = f.querySelector('.field-warn');
@@ -170,7 +187,7 @@
       <span class="field-label"></span>
       <input type="number">
     `;
-    f.querySelector('.field-label').textContent = schema.label;
+    setFieldLabel(f, schema);
     const input = f.querySelector('input');
     input.value = value ?? '';
     if (schema.min != null) input.min = schema.min;
@@ -183,6 +200,69 @@
     return f;
   }
 
+  /* Select dropdown */
+  function renderSelect(schema, value, fullPath) {
+    const f = document.createElement('label');
+    f.className = 'field field-select';
+    f.dataset.path = fullPath;
+    f.innerHTML = `<span class="field-label"></span><select></select>`;
+    setFieldLabel(f, schema);
+    const sel = f.querySelector('select');
+    const opts = Array.isArray(schema.options) ? schema.options : [];
+    opts.forEach(opt => {
+      const o = document.createElement('option');
+      o.value = opt;
+      o.textContent = opt;
+      if (opt === value) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', () => {
+      setAtPath(stateRef.currentContent, fullPath, sel.value);
+      markDirty(fullPath, f);
+    });
+    return f;
+  }
+
+  /* Toggle checkbox */
+  function renderToggle(schema, value, fullPath) {
+    const f = document.createElement('label');
+    f.className = 'field field-toggle';
+    f.dataset.path = fullPath;
+    f.innerHTML = `
+      <span class="field-toggle-row">
+        <input type="checkbox">
+        <span class="field-label"></span>
+      </span>
+    `;
+    setFieldLabel(f, schema);
+    const cb = f.querySelector('input');
+    cb.checked = !!value;
+    cb.addEventListener('change', () => {
+      setAtPath(stateRef.currentContent, fullPath, cb.checked);
+      markDirty(fullPath, f);
+    });
+    return f;
+  }
+
+  /* Email/Tel/URL — text con type específico + validación HTML5 nativa */
+  function renderTypedText(htmlType) {
+    return function (schema, value, fullPath) {
+      const f = document.createElement('label');
+      f.className = `field field-${htmlType}`;
+      f.dataset.path = fullPath;
+      f.innerHTML = `<span class="field-label"></span><input type="${htmlType}"><span class="field-error" hidden></span>`;
+      setFieldLabel(f, schema);
+      const input = f.querySelector('input');
+      input.value = value ?? '';
+      if (schema.placeholder) input.placeholder = schema.placeholder;
+      input.addEventListener('input', () => {
+        setAtPath(stateRef.currentContent, fullPath, input.value);
+        markDirty(fullPath, f);
+      });
+      return f;
+    };
+  }
+
   function renderHref(schema, value, fullPath) {
     const f = document.createElement('label');
     f.className = 'field field-href';
@@ -192,7 +272,7 @@
       <input type="text" placeholder="/ruta o https://..." />
       <span class="field-error" hidden></span>
     `;
-    f.querySelector('.field-label').textContent = schema.label;
+    setFieldLabel(f, schema);
     const input = f.querySelector('input');
     const err = f.querySelector('.field-error');
     input.value = value ?? '';
@@ -237,7 +317,7 @@
         </div>
       </div>
     `;
-    f.querySelector('.field-label').textContent = schema.label;
+    setFieldLabel(f, schema);
     const thumb = f.querySelector('.thumb img');
     const pathLabel = f.querySelector('.path-label');
     const fileInput = f.querySelector('input[type=file]');
@@ -255,11 +335,16 @@
     };
     renderThumb(value || '', value || '');
 
+    /* trackeo de blob URLs para revocar */
+    const blobs = new Set();
+    const trackBlob = (url) => { blobs.add(url); return url; };
+    const revokeAll = () => { blobs.forEach(u => URL.revokeObjectURL(u)); blobs.clear(); };
+
     changeBtn.addEventListener('click', () => fileInput.click());
     cancelBtn.addEventListener('click', () => {
       fileInput.value = '';
       newPrev.hidden = true;
-      if (newImg.src) URL.revokeObjectURL(newImg.src);
+      revokeAll();
     });
 
     fileInput.addEventListener('change', () => {
@@ -267,7 +352,8 @@
       if (!file) return;
       const err = window.adminUpload.validateImage(file);
       if (err) { U.toast('error', err); fileInput.value = ''; return; }
-      newImg.src = URL.createObjectURL(file);
+      revokeAll();
+      newImg.src = trackBlob(URL.createObjectURL(file));
       newInfo.textContent = `${file.name} · ${fmtSize(file.size)}`;
       newPrev.hidden = false;
     });
@@ -279,7 +365,7 @@
       // Marcar valor en content como placeholder pending — se resuelve a path real al guardar
       setAtPath(stateRef.currentContent, fullPath, `pending:${uploadId}`);
       stateRef.pendingUploads.push({ uploadId, file, path: fullPath });
-      renderThumb(URL.createObjectURL(file), `(pendiente) ${file.name}`);
+      renderThumb(trackBlob(URL.createObjectURL(file)), `(pendiente) ${file.name}`);
       newPrev.hidden = true;
       markDirty(fullPath, f);
     });
@@ -342,9 +428,9 @@
       <div class="array-item-head">
         <span class="array-item-summary"></span>
         <div class="array-item-actions">
-          <button type="button" class="btn-up" title="Subir">↑</button>
-          <button type="button" class="btn-down" title="Bajar">↓</button>
-          <button type="button" class="btn-delete" title="Borrar">🗑</button>
+          <button type="button" class="btn-up" title="Subir" aria-label="Subir item">↑</button>
+          <button type="button" class="btn-down" title="Bajar" aria-label="Bajar item">↓</button>
+          <button type="button" class="btn-delete" title="Borrar" aria-label="Borrar item">🗑</button>
         </div>
       </div>
       <div class="array-item-body"></div>
@@ -416,6 +502,11 @@
     'imageSrc':       renderImage,
     'href':           renderHref,
     'array':          renderArray,
+    'select':         renderSelect,
+    'toggle':         renderToggle,
+    'email':          renderTypedText('email'),
+    'tel':            renderTypedText('tel'),
+    'url':            renderTypedText('url'),
   };
 
   function renderField(fieldSchema, value, fullPath) {

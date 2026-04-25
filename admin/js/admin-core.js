@@ -79,7 +79,8 @@
       });
       if (!res.ok) {
         const j = await safeJson(res);
-        throw new Error(j?.error?.message || (res.status === 401 ? 'Credenciales inválidas' : `Error ${res.status}`));
+        const code = j?.error?.code;
+        throw new Error(code && FRIENDLY_ERRORS[code] ? FRIENDLY_ERRORS[code] : (res.status === 401 ? 'Usuario o contraseña incorrectos.' : `Error ${res.status}`));
       }
       const { token, expiresAt } = await res.json();
       state.token = token;
@@ -186,6 +187,12 @@
   }
 
   function renderUI() {
+    const scrollY = window.scrollY;
+    const expandedSections = new Set(
+      Array.from(document.querySelectorAll('.editor-section'))
+        .filter(s => !s.classList.contains('is-collapsed'))
+        .map(s => s.id)
+    );
     window.adminRender.init({
       state,
       onChange: () => {
@@ -194,6 +201,15 @@
       },
     });
     window.adminRender.renderEditor(state.schema, state.currentContent);
+    // restaurar collapsed state + scroll
+    document.querySelectorAll('.editor-section').forEach(s => {
+      if (!expandedSections.has(s.id)) {
+        s.classList.add('is-collapsed');
+        const t = s.querySelector('.collapse-toggle');
+        if (t) { t.textContent = '+'; t.setAttribute('aria-expanded', 'false'); }
+      }
+    });
+    window.scrollTo(0, scrollY);
   }
 
   function getDiff() {
@@ -215,7 +231,7 @@
   }
 
   const scheduleAutosave = debounce(() => {
-    sessionStorage.setItem(DRAFT_KEY, JSON.stringify({
+    safeSessionSet(DRAFT_KEY, JSON.stringify({
       sha: state.sha,
       currentContent: state.currentContent,
       dirtyPaths: [...state.dirtyPaths],
@@ -225,10 +241,57 @@
     setTimeout(() => { refs.lastEdit.textContent = 'hace segundos'; }, 60000);
   }, 1000);
 
+  /* mapeo de error codes a textos amigables */
+  const FRIENDLY_ERRORS = {
+    INVALID_CREDS: 'Usuario o contraseña incorrectos.',
+    TOKEN_EXPIRED: 'Tu sesión expiró. Volvé a entrar.',
+    TOKEN_MISSING: 'Sesión inválida. Recargá la página.',
+    INVALID_TOKEN: 'Sesión inválida. Volvé a entrar.',
+    STALE_SHA: 'Otro cambio se guardó antes. Recargá el contenido y volvé a intentar.',
+    IMAGE_TOO_LARGE: 'La imagen pesa más de 2 MB. Comprimila o usá una más chica.',
+    INVALID_MIME: 'Formato no soportado. Usá JPG, PNG, WebP o SVG.',
+    INVALID_BODY: 'Algo en el formulario no es válido. Revisá los campos.',
+    GH_API_ERROR: 'No pudimos guardar en el servidor. Probá de nuevo en un minuto.',
+    RATE_LIMITED: 'Muchos intentos seguidos. Esperá un minuto.',
+    MAINTENANCE: 'CMS en mantenimiento. Probá más tarde.',
+    NOT_FOUND: 'No encontramos eso.',
+    FORBIDDEN: 'No tenés permisos para esto.',
+    INTERNAL: 'Algo falló del lado del servidor. Probá de nuevo.',
+  };
+  function friendlyError(codeOrMsg) {
+    if (!codeOrMsg) return 'Error desconocido.';
+    return FRIENDLY_ERRORS[codeOrMsg] || codeOrMsg;
+  }
+
+  /* sessionStorage seguro: detecta quota excedida */
+  function safeSessionSet(key, value) {
+    try {
+      sessionStorage.setItem(key, value);
+      return true;
+    } catch (e) {
+      console.warn('sessionStorage quota excedida', e);
+      toast('warn', 'Cambios sin guardar son demasiados para auto-guardar. Guardá ya para no perderlos.');
+      return false;
+    }
+  }
+
+  /* Token check: detecta si vence pronto */
+  function tokenAboutToExpire(marginMs = 30000) {
+    if (!state.expiresAt) return false;
+    return state.expiresAt - Date.now() < marginMs;
+  }
+
   /* ── Save flow (2 fases) ── */
   async function save() {
     const diff = getDiff();
     if (diff.length === 0 && state.pendingUploads.length === 0) return;
+
+    // Pre-check: token a punto de vencer → forzar relogin antes de subir nada
+    if (tokenAboutToExpire(60000)) {
+      toast('warn', 'Tu sesión está por vencer. Entrá de nuevo y volvé a guardar.');
+      handleSessionExpired();
+      return;
+    }
 
     // Modal diff
     const bodyHtml = diff.map(d => `
@@ -278,13 +341,13 @@
         }),
       });
       if (r.status === 409) {
-        toast('error', 'Conflicto: el contenido cambió en el servidor. Recargá.');
+        toast('error', friendlyError('STALE_SHA'));
         return;
       }
       if (r.status === 401) { handleSessionExpired(); return; }
       if (!r.ok) {
         const j = await safeJson(r);
-        throw new Error(j?.error?.message || `Save falló (${r.status})`);
+        throw new Error(friendlyError(j?.error?.code) || `Falló al guardar (HTTP ${r.status})`);
       }
       const { newSha } = await r.json();
       state.originalContent = deepClone(state.currentContent);
@@ -293,7 +356,8 @@
       sessionStorage.removeItem(DRAFT_KEY);
       document.querySelectorAll('.is-dirty').forEach(el => el.classList.remove('is-dirty'));
       updateDirtyUI();
-      toast('success', 'Guardado. El sitio se actualizará en ~1 min.');
+      const liveUrl = SITE === 'cs' ? 'index.html' : 'minera-fame.html';
+      toast('success', `Guardado. Tu sitio se actualiza en 1-10 min. Abrir → ${liveUrl}`);
     } catch (err) {
       console.error('save error', err);
       toast('error', err.message || 'Error al guardar');

@@ -1,88 +1,101 @@
 {
   "version": 1,
   "site": "cs",
+  "groups": [
+    { "id": "identidad",  "label": "Identidad de la marca",      "sections": ["header"] },
+    { "id": "principal",  "label": "Lo primero que ven",         "sections": ["hero", "trust", "collection"] },
+    { "id": "secundario", "label": "Otras secciones",            "sections": ["imageParagraph", "applications", "stats", "about", "partner"] },
+    { "id": "contacto",   "label": "Contacto y pie",             "sections": ["contact", "footer", "wafab"] },
+    { "id": "avanzado",   "label": "Textos fijos (avanzado)",    "sections": ["modal"] }
+  ],
   "sections": [
     {
       "id": "header",
-      "label": "Header",
+      "label": "Header (arriba de todo)",
+      "icon": "🏷️",
       "fields": [
-        { "path": "documentTitle", "type": "text", "label": "Título de la página (SEO)", "maxLength": 120 },
-        { "path": "header.regionBadge", "type": "text", "label": "Badge de región", "maxLength": 30 },
-        { "path": "header.partnerLink.prefix", "type": "text", "label": "Prefijo partner", "maxLength": 40 },
-        { "path": "header.partnerLink.name",   "type": "text", "label": "Nombre partner", "maxLength": 60 },
-        { "path": "header.partnerLink.href",   "type": "href", "label": "Link partner" },
-        { "path": "header.ctaWhatsapp.label",  "type": "text", "label": "CTA WhatsApp — texto", "maxLength": 30 },
-        { "path": "header.ctaWhatsapp.href",   "type": "href", "label": "CTA WhatsApp — link" },
-        { "path": "header.ctaPrimary.label",   "type": "text", "label": "CTA primario — texto", "maxLength": 30 },
-        { "path": "header.ctaPrimary.href",    "type": "href", "label": "CTA primario — link" },
+        { "path": "documentTitle", "type": "text", "label": "Título que aparece en la pestaña del navegador", "description": "Es el texto chiquito arriba del navegador y en Google. Ej: \"Caesarstone Argentina — Sinterizado premium\"", "maxLength": 120 },
+        { "path": "header.regionBadge", "type": "text", "label": "Cartelito de país arriba del logo", "description": "Texto chico arriba del logo. Ej: \"Argentina\"", "maxLength": 30 },
+        { "path": "header.partnerLink.prefix", "type": "text", "label": "Texto antes del nombre del aliado", "description": "Ej: \"Distribuidor Oficial:\"", "maxLength": 40 },
+        { "path": "header.partnerLink.name",   "type": "text", "label": "Nombre del aliado (clickeable)", "description": "Ej: \"Minera Fame S.A.\"", "maxLength": 60 },
+        { "path": "header.partnerLink.href",   "type": "href", "label": "Adónde lleva el click del aliado", "description": "Empezá con / o https://" },
+        { "path": "header.ctaWhatsapp.label",  "type": "text", "label": "Texto del botón WhatsApp del header", "description": "El que está arriba a la derecha. Ej: \"WhatsApp\"", "maxLength": 30 },
+        { "path": "header.ctaWhatsapp.href",   "type": "href", "label": "A qué número WhatsApp lleva", "description": "Empezá con https://wa.me/549..." },
+        { "path": "header.ctaPrimary.label",   "type": "text", "label": "Texto del botón principal del header", "description": "Ej: \"Solicitar muestras\"", "maxLength": 30 },
+        { "path": "header.ctaPrimary.href",    "type": "href", "label": "Adónde va el botón principal" },
         {
           "path": "header.nav",
           "type": "array",
-          "label": "Nav links",
+          "label": "Links del menú superior",
+          "description": "Cada uno aparece arriba a la izquierda. Mínimo 1, máximo 12.",
           "summary": "label",
           "itemLabel": "Link",
           "minItems": 1,
           "maxItems": 12,
           "itemSchema": [
-            { "path": "id",    "type": "text", "label": "ID" },
-            { "path": "label", "type": "text", "label": "Label", "maxLength": 30 },
-            { "path": "href",  "type": "href", "label": "Href" }
+            { "path": "id",    "type": "text", "label": "Identificador interno (no se ve)", "description": "Solo letras y guiones." },
+            { "path": "label", "type": "text", "label": "Texto visible del link", "maxLength": 30 },
+            { "path": "href",  "type": "href", "label": "Adónde lleva", "description": "Empezá con # para ir a una sección, / para otra página o https://" }
           ]
         }
       ]
     },
     {
       "id": "hero",
-      "label": "Hero (slider principal)",
+      "label": "Hero — slider grande de la home",
+      "icon": "🎬",
       "fields": [
-        { "path": "hero.scrollHint", "type": "text", "label": "Scroll hint", "maxLength": 20 },
+        { "path": "hero.scrollHint", "type": "text", "label": "Texto chico que dice 'scroll' abajo del hero", "description": "Ej: \"Explorar\" o \"Scroll\"", "maxLength": 20 },
         {
           "path": "hero.slides",
           "type": "array",
           "label": "Slides del Hero",
+          "description": "Cada slide se muestra rotativo. Podés tener entre 1 y 8.",
           "summary": "eyebrow",
           "itemLabel": "Slide",
           "minItems": 1,
           "maxItems": 8,
           "itemSchema": [
-            { "path": "id",         "type": "text",      "label": "ID slug" },
-            { "path": "kind",       "type": "text",      "label": "Tipo (video|image)" },
-            { "path": "videoUrl",   "type": "text",      "label": "Video URL (si kind=video)" },
-            { "path": "videoTitle", "type": "text",      "label": "Video title" },
-            { "path": "posterImg",  "type": "imageSrc",  "label": "Imagen mobile / fallback" },
-            { "path": "posterAlt",  "type": "text",      "label": "Alt imagen" },
-            { "path": "eyebrow",    "type": "text",      "label": "Eyebrow", "maxLength": 60 },
-            { "path": "titleHtml",  "type": "text-html", "label": "Título (br/strong)" },
-            { "path": "ctaLabel",   "type": "text",      "label": "CTA texto", "maxLength": 30 },
-            { "path": "ctaHref",    "type": "href",      "label": "CTA link" }
+            { "path": "id",         "type": "text",      "label": "Identificador interno (no se ve)", "description": "Solo letras y guiones. Ej: \"diseno-durar\"" },
+            { "path": "kind",       "type": "select",    "label": "¿Es video o imagen?", "options": ["video", "image"], "description": "Video usa Vimeo. Image usa solo foto." },
+            { "path": "videoUrl",   "type": "text",      "label": "URL del video (solo si pusiste \"video\" arriba)", "description": "URL completa del iframe Vimeo embed" },
+            { "path": "videoTitle", "type": "text",      "label": "Título descriptivo del video (interno)" },
+            { "path": "posterImg",  "type": "imageSrc",  "label": "Imagen de fondo (mobile + fallback)", "description": "Recomendado: 1920×1080 o más grande" },
+            { "path": "posterAlt",  "type": "text",      "label": "Descripción de la imagen para accesibilidad", "description": "Lectores de pantalla leen esto" },
+            { "path": "eyebrow",    "type": "text",      "label": "Texto chico ARRIBA del título grande", "description": "Ej: \"Nueva colección\"", "maxLength": 60 },
+            { "path": "titleHtml",  "type": "text-html", "label": "Título grande del slide", "description": "Podés usar negrita y saltos de línea (vista previa al lado)" },
+            { "path": "ctaLabel",   "type": "text",      "label": "Texto del botón del slide", "description": "Ej: \"Ver los 11 modelos\"", "maxLength": 30 },
+            { "path": "ctaHref",    "type": "href",      "label": "Adónde va el botón del slide" }
           ]
         }
       ]
     },
     {
       "id": "trust",
-      "label": "Trust strip",
+      "label": "Trust strip — barra de confianza",
+      "icon": "✓",
       "fields": [
         {
           "path": "trustStrip",
           "type": "array",
-          "label": "Items",
+          "label": "Items de la barra",
           "summary": "label",
           "itemLabel": "Item",
           "itemSchema": [
-            { "path": "icon",  "type": "text", "label": "Icon" },
-            { "path": "label", "type": "text", "label": "Label", "maxLength": 50 }
+            { "path": "icon",  "type": "text", "label": "Ícono", "description": "Ej: check, star, shield. Default: check" },
+            { "path": "label", "type": "text", "label": "Texto del item", "description": "Ej: \"Distribuidor oficial\"", "maxLength": 50 }
           ]
         }
       ]
     },
     {
       "id": "collection",
-      "label": "Catálogo (11 piedras)",
+      "label": "Catálogo de las 11 piedras",
+      "icon": "🪨",
       "fields": [
-        { "path": "collection.eyebrow", "type": "text", "label": "Eyebrow" },
-        { "path": "collection.title",   "type": "text", "label": "Título" },
-        { "path": "collection.desc",    "type": "text-multiline", "label": "Descripción", "maxLength": 400 },
+        { "path": "collection.eyebrow", "type": "text", "label": "Texto chico arriba del título" },
+        { "path": "collection.title",   "type": "text", "label": "Título grande de la sección catálogo" },
+        { "path": "collection.desc",    "type": "text-multiline", "label": "Texto explicativo", "description": "Aparece debajo del título.", "maxLength": 400 },
         {
           "path": "collection.filters",
           "type": "array",
@@ -91,46 +104,50 @@
           "itemLabel": "Filtro",
           "minItems": 1,
           "itemSchema": [
-            { "path": "id",    "type": "text", "label": "ID" },
-            { "path": "label", "type": "text", "label": "Label" }
+            { "path": "id",    "type": "text", "label": "Identificador interno" },
+            { "path": "label", "type": "text", "label": "Texto visible del filtro" }
           ]
         },
         {
           "path": "collection.defaultChars",
           "type": "array",
-          "label": "Características default (todas las piedras)",
-          "itemLabel": "Char",
+          "label": "Características por defecto (todas las piedras)",
+          "description": "Estas características aparecen en cualquier piedra que no tenga las suyas propias.",
+          "itemLabel": "Característica",
           "itemSchema": { "type": "text", "label": "Texto" }
         },
         {
           "path": "collection.products",
           "type": "array",
-          "label": "Piedras",
+          "label": "Piedras del catálogo",
+          "description": "Cada piedra aparece como card en la home y al hacer click se abre el modal con todos los detalles.",
           "summary": "name",
           "itemLabel": "Piedra",
           "minItems": 1,
           "warnOnDelete": "¿Borrar esta piedra del catálogo?",
           "itemSchema": [
-            { "path": "id",          "type": "text",           "label": "ID slug (único)" },
-            { "path": "code",        "type": "text",           "label": "Código" },
-            { "path": "name",        "type": "text",           "label": "Nombre" },
-            { "path": "collection",  "type": "text",           "label": "Colección" },
-            { "path": "tone",        "type": "text",           "label": "Tono (blanco|gris|color)" },
-            { "path": "procedencia", "type": "text-multiline", "label": "Procedencia (\\n permitido)" },
-            { "path": "finish",      "type": "text-multiline", "label": "Finish (\\n permitido)" },
-            { "path": "sizeWidth",   "type": "text",           "label": "Plancha — ancho visible en modal (ej: 1600mm)" },
-            { "path": "sizeHeight",  "type": "text",           "label": "Plancha — alto visible en modal (ej: 3200mm)" },
-            { "path": "thickness",   "type": "text",           "label": "Espesor (ej: 12mm) — visible en modal" },
-            { "path": "desc",        "type": "text-multiline", "label": "Descripción", "maxLength": 400 },
-            { "path": "img",         "type": "imageSrc",       "label": "Thumb del catálogo" },
-            { "path": "heroImg",     "type": "imageSrc",       "label": "Imagen HD modal" },
-            { "path": "labelImg",    "type": "imageSrc",       "label": "Imagen PDF/label" },
-            { "path": "caesarUrl",   "type": "href",           "label": "Link caesarstone.com" },
+            { "path": "id",          "type": "text",           "label": "Identificador interno (no se ve)", "description": "Solo letras y guiones. Único entre las piedras. Ej: \"calacatta-nuvo\"" },
+            { "path": "code",        "type": "text",           "label": "Código (visible en la card)", "description": "Ej: \"5141\"" },
+            { "path": "name",        "type": "text",           "label": "Nombre de la piedra", "description": "Ej: \"Calacatta Nuvo\"" },
+            { "path": "collection",  "type": "text",           "label": "Línea / colección a la que pertenece" },
+            { "path": "tone",        "type": "select",         "label": "Tono general", "options": ["blanco", "gris", "color"], "description": "Sirve para los filtros del catálogo." },
+            { "path": "isNew",       "type": "toggle",         "label": "¿Es novedad? (muestra badge \"Nuevo\")" },
+            { "path": "procedencia", "type": "text-multiline", "label": "De dónde viene", "description": "Podés usar enter para varias líneas. Ej: Importado / (Caesarstone)" },
+            { "path": "finish",      "type": "text-multiline", "label": "Acabado", "description": "Podés usar enter para varias líneas. Ej: Honed Finish (mate)" },
+            { "path": "sizeWidth",   "type": "text",           "label": "Plancha — ancho visible en modal", "description": "Ej: 1600mm" },
+            { "path": "sizeHeight",  "type": "text",           "label": "Plancha — alto visible en modal", "description": "Ej: 3200mm" },
+            { "path": "thickness",   "type": "text",           "label": "Espesor visible en modal", "description": "Ej: 12mm" },
+            { "path": "desc",        "type": "text-multiline", "label": "Descripción de la piedra", "description": "Aparece en el modal cuando hacen click", "maxLength": 400 },
+            { "path": "img",         "type": "imageSrc",       "label": "Foto de la card en la home", "description": "Mostrar la piedra entera. Recomendado: 800×800 o más" },
+            { "path": "heroImg",     "type": "imageSrc",       "label": "Foto grande del modal (HD)", "description": "Aparece al hacer click en la card. Recomendado: 1600×1200" },
+            { "path": "labelImg",    "type": "imageSrc",       "label": "Imagen para PDF/label imprimible", "description": "Opcional" },
+            { "path": "caesarUrl",   "type": "href",           "label": "Link a la ficha oficial en caesarstone.com" },
             {
               "path": "chars",
               "type": "array",
-              "label": "Características (override). Vacío = usa defaults globales",
-              "itemLabel": "Char",
+              "label": "Características específicas (override)",
+              "description": "Si dejás vacío, esta piedra muestra las características globales de arriba.",
+              "itemLabel": "Característica",
               "itemSchema": { "type": "text", "label": "Texto" }
             }
           ]
@@ -140,49 +157,52 @@
     {
       "id": "imageParagraph",
       "label": "Bloques tech / formats",
+      "icon": "🖼️",
       "fields": [
         {
           "path": "imageParagraph",
           "type": "array",
-          "label": "Bloques",
+          "label": "Bloques de imagen + texto",
           "summary": "title",
           "itemLabel": "Bloque",
           "itemSchema": [
-            { "path": "id",          "type": "text",           "label": "ID" },
-            { "path": "img.src",     "type": "imageSrc",       "label": "Imagen" },
-            { "path": "img.alt",     "type": "text",           "label": "Alt imagen" },
-            { "path": "eyebrow",     "type": "text",           "label": "Eyebrow" },
-            { "path": "title",       "type": "text",           "label": "Título" },
-            { "path": "desc",        "type": "text-multiline", "label": "Descripción" }
+            { "path": "id",          "type": "text",           "label": "Identificador interno" },
+            { "path": "img.src",     "type": "imageSrc",       "label": "Imagen del bloque" },
+            { "path": "img.alt",     "type": "text",           "label": "Descripción de la imagen para accesibilidad" },
+            { "path": "eyebrow",     "type": "text",           "label": "Texto chiquito arriba del título" },
+            { "path": "title",       "type": "text",           "label": "Título grande del bloque" },
+            { "path": "desc",        "type": "text-multiline", "label": "Texto descriptivo" }
           ]
         }
       ]
     },
     {
       "id": "applications",
-      "label": "Aplicaciones (accordion)",
+      "label": "Aplicaciones (acordeón)",
+      "icon": "🏢",
       "fields": [
-        { "path": "applications.eyebrow", "type": "text", "label": "Eyebrow" },
-        { "path": "applications.title",   "type": "text", "label": "Título" },
+        { "path": "applications.eyebrow", "type": "text", "label": "Texto chiquito arriba del título" },
+        { "path": "applications.title",   "type": "text", "label": "Título de la sección" },
         {
           "path": "applications.panels",
           "type": "array",
-          "label": "Paneles",
+          "label": "Paneles del acordeón",
           "summary": "label",
           "itemLabel": "Panel",
           "itemSchema": [
-            { "path": "id",       "type": "text",     "label": "ID" },
-            { "path": "img.src",  "type": "imageSrc", "label": "Imagen" },
-            { "path": "img.alt",  "type": "text",     "label": "Alt" },
-            { "path": "label",    "type": "text",     "label": "Label" },
-            { "path": "number",   "type": "text",     "label": "Número (01..NN)" }
+            { "path": "id",       "type": "text",     "label": "Identificador interno" },
+            { "path": "img.src",  "type": "imageSrc", "label": "Imagen del panel" },
+            { "path": "img.alt",  "type": "text",     "label": "Descripción de la imagen" },
+            { "path": "label",    "type": "text",     "label": "Nombre del panel (visible)" },
+            { "path": "number",   "type": "text",     "label": "Número del panel", "description": "Formato 01, 02, ... con cero adelante si menor a 10" }
           ]
         }
       ]
     },
     {
       "id": "stats",
-      "label": "Stats bar",
+      "label": "Stats bar (números grandes)",
+      "icon": "📊",
       "fields": [
         {
           "path": "stats",
@@ -191,115 +211,118 @@
           "summary": "label",
           "itemLabel": "Stat",
           "itemSchema": [
-            { "path": "id",            "type": "text",   "label": "ID" },
-            { "path": "count",         "type": "number", "label": "Count (animado)" },
-            { "path": "suffix",        "type": "text",   "label": "Suffix (ej: +)" },
-            { "path": "valueOverride", "type": "text",   "label": "Override texto (si no hay count)" },
-            { "path": "label",         "type": "text",   "label": "Label" }
+            { "path": "id",            "type": "text",   "label": "Identificador interno" },
+            { "path": "count",         "type": "number", "label": "Número grande (animado)", "description": "Solo números. Dejá vacío si querés texto custom abajo." },
+            { "path": "suffix",        "type": "text",   "label": "Símbolo después del número", "description": "Ej: + ó % ó m²" },
+            { "path": "valueOverride", "type": "text",   "label": "Texto custom (anula el número)", "description": "Ej: \"AR\" — si lo llenás, se muestra esto y no el número." },
+            { "path": "label",         "type": "text",   "label": "Texto descriptivo abajo del número" }
           ]
         }
       ]
     },
     {
       "id": "about",
-      "label": "About (Caesarstone)",
+      "label": "Sobre Caesarstone",
+      "icon": "ℹ️",
       "fields": [
-        { "path": "about.eyebrow", "type": "text", "label": "Eyebrow" },
-        { "path": "about.title",   "type": "text", "label": "Título" },
-        { "path": "about.img.src", "type": "imageSrc", "label": "Imagen" },
-        { "path": "about.img.alt", "type": "text", "label": "Alt imagen" },
-        { "path": "about.badge.value", "type": "text", "label": "Badge — valor (ej: 1987)" },
-        { "path": "about.badge.label", "type": "text", "label": "Badge — label" },
+        { "path": "about.eyebrow", "type": "text", "label": "Texto chiquito arriba del título" },
+        { "path": "about.title",   "type": "text", "label": "Título de la sección About" },
+        { "path": "about.img.src", "type": "imageSrc", "label": "Imagen de la sección" },
+        { "path": "about.img.alt", "type": "text", "label": "Descripción de la imagen" },
+        { "path": "about.badge.value", "type": "text", "label": "Número grande del badge", "description": "Ej: \"1987\"" },
+        { "path": "about.badge.label", "type": "text", "label": "Texto chiquito del badge", "description": "Ej: \"Fundada en Israel\"" },
         {
           "path": "about.paragraphs",
           "type": "array",
-          "label": "Párrafos",
+          "label": "Párrafos de la sección About",
           "itemLabel": "Párrafo",
-          "itemSchema": { "type": "text-multiline", "label": "Texto", "maxLength": 600 }
+          "itemSchema": { "type": "text-multiline", "label": "Texto del párrafo", "maxLength": 600 }
         },
-        { "path": "about.cta.label", "type": "text", "label": "CTA — texto" },
-        { "path": "about.cta.href",  "type": "href", "label": "CTA — link" }
+        { "path": "about.cta.label", "type": "text", "label": "Texto del botón final" },
+        { "path": "about.cta.href",  "type": "href", "label": "Adónde lleva el botón" }
       ]
     },
     {
       "id": "partner",
-      "label": "Partner (Minera Fame en CS)",
+      "label": "Sección Partner — Minera Fame",
+      "icon": "🤝",
       "fields": [
         { "path": "partner.logo.src", "type": "imageSrc", "label": "Logo Minera Fame" },
-        { "path": "partner.logo.alt", "type": "text",     "label": "Alt logo" },
-        { "path": "partner.headingHtml", "type": "text-html", "label": "Heading (br/strong)" },
-        { "path": "partner.desc", "type": "text-multiline", "label": "Descripción" },
+        { "path": "partner.logo.alt", "type": "text",     "label": "Descripción del logo" },
+        { "path": "partner.headingHtml", "type": "text-html", "label": "Título de la sección Partner", "description": "Negrita y saltos de línea OK" },
+        { "path": "partner.desc", "type": "text-multiline", "label": "Texto descriptivo" },
         {
           "path": "partner.stats",
           "type": "array",
-          "label": "Stats partner",
+          "label": "Stats del partner",
           "summary": "label",
           "itemSchema": [
-            { "path": "value", "type": "text", "label": "Valor" },
-            { "path": "label", "type": "text", "label": "Label" }
+            { "path": "value", "type": "text", "label": "Valor (ej: 50+)" },
+            { "path": "label", "type": "text", "label": "Texto del stat" }
           ]
         },
-        { "path": "partner.cta.label", "type": "text", "label": "CTA — texto" },
-        { "path": "partner.cta.href",  "type": "href", "label": "CTA — link" },
+        { "path": "partner.cta.label", "type": "text", "label": "Texto del botón" },
+        { "path": "partner.cta.href",  "type": "href", "label": "Adónde lleva el botón" },
         { "path": "partner.mosaic.main.img.src", "type": "imageSrc", "label": "Mosaic — imagen principal" },
-        { "path": "partner.mosaic.main.caption", "type": "text", "label": "Mosaic — caption principal" }
+        { "path": "partner.mosaic.main.caption", "type": "text", "label": "Mosaic — texto bajo la imagen principal" }
       ]
     },
     {
       "id": "contact",
       "label": "Contacto",
+      "icon": "📞",
       "fields": [
-        { "path": "contact.eyebrow", "type": "text", "label": "Eyebrow" },
-        { "path": "contact.title",   "type": "text", "label": "Título" },
-        { "path": "contact.infoTitle", "type": "text", "label": "Empresa" },
+        { "path": "contact.eyebrow", "type": "text", "label": "Texto chiquito arriba del título" },
+        { "path": "contact.title",   "type": "text", "label": "Título de la sección Contacto" },
+        { "path": "contact.infoTitle", "type": "text", "label": "Nombre de la empresa" },
         {
           "path": "contact.locations",
           "type": "array",
-          "label": "Ubicaciones",
+          "label": "Ubicaciones (sucursales)",
           "summary": "label",
           "itemLabel": "Ubicación",
           "itemSchema": [
-            { "path": "id",        "type": "text", "label": "ID" },
-            { "path": "label",     "type": "text", "label": "Label" },
+            { "path": "id",        "type": "text", "label": "Identificador interno" },
+            { "path": "label",     "type": "text", "label": "Nombre de la ubicación", "description": "Ej: \"Casa Central — Caseros\"" },
             { "path": "address",   "type": "text-multiline", "label": "Dirección" },
-            { "path": "phone",     "type": "text", "label": "Teléfono visible" },
-            { "path": "phoneHref", "type": "text", "label": "Teléfono href (tel:...)" }
+            { "path": "phone",     "type": "tel",  "label": "Teléfono que se MUESTRA" },
+            { "path": "phoneHref", "type": "text", "label": "Teléfono CLICKEABLE (formato técnico)", "description": "Empezá con tel:+5411..." }
           ]
         },
         {
           "path": "contact.channels",
           "type": "array",
-          "label": "Canales (WhatsApp / Email / etc.)",
+          "label": "Canales de contacto (WhatsApp, Email, etc.)",
           "summary": "label",
           "itemSchema": [
-            { "path": "id",    "type": "text", "label": "ID" },
-            { "path": "icon",  "type": "text", "label": "Icon" },
-            { "path": "label", "type": "text", "label": "Label" },
+            { "path": "id",    "type": "text", "label": "Identificador interno" },
+            { "path": "icon",  "type": "text", "label": "Ícono" },
+            { "path": "label", "type": "text", "label": "Tipo de canal" },
             { "path": "value", "type": "text", "label": "Valor visible" },
-            { "path": "href",  "type": "href", "label": "Href" }
+            { "path": "href",  "type": "href", "label": "Link clickeable" }
           ]
         },
-        { "path": "contact.hours.label", "type": "text", "label": "Horario — label" },
-        { "path": "contact.hours.value", "type": "text", "label": "Horario — valor" },
-        { "path": "contact.form.action", "type": "href", "label": "Form action (Formspree URL)" },
-        { "path": "contact.form.fallbackEmail", "type": "text", "label": "Email fallback" },
+        { "path": "contact.hours.label", "type": "text", "label": "Horarios — etiqueta" },
+        { "path": "contact.hours.value", "type": "text", "label": "Horarios — valor" },
+        { "path": "contact.form.action", "type": "url", "label": "URL técnica del formulario (Formspree)", "description": "No la cambies salvo que sepas qué estás haciendo" },
+        { "path": "contact.form.fallbackEmail", "type": "email", "label": "Email al que llega si Formspree falla" },
         {
           "path": "contact.form.subjects",
           "type": "array",
-          "label": "Form — opciones de motivo",
-          "itemSchema": { "type": "text", "label": "Texto" }
+          "label": "Opciones del dropdown 'Motivo'",
+          "itemSchema": { "type": "text", "label": "Motivo" }
         },
         {
           "path": "contact.maps",
           "type": "array",
-          "label": "Mapas",
+          "label": "Mapas de Google",
           "summary": "label",
           "itemSchema": [
-            { "path": "id",                "type": "text", "label": "ID" },
-            { "path": "label",             "type": "text", "label": "Label" },
-            { "path": "embedQuery",        "type": "text", "label": "Embed query (Google Maps)" },
-            { "path": "directionsHref",    "type": "href", "label": "Directions href" },
-            { "path": "directionsLabel",   "type": "text", "label": "Directions label" }
+            { "path": "id",                "type": "text", "label": "Identificador interno" },
+            { "path": "label",             "type": "text", "label": "Etiqueta del mapa" },
+            { "path": "embedQuery",        "type": "text", "label": "Texto para buscar en Google Maps" },
+            { "path": "directionsHref",    "type": "url",  "label": "Link 'Cómo llegar'" },
+            { "path": "directionsLabel",   "type": "text", "label": "Texto del botón 'Cómo llegar'" }
           ]
         }
       ]
@@ -307,48 +330,51 @@
     {
       "id": "footer",
       "label": "Footer",
+      "icon": "📄",
       "fields": [
-        { "path": "footer.logo.src",     "type": "imageSrc",  "label": "Logo footer" },
-        { "path": "footer.logo.alt",     "type": "text",      "label": "Alt logo" },
-        { "path": "footer.taglineHtml",  "type": "text-html", "label": "Tagline (br permitido)" },
+        { "path": "footer.logo.src",     "type": "imageSrc",  "label": "Logo del footer" },
+        { "path": "footer.logo.alt",     "type": "text",      "label": "Descripción del logo" },
+        { "path": "footer.taglineHtml",  "type": "text-html", "label": "Frase debajo del logo", "description": "Saltos de línea con br permitidos" },
         { "path": "footer.copy",         "type": "text",      "label": "Copyright" },
         {
           "path": "footer.columns",
           "type": "array",
-          "label": "Columnas",
+          "label": "Columnas del footer",
           "summary": "title",
           "itemLabel": "Columna",
           "itemSchema": [
-            { "path": "id",    "type": "text", "label": "ID" },
-            { "path": "title", "type": "text", "label": "Título" }
+            { "path": "id",    "type": "text", "label": "Identificador interno" },
+            { "path": "title", "type": "text", "label": "Título de la columna" }
           ]
         }
       ]
     },
     {
       "id": "wafab",
-      "label": "WhatsApp FAB",
+      "label": "Botón WhatsApp flotante",
+      "icon": "💬",
       "fields": [
-        { "path": "waFab.href",      "type": "href", "label": "Href" },
-        { "path": "waFab.ariaLabel", "type": "text", "label": "Aria label" }
+        { "path": "waFab.href",      "type": "url",  "label": "Link del botón WhatsApp flotante" },
+        { "path": "waFab.ariaLabel", "type": "text", "label": "Descripción para lectores de pantalla" }
       ]
     },
     {
       "id": "modal",
       "label": "Modal de producto (textos fijos)",
+      "icon": "🪟",
       "fields": [
-        { "path": "modal.collectionLabel",  "type": "text", "label": "Label colección" },
-        { "path": "modal.specs.procedencia","type": "text", "label": "Spec — procedencia" },
-        { "path": "modal.specs.espesor",    "type": "text", "label": "Spec — espesor" },
-        { "path": "modal.specs.acabado",    "type": "text", "label": "Spec — acabado" },
-        { "path": "modal.specs.tamanoLabelHtml","type": "text-html", "label": "Spec — tamaño (br)" },
-        { "path": "modal.specs.caracteristicas","type": "text", "label": "Spec — características" },
-        { "path": "modal.ctaSample",     "type": "text", "label": "CTA — solicitar muestra" },
-        { "path": "modal.qrLabelHtml",   "type": "text-html", "label": "QR — label (br)" },
-        { "path": "modal.catalogueUrl",  "type": "href", "label": "Catálogo URL" },
-        { "path": "modal.whatsappBase",  "type": "href", "label": "WhatsApp base URL" },
-        { "path": "modal.contactPhone",  "type": "text", "label": "Teléfono modal" },
-        { "path": "modal.contactWebsite","type": "text", "label": "Website modal" }
+        { "path": "modal.collectionLabel",  "type": "text", "label": "Etiqueta 'Colección' arriba del nombre" },
+        { "path": "modal.specs.procedencia","type": "text", "label": "Etiqueta 'Procedencia'" },
+        { "path": "modal.specs.espesor",    "type": "text", "label": "Etiqueta 'Espesor'" },
+        { "path": "modal.specs.acabado",    "type": "text", "label": "Etiqueta 'Acabado'" },
+        { "path": "modal.specs.tamanoLabelHtml","type": "text-html", "label": "Texto encima del diagrama de tamaño" },
+        { "path": "modal.specs.caracteristicas","type": "text", "label": "Etiqueta 'Características'" },
+        { "path": "modal.ctaSample",     "type": "text", "label": "Texto del botón 'Solicitar muestra'" },
+        { "path": "modal.qrLabelHtml",   "type": "text-html", "label": "Texto al lado del QR" },
+        { "path": "modal.catalogueUrl",  "type": "url",  "label": "URL del catálogo Caesarstone" },
+        { "path": "modal.whatsappBase",  "type": "url",  "label": "URL base de WhatsApp" },
+        { "path": "modal.contactPhone",  "type": "text", "label": "Teléfono que se muestra en el modal" },
+        { "path": "modal.contactWebsite","type": "text", "label": "Website que se muestra en el modal" }
       ]
     }
   ]

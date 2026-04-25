@@ -11,7 +11,7 @@
   --c-accent:       #1A1917;
   --c-accent-ink:   #FFFFFF;
   --c-accent-hover: #333333;
-  --c-dirty:        #B07A2C;
+  --c-dirty:        #8B5E1E;
   --c-success:      #3F6B43;
   --c-error:        #A33B3B;
   --c-warn:         #8A6B1E;
@@ -45,6 +45,15 @@ a { color: var(--c-accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 [hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* ── views (login / editor / mobile-gate) ── */
 .view { min-height: 100vh; }
@@ -284,6 +293,22 @@ body[data-view="mobile-gate"] #view-editor { display: none; }
   color: var(--c-text-muted);
   margin-bottom: var(--sp-2);
 }
+.field-help {
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 16px; height: 16px;
+  margin-left: var(--sp-1);
+  border-radius: 50%;
+  border: 1px solid var(--c-border-strong);
+  background: var(--c-surface-alt);
+  color: var(--c-text-muted);
+  font-size: 10px; font-weight: 700;
+  cursor: help;
+  text-transform: none; letter-spacing: 0;
+  vertical-align: middle;
+  transition: background 120ms, color 120ms;
+}
+.field-help:hover { background: var(--c-text); color: var(--c-accent-ink); }
 .field-meta {
   display: flex; gap: var(--sp-3);
   font-size: 11px;
@@ -294,6 +319,8 @@ body[data-view="mobile-gate"] #view-editor { display: none; }
 .char-count.is-over-limit { color: var(--c-error); }
 .field input[type="text"],
 .field input[type="number"],
+.field input[type="email"],
+.field input[type="tel"],
 .field input[type="url"],
 .field textarea,
 .field select {
@@ -310,6 +337,18 @@ body[data-view="mobile-gate"] #view-editor { display: none; }
   resize: vertical;
   min-height: 60px;
 }
+.field-toggle .field-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.field-toggle input[type="checkbox"] {
+  width: 18px; height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+.field-toggle .field-label { margin-bottom: 0; }
+
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
