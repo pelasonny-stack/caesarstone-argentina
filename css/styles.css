@@ -1145,13 +1145,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .image-paragraph .ip-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+  grid-template-columns: 5fr 7fr;       /* asymmetric editorial */
+  gap: clamp(48px, 8vw, 120px);
+  align-items: start;                    /* align top, content offset abajo */
+}
+.image-paragraph .ip-content {
+  padding-top: clamp(32px, 8vh, 96px);   /* offset vertical deliberado */
 }
 
 .image-paragraph .ip-row.reverse {
   direction: rtl;
+  grid-template-columns: 7fr 5fr;
 }
 
 .image-paragraph .ip-row.reverse > * {

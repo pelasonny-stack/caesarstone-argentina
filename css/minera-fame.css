@@ -335,16 +335,45 @@ body { background: var(--mf-ash); }
   border-color: rgba(255,255,255,0.6);
 }
 
-.mf-pagination { bottom: 28px !important; }
+/* Pagination bullets ocultados — usamos counter + progress bar editorial */
+.mf-pagination { display: none !important; }
 
-.mf-pagination .swiper-pagination-bullet {
-  background: rgba(255,255,255,0.5);
-  opacity: 1;
+.mf-hero-counter {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.85);
+  pointer-events: none;
 }
-
-.mf-pagination .swiper-pagination-bullet-active {
-  background: #fff;
-  transform: scale(1.3);
+.mf-hero-counter-current { color: #fff; }
+.mf-hero-counter-total { color: rgba(255,255,255,0.55); }
+.mf-hero-counter-bar {
+  width: 60px; height: 1px;
+  background: rgba(255,255,255,0.25);
+  position: relative;
+  overflow: hidden;
+}
+.mf-hero-counter-fill {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--mf-brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: mf-progress-fill 9s linear infinite;
+}
+@keyframes mf-progress-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
 /* ─── STATS BAR ──────────────────────────────────────────────────────────── */
@@ -1853,4 +1882,188 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 /* --- Pointer: coarse (touch) — off hover zooms -------------------------- */
 @media (hover: none) and (pointer: coarse) {
   .mf-material-card:hover img { transform: none; }
+}
+
+/* ─── MATERIALES PAGE (standalone) ──────────────────────────────────────── */
+.materiales-page { background: var(--mf-bone); }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+
+.materiales-hero {
+  padding: clamp(80px, 12vh, 140px) clamp(1.5rem, 5vw, 5rem) clamp(40px, 6vh, 70px);
+  background: var(--mf-bone);
+  border-bottom: 1px solid var(--c-line);
+}
+.materiales-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.materiales-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-mid);
+  margin-bottom: 1.5rem;
+}
+.materiales-breadcrumb a {
+  color: var(--c-mid);
+  text-decoration: none;
+  transition: color var(--dur-quick);
+}
+.materiales-breadcrumb a:hover { color: var(--mf-terracotta); }
+.materiales-breadcrumb svg { color: var(--c-mid); flex-shrink: 0; }
+.materiales-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: var(--mf-tracking-display);
+  color: var(--c-ink);
+  margin: 0 0 1rem;
+}
+.materiales-hero-title em {
+  font-style: italic;
+  color: var(--mf-terracotta);
+}
+.materiales-hero-desc {
+  max-width: 56ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--c-graphite);
+}
+
+.materiales-filters {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--mf-bone);
+  border-bottom: 1px solid var(--c-line);
+  padding: 1rem clamp(1.5rem, 5vw, 5rem);
+}
+.materiales-filters-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+.materiales-filter {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--c-mid);
+  cursor: pointer;
+  transition: color var(--dur-quick), border-color var(--dur-quick);
+}
+.materiales-filter:hover { color: var(--c-ink); }
+.materiales-filter.is-active {
+  color: var(--c-ink);
+  border-bottom-color: var(--mf-brass);
+}
+
+.materiales-section {
+  padding: clamp(48px, 8vh, 96px) clamp(1.5rem, 5vw, 5rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.materiales-grid-full {
+  /* override del grid bento normal — todos misma altura */
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-rows: auto !important;
+  gap: 16px !important;
+}
+.materiales-grid-full .mf-material-card {
+  aspect-ratio: 4/3;
+}
+.materiales-grid-full .mf-material-card.featured {
+  grid-column: span 2 !important;
+  grid-row: auto !important;
+  min-height: 0 !important;
+}
+@media (max-width: 900px) {
+  .materiales-grid-full {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .materiales-grid-full .mf-material-card.featured {
+    grid-column: span 2 !important;
+  }
+}
+@media (max-width: 540px) {
+  .materiales-grid-full {
+    grid-template-columns: 1fr !important;
+  }
+  .materiales-grid-full .mf-material-card.featured {
+    grid-column: span 1 !important;
+  }
+}
+
+.materiales-sticky-cta {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(31,28,24,0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(176,138,82,0.3);
+  padding: 14px clamp(1.5rem, 5vw, 5rem);
+  transform: translateY(100%);
+  animation: cta-slide-up 600ms 1200ms forwards var(--ease-out);
+}
+@keyframes cta-slide-up {
+  to { transform: translateY(0); }
+}
+.materiales-sticky-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.materiales-sticky-text {
+  color: var(--mf-bone);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.materiales-sticky-cta .mf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  .materiales-sticky-text { display: none; }
+  .materiales-sticky-cta { padding: 10px 1rem; }
+  .materiales-sticky-inner { justify-content: center; }
+}
+
+.materiales-page .mf-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem clamp(1.5rem, 5vw, 5rem);
+  border-top: 1px solid var(--c-line);
+  background: var(--mf-bone);
+}
+.materiales-page .mf-footer-back {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-mid);
+  text-decoration: none;
+  transition: color var(--dur-quick);
+}
+.materiales-page .mf-footer-back:hover { color: var(--mf-terracotta); }
+
+.materiales-page footer.mf-footer {
+  padding-bottom: 100px;  /* room para sticky CTA */
 }

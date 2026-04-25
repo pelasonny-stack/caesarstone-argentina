@@ -24,15 +24,33 @@ function initHeroSwiper() {
   const el = document.querySelector('.mf-hero-swiper');
   if (!el || typeof Swiper === 'undefined') return;
 
+  const counterEl = document.querySelector('.mf-hero-counter-current');
+  const totalEl   = document.querySelector('.mf-hero-counter-total');
+  const fillEl    = document.querySelector('.mf-hero-counter-fill');
+
   new Swiper(el, {
     effect: 'fade',
     fadeEffect: { crossFade: true },
     loop: true,
-    speed: 1000,
+    speed: 1400,
     autoplay: {
       delay: 9000,
       disableOnInteraction: false,
-      pauseOnMouseEnter: true,
+      pauseOnMouseEnter: false,
+    },
+    on: {
+      init: function () {
+        if (totalEl) totalEl.textContent = String(this.slides.length).padStart(2, '0');
+      },
+      slideChange: function () {
+        if (counterEl) counterEl.textContent = String(this.realIndex + 1).padStart(2, '0');
+        if (fillEl) {
+          fillEl.style.animation = 'none';
+          // force reflow para restart
+          void fillEl.offsetWidth;
+          fillEl.style.animation = '';
+        }
+      },
     },
     pagination: {
       el: '.mf-pagination',
