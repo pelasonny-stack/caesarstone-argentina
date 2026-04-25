@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "site": "cs",
+  "sections": [
+    {
+      "id": "header",
+      "label": "Header",
+      "fields": [
+        { "path": "documentTitle", "type": "text", "label": "Título de la página (SEO)", "maxLength": 120 },
+        { "path": "header.regionBadge", "type": "text", "label": "Badge de región", "maxLength": 30 },
+        { "path": "header.partnerLink.prefix", "type": "text", "label": "Prefijo partner", "maxLength": 40 },
+        { "path": "header.partnerLink.name",   "type": "text", "label": "Nombre partner", "maxLength": 60 },
+        { "path": "header.partnerLink.href",   "type": "href", "label": "Link partner" },
+        { "path": "header.ctaWhatsapp.label",  "type": "text", "label": "CTA WhatsApp — texto", "maxLength": 30 },
+        { "path": "header.ctaWhatsapp.href",   "type": "href", "label": "CTA WhatsApp — link" },
+        { "path": "header.ctaPrimary.label",   "type": "text", "label": "CTA primario — texto", "maxLength": 30 },
+        { "path": "header.ctaPrimary.href",    "type": "href", "label": "CTA primario — link" },
+        {
+          "path": "header.nav",
+          "type": "array",
+          "label": "Nav links",
+          "summary": "label",
+          "itemLabel": "Link",
+          "minItems": 1,
+          "maxItems": 12,
+          "itemSchema": [
+            { "path": "id",    "type": "text", "label": "ID" },
+            { "path": "label", "type": "text", "label": "Label", "maxLength": 30 },
+            { "path": "href",  "type": "href", "label": "Href" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hero",
+      "label": "Hero (slider principal)",
+      "fields": [
+        { "path": "hero.scrollHint", "type": "text", "label": "Scroll hint", "maxLength": 20 },
+        {
+          "path": "hero.slides",
+          "type": "array",
+          "label": "Slides del Hero",
+          "summary": "eyebrow",
+          "itemLabel": "Slide",
+          "minItems": 1,
+          "maxItems": 8,
+          "itemSchema": [
+            { "path": "id",         "type": "text",      "label": "ID slug" },
+            { "path": "kind",       "type": "text",      "label": "Tipo (video|image)" },
+            { "path": "videoUrl",   "type": "text",      "label": "Video URL (si kind=video)" },
+            { "path": "videoTitle", "type": "text",      "label": "Video title" },
+            { "path": "posterImg",  "type": "imageSrc",  "label": "Imagen mobile / fallback" },
+            { "path": "posterAlt",  "type": "text",      "label": "Alt imagen" },
+            { "path": "eyebrow",    "type": "text",      "label": "Eyebrow", "maxLength": 60 },
+            { "path": "titleHtml",  "type": "text-html", "label": "Título (br/strong)" },
+            { "path": "ctaLabel",   "type": "text",      "label": "CTA texto", "maxLength": 30 },
+            { "path": "ctaHref",    "type": "href",      "label": "CTA link" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "label": "Trust strip",
+      "fields": [
+        {
+          "path": "trustStrip",
+          "type": "array",
+          "label": "Items",
+          "summary": "label",
+          "itemLabel": "Item",
+          "itemSchema": [
+            { "path": "icon",  "type": "text", "label": "Icon" },
+            { "path": "label", "type": "text", "label": "Label", "maxLength": 50 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "label": "Catálogo (11 piedras)",
+      "fields": [
+        { "path": "collection.eyebrow", "type": "text", "label": "Eyebrow" },
+        { "path": "collection.title",   "type": "text", "label": "Título" },
+        { "path": "collection.desc",    "type": "text-multiline", "label": "Descripción", "maxLength": 400 },
+        {
+          "path": "collection.filters",
+          "type": "array",
+          "label": "Filtros (tabs)",
+          "summary": "label",
+          "itemLabel": "Filtro",
+          "minItems": 1,
+          "itemSchema": [
+            { "path": "id",    "type": "text", "label": "ID" },
+            { "path": "label", "type": "text", "label": "Label" }
+          ]
+        },
+        {
+          "path": "collection.defaultChars",
+          "type": "array",
+          "label": "Características default (todas las piedras)",
+          "itemLabel": "Char",
+          "itemSchema": { "type": "text", "label": "Texto" }
+        },
+        {
+          "path": "collection.products",
+          "type": "array",
+          "label": "Piedras",
+          "summary": "name",
+          "itemLabel": "Piedra",
+          "minItems": 1,
+          "warnOnDelete": "¿Borrar esta piedra del catálogo?",
+          "itemSchema": [
+            { "path": "id",          "type": "text",           "label": "ID slug (único)" },
+            { "path": "code",        "type": "text",           "label": "Código" },
+            { "path": "name",        "type": "text",           "label": "Nombre" },
+            { "path": "collection",  "type": "text",           "label": "Colección" },
+            { "path": "tone",        "type": "text",           "label": "Tono (blanco|gris|color)" },
+            { "path": "procedencia", "type": "text-multiline", "label": "Procedencia (\\n permitido)" },
+            { "path": "finish",      "type": "text-multiline", "label": "Finish (\\n permitido)" },
+            { "path": "size",        "type": "text",           "label": "Tamaño" },
+            { "path": "thickness",   "type": "text",           "label": "Espesor" },
+            { "path": "desc",        "type": "text-multiline", "label": "Descripción", "maxLength": 400 },
+            { "path": "img",         "type": "imageSrc",       "label": "Thumb del catálogo" },
+            { "path": "heroImg",     "type": "imageSrc",       "label": "Imagen HD modal" },
+            { "path": "labelImg",    "type": "imageSrc",       "label": "Imagen PDF/label" },
+            { "path": "caesarUrl",   "type": "href",           "label": "Link caesarstone.com" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imageParagraph",
+      "label": "Bloques tech / formats",
+      "fields": [
+        {
+          "path": "imageParagraph",
+          "type": "array",
+          "label": "Bloques",
+          "summary": "title",
+          "itemLabel": "Bloque",
+          "itemSchema": [
+            { "path": "id",          "type": "text",           "label": "ID" },
+            { "path": "img.src",     "type": "imageSrc",       "label": "Imagen" },
+            { "path": "img.alt",     "type": "text",           "label": "Alt imagen" },
+            { "path": "eyebrow",     "type": "text",           "label": "Eyebrow" },
+            { "path": "title",       "type": "text",           "label": "Título" },
+            { "path": "desc",        "type": "text-multiline", "label": "Descripción" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "label": "Aplicaciones (accordion)",
+      "fields": [
+        { "path": "applications.eyebrow", "type": "text", "label": "Eyebrow" },
+        { "path": "applications.title",   "type": "text", "label": "Título" },
+        {
+          "path": "applications.panels",
+          "type": "array",
+          "label": "Paneles",
+          "summary": "label",
+          "itemLabel": "Panel",
+          "itemSchema": [
+            { "path": "id",       "type": "text",     "label": "ID" },
+            { "path": "img.src",  "type": "imageSrc", "label": "Imagen" },
+            { "path": "img.alt",  "type": "text",     "label": "Alt" },
+            { "path": "label",    "type": "text",     "label": "Label" },
+            { "path": "number",   "type": "text",     "label": "Número (01..NN)" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stats",
+      "label": "Stats bar",
+      "fields": [
+        {
+          "path": "stats",
+          "type": "array",
+          "label": "Stats",
+          "summary": "label",
+          "itemLabel": "Stat",
+          "itemSchema": [
+            { "path": "id",            "type": "text",   "label": "ID" },
+            { "path": "count",         "type": "number", "label": "Count (animado)" },
+            { "path": "suffix",        "type": "text",   "label": "Suffix (ej: +)" },
+            { "path": "valueOverride", "type": "text",   "label": "Override texto (si no hay count)" },
+            { "path": "label",         "type": "text",   "label": "Label" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "label": "About (Caesarstone)",
+      "fields": [
+        { "path": "about.eyebrow", "type": "text", "label": "Eyebrow" },
+        { "path": "about.title",   "type": "text", "label": "Título" },
+        { "path": "about.img.src", "type": "imageSrc", "label": "Imagen" },
+        { "path": "about.img.alt", "type": "text", "label": "Alt imagen" },
+        { "path": "about.badge.value", "type": "text", "label": "Badge — valor (ej: 1987)" },
+        { "path": "about.badge.label", "type": "text", "label": "Badge — label" },
+        {
+          "path": "about.paragraphs",
+          "type": "array",
+          "label": "Párrafos",
+          "itemLabel": "Párrafo",
+          "itemSchema": { "type": "text-multiline", "label": "Texto", "maxLength": 600 }
+        },
+        { "path": "about.cta.label", "type": "text", "label": "CTA — texto" },
+        { "path": "about.cta.href",  "type": "href", "label": "CTA — link" }
+      ]
+    },
+    {
+      "id": "partner",
+      "label": "Partner (Minera Fame en CS)",
+      "fields": [
+        { "path": "partner.logo.src", "type": "imageSrc", "label": "Logo Minera Fame" },
+        { "path": "partner.logo.alt", "type": "text",     "label": "Alt logo" },
+        { "path": "partner.headingHtml", "type": "text-html", "label": "Heading (br/strong)" },
+        { "path": "partner.desc", "type": "text-multiline", "label": "Descripción" },
+        {
+          "path": "partner.stats",
+          "type": "array",
+          "label": "Stats partner",
+          "summary": "label",
+          "itemSchema": [
+            { "path": "value", "type": "text", "label": "Valor" },
+            { "path": "label", "type": "text", "label": "Label" }
+          ]
+        },
+        { "path": "partner.cta.label", "type": "text", "label": "CTA — texto" },
+        { "path": "partner.cta.href",  "type": "href", "label": "CTA — link" },
+        { "path": "partner.mosaic.main.img.src", "type": "imageSrc", "label": "Mosaic — imagen principal" },
+        { "path": "partner.mosaic.main.caption", "type": "text", "label": "Mosaic — caption principal" }
+      ]
+    },
+    {
+      "id": "contact",
+      "label": "Contacto",
+      "fields": [
+        { "path": "contact.eyebrow", "type": "text", "label": "Eyebrow" },
+        { "path": "contact.title",   "type": "text", "label": "Título" },
+        { "path": "contact.infoTitle", "type": "text", "label": "Empresa" },
+        {
+          "path": "contact.locations",
+          "type": "array",
+          "label": "Ubicaciones",
+          "summary": "label",
+          "itemLabel": "Ubicación",
+          "itemSchema": [
+            { "path": "id",        "type": "text", "label": "ID" },
+            { "path": "label",     "type": "text", "label": "Label" },
+            { "path": "address",   "type": "text-multiline", "label": "Dirección" },
+            { "path": "phone",     "type": "text", "label": "Teléfono visible" },
+            { "path": "phoneHref", "type": "text", "label": "Teléfono href (tel:...)" }
+          ]
+        },
+        {
+          "path": "contact.channels",
+          "type": "array",
+          "label": "Canales (WhatsApp / Email / etc.)",
+          "summary": "label",
+          "itemSchema": [
+            { "path": "id",    "type": "text", "label": "ID" },
+            { "path": "icon",  "type": "text", "label": "Icon" },
+            { "path": "label", "type": "text", "label": "Label" },
+            { "path": "value", "type": "text", "label": "Valor visible" },
+            { "path": "href",  "type": "href", "label": "Href" }
+          ]
+        },
+        { "path": "contact.hours.label", "type": "text", "label": "Horario — label" },
+        { "path": "contact.hours.value", "type": "text", "label": "Horario — valor" },
+        { "path": "contact.form.action", "type": "href", "label": "Form action (Formspree URL)" },
+        { "path": "contact.form.fallbackEmail", "type": "text", "label": "Email fallback" },
+        {
+          "path": "contact.form.subjects",
+          "type": "array",
+          "label": "Form — opciones de motivo",
+          "itemSchema": { "type": "text", "label": "Texto" }
+        },
+        {
+          "path": "contact.maps",
+          "type": "array",
+          "label": "Mapas",
+          "summary": "label",
+          "itemSchema": [
+            { "path": "id",                "type": "text", "label": "ID" },
+            { "path": "label",             "type": "text", "label": "Label" },
+            { "path": "embedQuery",        "type": "text", "label": "Embed query (Google Maps)" },
+            { "path": "directionsHref",    "type": "href", "label": "Directions href" },
+            { "path": "directionsLabel",   "type": "text", "label": "Directions label" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "label": "Footer",
+      "fields": [
+        { "path": "footer.logo.src",     "type": "imageSrc",  "label": "Logo footer" },
+        { "path": "footer.logo.alt",     "type": "text",      "label": "Alt logo" },
+        { "path": "footer.taglineHtml",  "type": "text-html", "label": "Tagline (br permitido)" },
+        { "path": "footer.copy",         "type": "text",      "label": "Copyright" },
+        {
+          "path": "footer.columns",
+          "type": "array",
+          "label": "Columnas",
+          "summary": "title",
+          "itemLabel": "Columna",
+          "itemSchema": [
+            { "path": "id",    "type": "text", "label": "ID" },
+            { "path": "title", "type": "text", "label": "Título" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wafab",
+      "label": "WhatsApp FAB",
+      "fields": [
+        { "path": "waFab.href",      "type": "href", "label": "Href" },
+        { "path": "waFab.ariaLabel", "type": "text", "label": "Aria label" }
+      ]
+    },
+    {
+      "id": "modal",
+      "label": "Modal de producto (textos fijos)",
+      "fields": [
+        { "path": "modal.collectionLabel",  "type": "text", "label": "Label colección" },
+        { "path": "modal.specs.procedencia","type": "text", "label": "Spec — procedencia" },
+        { "path": "modal.specs.espesor",    "type": "text", "label": "Spec — espesor" },
+        { "path": "modal.specs.acabado",    "type": "text", "label": "Spec — acabado" },
+        { "path": "modal.specs.tamanoLabelHtml","type": "text-html", "label": "Spec — tamaño (br)" },
+        { "path": "modal.specs.caracteristicas","type": "text", "label": "Spec — características" },
+        { "path": "modal.ctaSample",     "type": "text", "label": "CTA — solicitar muestra" },
+        { "path": "modal.qrLabelHtml",   "type": "text-html", "label": "QR — label (br)" },
+        { "path": "modal.catalogueUrl",  "type": "href", "label": "Catálogo URL" },
+        { "path": "modal.whatsappBase",  "type": "href", "label": "WhatsApp base URL" },
+        { "path": "modal.contactPhone",  "type": "text", "label": "Teléfono modal" },
+        { "path": "modal.contactWebsite","type": "text", "label": "Website modal" }
+      ]
+    }
+  ]
+}
