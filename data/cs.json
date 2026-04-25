@@ -305,6 +305,22 @@
           "Para interior / exterior (resiste rayos UV)"
         ],
         "tone": "blanco"
+      },
+      {
+        "id": "id",
+        "code": "codigo",
+        "name": "nombre",
+        "collection": "coleccion",
+        "tone": "tono",
+        "procedencia": "procedencia",
+        "finish": "finish",
+        "size": "tamano",
+        "thickness": "espesor",
+        "desc": "descripcion",
+        "img": "",
+        "heroImg": "",
+        "labelImg": "",
+        "caesarUrl": ""
       }
     ]
   },
