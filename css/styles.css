@@ -1139,7 +1139,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── IMAGE-PARAGRAPH (feature sections) ───────────────────────────────────── */
 .image-paragraph {
-  padding: 72px 0;
+  padding: clamp(72px, 12vh, 120px) 0;
 }
 
 .image-paragraph--alt {
@@ -1234,7 +1234,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── IMAGE-ACCORDION (applications) ───────────────────────────────────────── */
 .image-accordion {
-  padding: 72px 0 80px;
+  padding: clamp(72px, 12vh, 120px) 0;
   background: var(--c-bg);
   border-top: 1px solid var(--c-border-soft);
 }
@@ -1324,7 +1324,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── COMPANY / ABOUT ───────────────────────────────────────────────────────── */
 .about-section {
-  padding: 80px 0;
+  padding: clamp(72px, 12vh, 120px) 0;
   background: var(--c-bg);
   border-top: 1px solid var(--c-border-soft);
 }
@@ -1697,7 +1697,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── CONTACT ───────────────────────────────────────────────────────────────── */
 .contact-section {
-  padding: 80px 0;
+  padding: clamp(72px, 12vh, 120px) 0;
   background: var(--c-bg);
   border-top: 1px solid var(--c-border-soft);
 }
