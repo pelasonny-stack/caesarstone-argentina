@@ -141,7 +141,8 @@
         "labelImg": "assets/products/opal-taj-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/584-opal-taj/",
         "isNew": true,
-        "tone": "blanco"
+        "tone": "blanco",
+        "chars": []
       },
       {
         "id": "fossillia",
@@ -157,7 +158,8 @@
         "heroImg": "assets/products/hero/fossillia.jpg",
         "labelImg": "assets/products/fossillia-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/545-fossillia/",
-        "tone": "blanco"
+        "tone": "blanco",
+        "chars": []
       },
       {
         "id": "striata",
@@ -173,7 +175,8 @@
         "heroImg": "assets/products/hero/striata.jpg",
         "labelImg": "assets/products/striata-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/513-striata/",
-        "tone": "gris"
+        "tone": "gris",
+        "chars": []
       },
       {
         "id": "thalassa",
@@ -189,7 +192,8 @@
         "heroImg": "assets/products/hero/thalassa.webp",
         "labelImg": "assets/products/thalassa-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/546-thalassa/",
-        "tone": "color"
+        "tone": "color",
+        "chars": []
       },
       {
         "id": "mosstone",
@@ -205,7 +209,8 @@
         "heroImg": "assets/products/hero/mosstone.jpg",
         "labelImg": "assets/products/mosstone-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/542-mosstone/",
-        "tone": "color"
+        "tone": "color",
+        "chars": []
       },
       {
         "id": "carrara-ice",
@@ -221,7 +226,8 @@
         "heroImg": "assets/products/hero/carrara-ice.webp",
         "labelImg": "assets/products/carrara-ice-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/914-carrara-ice/",
-        "tone": "blanco"
+        "tone": "blanco",
+        "chars": []
       },
       {
         "id": "isobellia",
@@ -237,7 +243,8 @@
         "heroImg": "assets/products/hero/isobellia.jpg",
         "labelImg": "assets/products/isobellia-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/508-isobellia/",
-        "tone": "blanco"
+        "tone": "blanco",
+        "chars": []
       },
       {
         "id": "lithic-coin",
@@ -252,7 +259,8 @@
         "img": "assets/products/lithic-coin.jpg",
         "labelImg": "assets/products/lithic-coin-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/lithic-coin/",
-        "tone": "gris"
+        "tone": "gris",
+        "chars": []
       },
       {
         "id": "lithic-latte",
@@ -267,7 +275,8 @@
         "img": "assets/products/lithic-latte.jpg",
         "labelImg": "assets/products/lithic-latte-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/lithic-latte/",
-        "tone": "gris"
+        "tone": "gris",
+        "chars": []
       },
       {
         "id": "beige-ciment",
@@ -283,7 +292,8 @@
         "heroImg": "assets/products/hero/beige-ciment.jpg",
         "labelImg": "assets/products/beige-ciment-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/412-beige-ciment/",
-        "tone": "gris"
+        "tone": "gris",
+        "chars": []
       },
       {
         "id": "calcutta-borghini",
@@ -314,13 +324,17 @@
         "tone": "tono",
         "procedencia": "procedencia",
         "finish": "finish",
-        "size": "tamano",
+        "size": "tamano 1254 1254",
         "thickness": "espesor",
         "desc": "descripcion",
         "img": "assets/uploads/cs/20260425-045555-skillimagen-1.png",
         "heroImg": "",
         "labelImg": "",
-        "caesarUrl": ""
+        "caesarUrl": "",
+        "chars": [
+          "carac 1",
+          "carac 2"
+        ]
       }
     ]
   },
