@@ -217,10 +217,10 @@
           <div class="hold-wrapper container">
             <div class="content-layer">
               <div class="content-layer-text">
-                <span class="hero-eyebrow-label">Colección Sinterizado</span>
-                <div class="title-text">Diseñado<br>para durar</div>
-                <a href="#coleccion" class="btn-framed">
-                  Ver los 11 modelos
+                <span class="hero-eyebrow-label" data-edit="hero.slides[0].eyebrow">Colección Sinterizado</span>
+                <div class="title-text" data-edit="hero.slides[0].titleHtml" data-edit-html>Diseñado<br>para durar</div>
+                <a class="btn-framed" data-edit-bind-href="hero.slides[0].ctaHref">
+                  <span data-edit="hero.slides[0].ctaLabel">Ver los 11 modelos</span>
                   <svg width="14" height="14"><use href="#arrow-right"/></svg>
                 </a>
               </div>
@@ -245,10 +245,10 @@
           <div class="hold-wrapper container">
             <div class="content-layer">
               <div class="content-layer-text">
-                <span class="hero-eyebrow-label">Stock inmediato en Argentina</span>
-                <div class="title-text">11 modelos<br>en catálogo</div>
-                <a href="#coleccion" class="btn-framed">
-                  Ver la colección
+                <span class="hero-eyebrow-label" data-edit="hero.slides[1].eyebrow">Stock inmediato en Argentina</span>
+                <div class="title-text" data-edit="hero.slides[1].titleHtml" data-edit-html>11 modelos<br>en catálogo</div>
+                <a class="btn-framed" data-edit-bind-href="hero.slides[1].ctaHref">
+                  <span data-edit="hero.slides[1].ctaLabel">Ver la colección</span>
                   <svg width="14" height="14"><use href="#arrow-right"/></svg>
                 </a>
               </div>
@@ -266,10 +266,10 @@
           <div class="hold-wrapper container">
             <div class="content-layer">
               <div class="content-layer-text">
-                <span class="hero-eyebrow-label">Sinterizado técnico premium</span>
-                <div class="title-text">La belleza<br>de la piedra</div>
-                <a href="#acerca" class="btn-framed">
-                  Ver la tecnología
+                <span class="hero-eyebrow-label" data-edit="hero.slides[2].eyebrow">Sinterizado técnico premium</span>
+                <div class="title-text" data-edit="hero.slides[2].titleHtml" data-edit-html>La belleza<br>de la piedra</div>
+                <a class="btn-framed" data-edit-bind-href="hero.slides[2].ctaHref">
+                  <span data-edit="hero.slides[2].ctaLabel">Ver la tecnología</span>
                   <svg width="14" height="14"><use href="#arrow-right"/></svg>
                 </a>
               </div>
@@ -338,28 +338,28 @@
   <div class="container">
     <div class="ip-row">
       <div class="ip-visual">
-        <img src="assets/hero/hero-main.jpg" alt="Resistencia al uso diario" loading="lazy">
+        <img loading="lazy" src="assets/hero/hero-main.jpg" alt="Resistencia al uso diario" data-edit="imageParagraph[0].img.src" data-edit-bind-alt="imageParagraph[0].img.alt">
       </div>
       <div class="ip-content" data-reveal>
-        <div class="section-eyebrow">Tecnología</div>
-        <h2 class="ip-title">Resistencia sin compromiso</h2>
-        <p class="ip-text">El sinterizado técnico Caesarstone combina la belleza visual de las piedras naturales con una durabilidad superior. Resistente a arañazos, manchas, calor extremo y bacterias.</p>
+        <div class="section-eyebrow" data-edit="imageParagraph[0].eyebrow">Tecnología</div>
+        <h2 class="ip-title" data-edit="imageParagraph[0].title">Resistencia sin compromiso</h2>
+        <p class="ip-text" data-edit="imageParagraph[0].desc">El sinterizado técnico Caesarstone combina la belleza visual de las piedras naturales con una durabilidad superior. Resistente a arañazos, manchas, calor extremo y bacterias.</p>
         <div class="ip-specs">
           <div>
-            <div class="ip-spec-label">Dureza Mohs</div>
-            <div class="ip-spec-value">7 – 8</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[0].specs[0].label">Dureza Mohs</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[0].specs[0].valueHtml" data-edit-html>7 – 8</div>
           </div>
           <div>
-            <div class="ip-spec-label">Absorción de agua</div>
-            <div class="ip-spec-value">&lt; 0,1%</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[0].specs[1].label">Absorción de agua</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[0].specs[1].valueHtml" data-edit-html>&lt; 0,1%</div>
           </div>
           <div>
-            <div class="ip-spec-label">Resistencia química</div>
-            <div class="ip-spec-value">Clase A</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[0].specs[2].label">Resistencia química</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[0].specs[2].valueHtml" data-edit-html>Clase A</div>
           </div>
           <div>
-            <div class="ip-spec-label">Temperatura</div>
-            <div class="ip-spec-value">Hasta 300 °C</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[0].specs[3].label">Temperatura</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[0].specs[3].valueHtml" data-edit-html>Hasta 300 °C</div>
           </div>
         </div>
       </div>
@@ -371,28 +371,28 @@
   <div class="container">
     <div class="ip-row reverse">
       <div class="ip-visual">
-        <img src="assets/hero/ambient-2.jpg" alt="Formato gran escala" loading="lazy">
+        <img loading="lazy" src="assets/hero/ambient-2.jpg" alt="Formato gran escala" data-edit="imageParagraph[1].img.src" data-edit-bind-alt="imageParagraph[1].img.alt">
       </div>
       <div class="ip-content" data-reveal>
-        <div class="section-eyebrow">Formatos</div>
-        <h2 class="ip-title">Grandes formatos, diseños continuos</h2>
-        <p class="ip-text">Losas de 3200 × 1600 mm permiten diseños sin juntas visibles. El efecto visual de un material que fluye de manera continua en cocinas, baños y revestimientos.</p>
+        <div class="section-eyebrow" data-edit="imageParagraph[1].eyebrow">Formatos</div>
+        <h2 class="ip-title" data-edit="imageParagraph[1].title">Grandes formatos, diseños continuos</h2>
+        <p class="ip-text" data-edit="imageParagraph[1].desc">Losas de 3200 × 1600 mm permiten diseños sin juntas visibles. El efecto visual de un material que fluye de manera continua en cocinas, baños y revestimientos.</p>
         <div class="ip-specs">
           <div>
-            <div class="ip-spec-label">Formato</div>
-            <div class="ip-spec-value">3200 × 1600 mm</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[1].specs[0].label">Formato</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[1].specs[0].valueHtml" data-edit-html>3200 × 1600 mm</div>
           </div>
           <div>
-            <div class="ip-spec-label">Espesor</div>
-            <div class="ip-spec-value">12 mm</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[1].specs[1].label">Espesor</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[1].specs[1].valueHtml" data-edit-html>12 mm</div>
           </div>
           <div>
-            <div class="ip-spec-label">Terminaciones</div>
-            <div class="ip-spec-value">Pulida / Natural</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[1].specs[2].label">Terminaciones</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[1].specs[2].valueHtml" data-edit-html>Pulida / Natural</div>
           </div>
           <div>
-            <div class="ip-spec-label">Certificación</div>
-            <div class="ip-spec-value">ISO 13006</div>
+            <div class="ip-spec-label" data-edit="imageParagraph[1].specs[3].label">Certificación</div>
+            <div class="ip-spec-value" data-edit="imageParagraph[1].specs[3].valueHtml" data-edit-html>ISO 13006</div>
           </div>
         </div>
       </div>
@@ -404,38 +404,38 @@
 <section class="image-accordion">
   <div class="container">
     <div class="section-header" data-reveal>
-      <div class="section-eyebrow">Aplicaciones</div>
-      <h2 class="section-title">Superficies para cada espacio</h2>
+      <div class="section-eyebrow" data-edit="applications.eyebrow">Aplicaciones</div>
+      <h2 class="section-title" data-edit="applications.title">Superficies para cada espacio</h2>
     </div>
 
     <div class="accordion-track" id="accordion-track">
       <div class="accordion-panel active">
-        <img src="assets/hero/render-kitchen.jpg" alt="Cocinas" loading="lazy">
+        <img loading="lazy" src="assets/hero/render-kitchen.jpg" alt="Cocinas" data-edit="applications.panels[0].img.src" data-edit-bind-alt="applications.panels[0].img.alt">
         <div class="accordion-panel-overlay">
-          <div class="accordion-panel-label">Cocinas</div>
+          <div class="accordion-panel-label" data-edit="applications.panels[0].label">Cocinas</div>
         </div>
-        <div class="accordion-panel-number">01</div>
+        <div class="accordion-panel-number" data-edit="applications.panels[0].number">01</div>
       </div>
       <div class="accordion-panel">
-        <img src="assets/hero/ambient-4.jpg" alt="Baños" loading="lazy">
+        <img loading="lazy" src="assets/hero/ambient-4.jpg" alt="Baños" data-edit="applications.panels[1].img.src" data-edit-bind-alt="applications.panels[1].img.alt">
         <div class="accordion-panel-overlay">
-          <div class="accordion-panel-label">Baños</div>
+          <div class="accordion-panel-label" data-edit="applications.panels[1].label">Baños</div>
         </div>
-        <div class="accordion-panel-number">02</div>
+        <div class="accordion-panel-number" data-edit="applications.panels[1].number">02</div>
       </div>
       <div class="accordion-panel">
-        <img src="assets/hero/render-space.jpg" alt="Revestimientos" loading="lazy">
+        <img loading="lazy" src="assets/hero/render-space.jpg" alt="Revestimientos" data-edit="applications.panels[2].img.src" data-edit-bind-alt="applications.panels[2].img.alt">
         <div class="accordion-panel-overlay">
-          <div class="accordion-panel-label">Revestimientos</div>
+          <div class="accordion-panel-label" data-edit="applications.panels[2].label">Revestimientos</div>
         </div>
-        <div class="accordion-panel-number">03</div>
+        <div class="accordion-panel-number" data-edit="applications.panels[2].number">03</div>
       </div>
       <div class="accordion-panel">
-        <img src="assets/hero/ambient-3.jpg" alt="Comercial" loading="lazy">
+        <img loading="lazy" src="assets/hero/ambient-3.jpg" alt="Comercial" data-edit="applications.panels[3].img.src" data-edit-bind-alt="applications.panels[3].img.alt">
         <div class="accordion-panel-overlay">
-          <div class="accordion-panel-label">Comercial</div>
+          <div class="accordion-panel-label" data-edit="applications.panels[3].label">Comercial</div>
         </div>
-        <div class="accordion-panel-number">04</div>
+        <div class="accordion-panel-number" data-edit="applications.panels[3].number">04</div>
       </div>
     </div>
   </div>
@@ -446,16 +446,16 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item">
-        <div class="stat-value" data-count="11" data-suffix="">11</div>
-        <div class="stat-label">Modelos en stock</div>
+        <div class="stat-value" data-count="11" data-suffix="" data-edit-bind-data-count="stats[0].count" data-edit-bind-data-suffix="stats[0].suffix">11</div>
+        <div class="stat-label" data-edit="stats[0].label">Modelos en stock</div>
       </div>
       <div class="stat-item">
-        <div class="stat-value" data-count="40" data-suffix="+">40+</div>
-        <div class="stat-label">Años en el mercado</div>
+        <div class="stat-value" data-count="40" data-suffix="+" data-edit-bind-data-count="stats[1].count" data-edit-bind-data-suffix="stats[1].suffix">40+</div>
+        <div class="stat-label" data-edit="stats[1].label">Años en el mercado</div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">AR</div>
-        <div class="stat-label">Distribución nacional</div>
+        <div class="stat-value" data-edit="stats[2].valueOverride">AR</div>
+        <div class="stat-label" data-edit="stats[2].label">Distribución nacional</div>
       </div>
     </div>
   </div>
