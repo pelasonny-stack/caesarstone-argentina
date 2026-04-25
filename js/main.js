@@ -432,8 +432,16 @@ function initModal() {
   if (!overlay) return;
 
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('stone-lightbox')?.classList.contains('open')) return;
+    closeModal();
+  });
   document.getElementById('modal-close')?.addEventListener('click', closeModal);
+  document.getElementById('modal-zoom')?.addEventListener('click', () => {
+    const id = overlay.dataset.currentId;
+    if (id) openLightbox(id);
+  });
   overlay.querySelector('.modal-cta')?.addEventListener('click', () => {
     const name = document.getElementById('modal-name-el')?.textContent || '';
     const code = document.getElementById('modal-code-inline')?.textContent || '';
@@ -450,6 +458,7 @@ function openModal(id) {
   if (!p) return;
 
   const overlay = document.getElementById('product-modal');
+  overlay.dataset.currentId = id;
 
   /* Stone hero — imagen HD landscape (fallback a thumb si no hay) */
   const img = document.getElementById('modal-stone-img');
@@ -523,7 +532,8 @@ function openLightbox(id) {
 
 function closeLightbox() {
   document.getElementById('stone-lightbox')?.classList.remove('open');
-  document.body.style.overflow = '';
+  const modalOpen = document.getElementById('product-modal')?.classList.contains('open');
+  document.body.style.overflow = modalOpen ? 'hidden' : '';
 }
 
 /* ── Stat counters ───────────────────────────────────────────────────────────── */
