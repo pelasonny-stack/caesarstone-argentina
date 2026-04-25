@@ -729,6 +729,8 @@
       "espesor": "Espesor",
       "acabado": "Acabado",
       "tamanoLabelHtml": "Tamaño de<br>placa completa",
+      "sizeWidth": "1600mm",
+      "sizeHeight": "3200mm",
       "caracteristicas": "Características"
     },
     "ctaSample": "Solicitar muestra",

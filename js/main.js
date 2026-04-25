@@ -479,7 +479,7 @@ function openModal(id) {
   document.getElementById('modal-finish').innerHTML = p.finish.replace(/\n/g, '<br>');
 
   /* Características */
-  const chars = p.chars || DEFAULT_CHARS;
+  const chars = (Array.isArray(p.chars) && p.chars.length) ? p.chars : DEFAULT_CHARS;
   document.getElementById('modal-chars-list').innerHTML = chars
     .map(c => `<li>${c}</li>`)
     .join('');
