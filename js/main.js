@@ -306,8 +306,13 @@ function buildProductSwiper(filter = 'all') {
 function initHeroSwiper() {
   new Swiper('.hero-swiper', {
     loop: true,
-    autoplay: { delay: 11000, disableOnInteraction: false, pauseOnMouseEnter: true },
-    speed: 1000,
+    autoplay: {
+      delay: 6500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,    // antes true → mouse hover sobre hero pausaba indefinidamente
+      waitForTransition: false,
+    },
+    speed: 1200,
     effect: 'fade',
     fadeEffect: { crossFade: true },
     pagination: { el: '.hero-swiper .swiper-pagination', clickable: true },
