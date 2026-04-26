@@ -1,8 +1,46 @@
 /* ── Minera Fame — minera-fame.js ── */
 
+/* Smart anchor scroll: mide header real + offset preciso */
+function initSmartAnchorScroll() {
+  const headerEl = document.getElementById('mf-header') || document.querySelector('.mf-header');
+  const measure = () => {
+    if (!headerEl) return 88;
+    const h = headerEl.offsetHeight;
+    document.documentElement.style.setProperty('--mf-header-h-real', h + 'px');
+    return h;
+  };
+  measure();
+  window.addEventListener('resize', measure);
+  let scrollT;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollT);
+    scrollT = setTimeout(measure, 150);
+  });
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"], a[href*=".html#"]');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    const hashIdx = href.indexOf('#');
+    if (hashIdx === -1) return;
+    const id = href.slice(hashIdx + 1);
+    if (!id) return;
+    const samePagePart = href.slice(0, hashIdx);
+    if (samePagePart && samePagePart !== window.location.pathname.split('/').pop()) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const offset = measure() + 12;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   initHeader();
   initMobileNav();
+  initSmartAnchorScroll();
   initGSAP();
   initContactForm();
   initMaterialCardPrefill();

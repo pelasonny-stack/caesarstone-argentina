@@ -741,10 +741,50 @@ function initActiveNav() {
   sections.forEach(s => observer.observe(s));
 }
 
+/* ── Smart anchor scroll: mide header real + offset preciso ──────────────── */
+function initSmartAnchorScroll() {
+  const headerEl = document.getElementById('header-wrapper') || document.querySelector('header');
+  const measure = () => {
+    if (!headerEl) return 80;
+    const h = headerEl.offsetHeight;
+    document.documentElement.style.setProperty('--header-height-real', h + 'px');
+    return h;
+  };
+  measure();
+  window.addEventListener('resize', measure);
+  // Re-medir al scrollear porque el header puede cambiar altura (scrolled state)
+  let scrollT;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollT);
+    scrollT = setTimeout(measure, 150);
+  });
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"], a[href*=".html#"]');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    const hashIdx = href.indexOf('#');
+    if (hashIdx === -1) return;
+    const id = href.slice(hashIdx + 1);
+    if (!id) return;
+    // Si el href apunta a otra página (.html), dejar que el browser navegue
+    const samePagePart = href.slice(0, hashIdx);
+    if (samePagePart && samePagePart !== window.location.pathname.split('/').pop()) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const offset = measure() + 16;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+  });
+}
+
 /* ── Init ─────────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', async () => {
   initHeader();
   initMobileNav();
+  initSmartAnchorScroll();
   initAccordion();
   initModal();
   initLightbox();
