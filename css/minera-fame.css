@@ -5,7 +5,8 @@
   --mf-header-h: 178px;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: var(--mf-header-h, 88px); }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--mf-header-h, 178px) + 12px); }
+section[id], main[id], #empresa, #materiales, #servicios, #proyectos, #contacto, #fachada { scroll-margin-top: calc(var(--mf-header-h, 178px) + 12px); }
 body {
   background: var(--mf-bone);
   font-size: 1.0625rem;
