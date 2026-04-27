@@ -12,7 +12,7 @@
     "partnerLink": {
       "prefix": "Distribuidor Oficial:",
       "name": "Minera Fame S.A.",
-      "href": "minera-fame.html"
+      "href": "https://minerafame.com.ar/"
     },
     "nav": [
       {
@@ -33,7 +33,7 @@
       {
         "id": "minera-fame",
         "label": "Minera Fame",
-        "href": "minera-fame.html"
+        "href": "https://minerafame.com.ar/"
       },
       {
         "id": "contacto",
@@ -494,7 +494,7 @@
     ],
     "cta": {
       "label": "Conocer Minera Fame",
-      "href": "minera-fame.html"
+      "href": "https://minerafame.com.ar/"
     },
     "mosaic": {
       "main": {
@@ -667,7 +667,7 @@
           },
           {
             "label": "Minera Fame S.A.",
-            "href": "minera-fame.html"
+            "href": "https://minerafame.com.ar/"
           },
           {
             "label": "Sitio global",
