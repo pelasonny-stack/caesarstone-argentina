@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/fonts/
 
-Sitemap: https://caesarstone.com.ar/sitemap.xml
+Sitemap: https://caesarstoneargentina.com.ar/sitemap.xml
