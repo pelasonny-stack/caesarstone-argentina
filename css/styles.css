@@ -2137,6 +2137,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   background:
     linear-gradient(to top,  rgba(0,0,0,0.52) 0%, transparent 48%),
     linear-gradient(to left,  rgba(0,0,0,0.28) 0%, transparent 55%);
+  pointer-events: none;
 }
 
 /* Fila superior: logo izq + colección der */
