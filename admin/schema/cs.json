@@ -143,6 +143,17 @@
             { "path": "labelImg",    "type": "imageSrc",       "label": "Imagen para PDF/label imprimible", "description": "Opcional" },
             { "path": "caesarUrl",   "type": "href",           "label": "Link a la ficha oficial en caesarstone.com" },
             {
+              "path": "gallery",
+              "type": "array",
+              "label": "Galería extra de fotos (carrusel modal/zoom)",
+              "itemLabel": "Foto",
+              "itemSchema": [
+                { "path": "src",     "type": "imageSrc", "label": "Imagen" },
+                { "path": "alt",     "type": "text",     "label": "Descripción para accesibilidad" },
+                { "path": "caption", "type": "text",     "label": "Subtítulo visible" }
+              ]
+            },
+            {
               "path": "chars",
               "type": "array",
               "label": "Características específicas (override)",

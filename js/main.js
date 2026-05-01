@@ -197,6 +197,16 @@ function filterProducts(filter) {
 
 /* ── Build stone slides for Swiper ──────────────────────────────────────────── */
 let productSwiperInstance = null;
+let modalSwiperInstance = null;
+let lightboxSwiperInstance = null;
+
+function escAttr(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
 
 function buildProductSwiper(filter = 'all') {
   const wrapper = document.getElementById('product-swiper-wrapper');
@@ -466,10 +476,97 @@ function openModal(id) {
   const overlay = document.getElementById('product-modal');
   overlay.dataset.currentId = id;
 
-  /* Stone hero — imagen HD landscape (fallback a thumb si no hay) */
-  const img = document.getElementById('modal-stone-img');
-  img.src = p.heroImg || p.img;
-  img.alt = p.name;
+  /* Stone hero — imagen HD landscape o carrusel si hay gallery */
+  const heroContainer = document.querySelector('.modal-stone-hero');
+  const existingImg = document.getElementById('modal-stone-img');
+  const zoomBtn = document.getElementById('modal-zoom');
+
+  // Cleanup previous swiper if any
+  if (modalSwiperInstance) {
+    modalSwiperInstance.destroy(true, true);
+    modalSwiperInstance = null;
+  }
+  const prevSwiper = heroContainer ? heroContainer.querySelector('.modal-stone-swiper') : null;
+  if (prevSwiper) prevSwiper.remove();
+
+  const heroSrc = p.heroImg || p.img;
+  const heroAlt = p.name;
+
+  if (p.gallery && p.gallery.length > 0) {
+    // Show swiper, hide static img
+    if (existingImg) existingImg.style.display = 'none';
+
+    const slides = [
+      { src: heroSrc, alt: heroAlt, caption: '' },
+      ...p.gallery.map(g => ({ src: g.src, alt: g.alt || '', caption: g.caption || '' }))
+    ];
+
+    const swiperHtml = `
+      <div class="swiper modal-stone-swiper">
+        <div class="swiper-wrapper">
+          ${slides.map(s => `
+            <div class="swiper-slide" data-caption="${escAttr(s.caption)}">
+              <img src="${escAttr(s.src)}" alt="${escAttr(s.alt)}" loading="lazy">
+            </div>
+          `).join('')}
+        </div>
+        <button class="modal-stone-swiper-prev" aria-label="Foto anterior" type="button"></button>
+        <button class="modal-stone-swiper-next" aria-label="Foto siguiente" type="button"></button>
+        <div class="modal-stone-swiper-pagination"></div>
+        <div class="modal-stone-swiper-caption" aria-live="polite"></div>
+      </div>
+    `;
+
+    // Insert before zoom button
+    if (zoomBtn) {
+      zoomBtn.insertAdjacentHTML('beforebegin', swiperHtml);
+    } else if (heroContainer) {
+      heroContainer.insertAdjacentHTML('afterbegin', swiperHtml);
+    }
+
+    const swiperEl = heroContainer ? heroContainer.querySelector('.modal-stone-swiper') : null;
+
+    function updateModalCaption(swiper) {
+      const slide = swiper.slides[swiper.activeIndex];
+      const cap = (slide && slide.dataset.caption) ? slide.dataset.caption : '';
+      const capEl = swiperEl ? swiperEl.querySelector('.modal-stone-swiper-caption') : null;
+      if (capEl) {
+        capEl.textContent = cap;
+        capEl.style.opacity = cap ? '1' : '0';
+      }
+    }
+
+    if (swiperEl) {
+      modalSwiperInstance = new Swiper(swiperEl, {
+        loop: slides.length > 2,
+        speed: 400,
+        navigation: {
+          nextEl: swiperEl.querySelector('.modal-stone-swiper-next'),
+          prevEl: swiperEl.querySelector('.modal-stone-swiper-prev'),
+        },
+        pagination: {
+          el: swiperEl.querySelector('.modal-stone-swiper-pagination'),
+          clickable: true,
+        },
+        keyboard: { enabled: true },
+        a11y: {
+          prevSlideMessage: 'Foto anterior',
+          nextSlideMessage: 'Foto siguiente',
+        },
+        on: {
+          init: updateModalCaption,
+          slideChange: updateModalCaption,
+        },
+      });
+    }
+  } else {
+    // Sin gallery: comportamiento original
+    if (existingImg) {
+      existingImg.style.display = '';
+      existingImg.src = heroSrc;
+      existingImg.alt = heroAlt;
+    }
+  }
 
   document.getElementById('modal-hero-collection').innerHTML =
     '<span class="modal-hero-collection-label">Colección</span>' +
@@ -517,6 +614,15 @@ function openModal(id) {
 function closeModal() {
   document.getElementById('product-modal')?.classList.remove('open');
   document.body.style.overflow = '';
+  if (modalSwiperInstance) {
+    modalSwiperInstance.destroy(true, true);
+    modalSwiperInstance = null;
+  }
+  const heroContainer = document.querySelector('.modal-stone-hero');
+  const prev = heroContainer?.querySelector('.modal-stone-swiper');
+  if (prev) prev.remove();
+  const existingImg = document.getElementById('modal-stone-img');
+  if (existingImg) existingImg.style.display = '';
 }
 
 /* ── Lightbox (zoom imagen sin descripción) ─────────────────────────────────── */
@@ -536,10 +642,96 @@ function openLightbox(id) {
   const lb = document.getElementById('stone-lightbox');
   const img = document.getElementById('stone-lightbox-img');
   const cap = document.getElementById('stone-lightbox-caption');
-  img.src = p.heroImg || p.img;
-  img.alt = p.name;
-  cap.textContent = p.code ? `${p.name} · #${p.code}` : p.name;
-  lb.classList.add('open');
+
+  // Cleanup previous swiper
+  if (lightboxSwiperInstance) {
+    lightboxSwiperInstance.destroy(true, true);
+    lightboxSwiperInstance = null;
+  }
+  const prevSwiper = lb ? lb.querySelector('.lightbox-swiper') : null;
+  if (prevSwiper) prevSwiper.remove();
+
+  const heroSrc = p.heroImg || p.img;
+  const baseCap = p.code ? `${p.name} · #${p.code}` : p.name;
+
+  if (p.gallery && p.gallery.length > 0) {
+    if (img) img.style.display = 'none';
+    if (cap) cap.style.display = 'none';
+
+    const slides = [
+      { src: heroSrc, alt: p.name, caption: baseCap },
+      ...p.gallery.map(g => ({
+        src: g.src,
+        alt: g.alt || p.name,
+        caption: g.caption ? `${baseCap} — ${g.caption}` : baseCap,
+      }))
+    ];
+
+    const swiperHtml = `
+      <div class="swiper lightbox-swiper">
+        <div class="swiper-wrapper">
+          ${slides.map(s => `
+            <div class="swiper-slide" data-caption="${escAttr(s.caption)}">
+              <img src="${escAttr(s.src)}" alt="${escAttr(s.alt)}">
+            </div>
+          `).join('')}
+        </div>
+        <button class="lightbox-swiper-prev" aria-label="Foto anterior" type="button"></button>
+        <button class="lightbox-swiper-next" aria-label="Foto siguiente" type="button"></button>
+        <div class="lightbox-swiper-caption" aria-live="polite"></div>
+      </div>
+    `;
+
+    // Insert after close button (or at start)
+    const closeBtn = document.getElementById('stone-lightbox-close');
+    if (closeBtn) {
+      closeBtn.insertAdjacentHTML('afterend', swiperHtml);
+    } else if (lb) {
+      lb.insertAdjacentHTML('afterbegin', swiperHtml);
+    }
+
+    const swiperEl = lb ? lb.querySelector('.lightbox-swiper') : null;
+
+    function updateLbCaption(swiper) {
+      const slide = swiper.slides[swiper.activeIndex];
+      const c = (slide && slide.dataset.caption) ? slide.dataset.caption : '';
+      const ce = swiperEl ? swiperEl.querySelector('.lightbox-swiper-caption') : null;
+      if (ce) ce.textContent = c;
+    }
+
+    if (swiperEl) {
+      lightboxSwiperInstance = new Swiper(swiperEl, {
+        loop: slides.length > 2,
+        speed: 400,
+        navigation: {
+          nextEl: swiperEl.querySelector('.lightbox-swiper-next'),
+          prevEl: swiperEl.querySelector('.lightbox-swiper-prev'),
+        },
+        keyboard: { enabled: true },
+        a11y: {
+          prevSlideMessage: 'Foto anterior',
+          nextSlideMessage: 'Foto siguiente',
+        },
+        on: {
+          init: updateLbCaption,
+          slideChange: updateLbCaption,
+        },
+      });
+    }
+  } else {
+    // Sin gallery: original behavior
+    if (img) {
+      img.style.display = '';
+      img.src = heroSrc;
+      img.alt = p.name;
+    }
+    if (cap) {
+      cap.style.display = '';
+      cap.textContent = baseCap;
+    }
+  }
+
+  if (lb) lb.classList.add('open');
   document.body.style.overflow = 'hidden';
   document.getElementById('stone-lightbox-close')?.focus();
 }
@@ -548,6 +740,17 @@ function closeLightbox() {
   document.getElementById('stone-lightbox')?.classList.remove('open');
   const modalOpen = document.getElementById('product-modal')?.classList.contains('open');
   document.body.style.overflow = modalOpen ? 'hidden' : '';
+  if (lightboxSwiperInstance) {
+    lightboxSwiperInstance.destroy(true, true);
+    lightboxSwiperInstance = null;
+  }
+  const lb = document.getElementById('stone-lightbox');
+  const prev = lb?.querySelector('.lightbox-swiper');
+  if (prev) prev.remove();
+  const img = document.getElementById('stone-lightbox-img');
+  const cap = document.getElementById('stone-lightbox-caption');
+  if (img) img.style.display = '';
+  if (cap) cap.style.display = '';
 }
 
 /* ── Stat counters ───────────────────────────────────────────────────────────── */

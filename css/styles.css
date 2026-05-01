@@ -3100,3 +3100,196 @@ input, select, textarea { font-size: 16px; }
   .accordion-panel:hover img { transform: none; }
 }
 
+/* ── Modal stone swiper (galería en modal de detalle) ───────────────── */
+.modal-stone-swiper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #1a1917;
+}
+
+.modal-stone-swiper .swiper-wrapper,
+.modal-stone-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-stone-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-stone-swiper-prev,
+.modal-stone-swiper-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(26, 25, 23, 0.6);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 200ms, border-color 200ms;
+}
+
+.modal-stone-swiper-prev { left: 16px; }
+.modal-stone-swiper-next { right: 16px; }
+
+.modal-stone-swiper-prev:hover,
+.modal-stone-swiper-next:hover {
+  background: rgba(26, 25, 23, 0.9);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.modal-stone-swiper-prev::before,
+.modal-stone-swiper-next::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.modal-stone-swiper-prev::before { transform: rotate(-135deg); margin-left: 3px; }
+.modal-stone-swiper-next::before { transform: rotate(45deg); margin-right: 3px; }
+
+.modal-stone-swiper-pagination {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  gap: 6px;
+}
+
+.modal-stone-swiper-pagination .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  border: none;
+  transition: background 200ms, width 200ms;
+}
+
+.modal-stone-swiper-pagination .swiper-pagination-bullet-active {
+  background: #fff;
+  width: 22px;
+  border-radius: 4px;
+}
+
+.modal-stone-swiper-caption {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 5;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: rgba(26, 25, 23, 0.75);
+  padding: 6px 12px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 300ms;
+  pointer-events: none;
+  max-width: calc(100% - 100px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+/* ── Lightbox swiper (galería en zoom fullscreen) ───────────────────── */
+.lightbox-swiper {
+  position: absolute;
+  inset: 60px 60px 80px;
+  overflow: hidden;
+}
+
+.lightbox-swiper .swiper-wrapper,
+.lightbox-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox-swiper .swiper-slide {
+  display: grid;
+  place-items: center;
+}
+
+.lightbox-swiper .swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-swiper-prev,
+.lightbox-swiper-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 200ms;
+}
+
+.lightbox-swiper-prev { left: 20px; }
+.lightbox-swiper-next { right: 20px; }
+
+.lightbox-swiper-prev:hover,
+.lightbox-swiper-next:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.lightbox-swiper-prev::before,
+.lightbox-swiper-next::before {
+  content: '';
+  width: 11px;
+  height: 11px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.lightbox-swiper-prev::before { transform: rotate(-135deg); margin-left: 4px; }
+.lightbox-swiper-next::before { transform: rotate(45deg); margin-right: 4px; }
+
+.lightbox-swiper-caption {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  font-size: 0.85rem;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 640px) {
+  .modal-stone-swiper-prev,
+  .modal-stone-swiper-next {
+    width: 36px; height: 36px;
+  }
+  .lightbox-swiper {
+    inset: 50px 10px 70px;
+  }
+  .lightbox-swiper-prev,
+  .lightbox-swiper-next {
+    width: 40px; height: 40px;
+  }
+}
+
