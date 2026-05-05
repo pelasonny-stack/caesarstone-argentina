@@ -143,7 +143,8 @@
         "tone": "blanco",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "fossillia",
@@ -161,7 +162,8 @@
         "tone": "blanco",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "striata",
@@ -179,7 +181,8 @@
         "tone": "gris",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "thalassa",
@@ -197,7 +200,8 @@
         "tone": "color",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "mosstone",
@@ -215,7 +219,8 @@
         "tone": "color",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "carrara-ice",
@@ -233,7 +238,8 @@
         "tone": "blanco",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "isobellia",
@@ -251,7 +257,8 @@
         "tone": "blanco",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "lithic-coin",
@@ -268,7 +275,8 @@
         "tone": "gris",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "lithic-latte",
@@ -285,7 +293,8 @@
         "tone": "gris",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "beige-ciment",
@@ -303,7 +312,8 @@
         "tone": "gris",
         "chars": [],
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       },
       {
         "id": "calcutta-borghini",
@@ -314,7 +324,7 @@
         "finish": "Rustic Matt\n(mate rústico)",
         "thickness": "12 mm",
         "desc": "Base blanca pura con vetas fluidas en gris y dorado. Diseño clásico de mármol cuyo acabado lustroso realza la profundidad de vetas naturales.",
-        "img": "assets/products/calcutta-borghini.jpg",
+        "img": "assets/uploads/cs/20260505-235323-calcuta-borghini.jpg",
         "labelImg": "assets/products/calcutta-borghini-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/calcutta-borghini/",
         "chars": [
@@ -325,7 +335,8 @@
         ],
         "tone": "blanco",
         "sizeWidth": "1600mm",
-        "sizeHeight": "3200mm"
+        "sizeHeight": "3200mm",
+        "gallery": []
       }
     ]
   },
