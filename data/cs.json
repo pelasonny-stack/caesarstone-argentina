@@ -166,6 +166,26 @@
         "gallery": []
       },
       {
+        "id": "Smokestone 511",
+        "code": "511",
+        "name": "Smokestone",
+        "collection": "2026",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Structure Matt\n(estructura mate)",
+        "thickness": "12 mm",
+        "desc": "Fondo negro profundo y misterioso, atravesado por una red dramática de vetas finas y trazados craquelados en blanco tiza que aportan un contraste audaz y contemporáneo.",
+        "img": "assets/uploads/cs/20260907-162638-caesarstone-lioli-511-smokestone.webp",
+        "heroImg": "assets/uploads/cs/20260907-162638-caesarstone-lioli-511-smokestone.webp",
+        "labelImg": "assets/uploads/cs/20260907-162638-caesarstone-lioli-511-smokestone.webp",
+        "caesarUrl": "https://www.caesarstoneus.com/countertops/511-smokestone/",
+        "tone": "color",
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm",
+        "gallery": [],
+        "isNew": true
+      },
+      {
         "id": "striata",
         "code": "513",
         "name": "Striata",
