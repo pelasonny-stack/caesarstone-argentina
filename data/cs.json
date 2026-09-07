@@ -337,6 +337,26 @@
         "sizeWidth": "1600mm",
         "sizeHeight": "3200mm",
         "gallery": []
+      },
+      {
+        "id": "Aisiling White 903",
+        "code": "903",
+        "name": "Aisiling White",
+        "collection": "2026",
+        "tone": "",
+        "isNew": "",
+        "procedencia": "Importado\n(Lioli porcelain\nby Caesarstone)",
+        "finish": "Rustic Matt\n(mate rústico)",
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm",
+        "thickness": "12mm",
+        "desc": "Superficie de tono blanco crema suave y sutil, recorrida por finas grietas orgánicas y vetas tenues en matices ocre y gris claro, transmitiendo serenidad y sofisticación.",
+        "img": "assets/uploads/cs/20260907-160510-903-aislingwhite-full-r300-rgb-10072023.webp",
+        "heroImg": "assets/uploads/cs/20260907-160510-903-aislingwhite-full-r300-rgb-10072023.webp",
+        "labelImg": "assets/uploads/cs/20260907-160510-903-aislingwhite-full-r300-rgb-10072023.webp",
+        "caesarUrl": "",
+        "gallery": [],
+        "chars": []
       }
     ]
   },
