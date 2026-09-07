@@ -321,6 +321,25 @@
         "gallery": []
       },
       {
+        "id": "Majesty",
+        "code": "310",
+        "name": "Majesty Metal",
+        "collection": "2026",
+        "procedencia": "Importado\n(Lioli Porcelain\nby Caesarstone)",
+        "finish": "Metal Effect",
+        "thickness": "12 mm",
+        "desc": "Superficie de tono café bronce oscuro con acabado metálico uniforme, enriquecida por suaves destellos y un matiz sutilmente ahumado que refleja sofisticación industrial.",
+        "img": "assets/uploads/cs/20260907-170349-310-majestymetal-glossy-full-r300-srgb-1.webp",
+        "heroImg": "assets/uploads/cs/20260907-170349-310-majestymetal-glossy-full-r300-srgb-1.webp",
+        "labelImg": "assets/uploads/cs/20260907-170349-310-majestymetal-glossy-full-r300-srgb-1.webp",
+        "caesarUrl": "https://www.caesarstone.com/color-catalog/310-majesty-metal/",
+        "tone": "blanco",
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm",
+        "gallery": []
+      },
+      {
         "id": "lithic-coin",
         "code": null,
         "name": "Lithic Coin",
