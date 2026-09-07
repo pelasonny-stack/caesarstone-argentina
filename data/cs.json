@@ -61,7 +61,7 @@
         "posterImg": "assets/hero/about-caesarstone.jpg",
         "eyebrow": "Colección Sinterizado",
         "titleHtml": "Diseñado<br>para durar",
-        "ctaLabel": "Ver los 11 modelos",
+        "ctaLabel": "Ver los 16 modelos",
         "ctaHref": "#coleccion"
       },
       {
@@ -745,7 +745,7 @@
         "title": "Colección Argentina",
         "links": [
           {
-            "label": "Ver los 11 modelos",
+            "label": "Ver los 16 modelos",
             "href": "#coleccion"
           },
           {
