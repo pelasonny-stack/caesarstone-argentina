@@ -205,6 +205,26 @@
         "gallery": []
       },
       {
+        "id": "Navona",
+        "code": "",
+        "name": "Travertino Navona",
+        "collection": "2026",
+        "procedencia": "Importado Lioli\n(Caesarstone)",
+        "finish": "Ultra Rough Finish\n(acabado ultra rugoso)",
+        "thickness": "12 mm",
+        "desc": "Lienzo beige claro de estilo travertino, definido por vetas lineales sutiles y bandas longitudinales en tonos marfil y gris tenue que aportan calidez y elegancia atemporal.",
+        "img": "assets/uploads/cs/20260907-164231-dbaca2dcnavona.jpg",
+        "heroImg": "assets/uploads/cs/20260907-164231-dbaca2dcnavona.jpg",
+        "labelImg": "assets/uploads/cs/20260907-164231-dbaca2dcnavona.jpg",
+        "caesarUrl": "https://www.lioliceramica.com/product/1600x3200mm/337/Navona",
+        "tone": "blanco",
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm",
+        "gallery": [],
+        "isNew": true
+      },
+      {
         "id": "thalassa",
         "code": "546",
         "name": "Thalassa",
