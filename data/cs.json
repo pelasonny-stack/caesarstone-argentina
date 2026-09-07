@@ -100,7 +100,7 @@
   "collection": {
     "eyebrow": "Colección Argentina",
     "title": "Sinterizado con stock inmediato",
-    "desc": "11 modelos disponibles en Buenos Aires. Cada superficie replica la autenticidad de las piedras más bellas del mundo con la durabilidad técnica del sinterizado.",
+    "desc": "16 modelos disponibles en Buenos Aires. Cada superficie replica la autenticidad de las piedras más bellas del mundo con la durabilidad técnica del sinterizado.",
     "filters": [
       {
         "id": "all",
@@ -280,6 +280,26 @@
         "sizeWidth": "1600mm",
         "sizeHeight": "3200mm",
         "gallery": []
+      },
+      {
+        "id": "circa",
+        "code": "503",
+        "name": "Circa",
+        "collection": "2026",
+        "procedencia": "Importado\n(Caesarstone)",
+        "finish": "Silk Finish\n(acabado seda)",
+        "thickness": "12 mm",
+        "desc": "Fondo blanco impoluto y luminoso, recorrido por un entramado fluido de vetas marcadas en tonos gris ceniza y plata, evocando la elegancia purista del mármol clásico.",
+        "img": "assets/uploads/cs/20260907-165428-porcelain-503-circa-caesarstone-porcelai.jpg",
+        "heroImg": "assets/uploads/cs/20260907-165428-porcelain-503-circa-caesarstone-porcelai.jpg",
+        "labelImg": "assets/uploads/cs/20260907-165428-porcelain-503-circa-caesarstone-porcelai.jpg",
+        "caesarUrl": "https://www.caesarstoneus.com/countertops/503-circa/",
+        "tone": "blanco",
+        "chars": [],
+        "sizeWidth": "1600mm",
+        "sizeHeight": "3200mm",
+        "gallery": [],
+        "isNew": true
       },
       {
         "id": "Mirabel",
