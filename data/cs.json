@@ -139,7 +139,7 @@
         "heroImg": "assets/products/hero/opal-taj.jpg",
         "labelImg": "assets/products/opal-taj-pdf.jpg",
         "caesarUrl": "https://www.caesarstone.com/design/stones/584-opal-taj/",
-        "isNew": true,
+        "isNew": false,
         "tone": "blanco",
         "chars": [],
         "sizeWidth": "1600mm",
@@ -318,7 +318,8 @@
         "chars": [],
         "sizeWidth": "1600mm",
         "sizeHeight": "3200mm",
-        "gallery": []
+        "gallery": [],
+        "isNew": true
       },
       {
         "id": "Majesty",
@@ -337,7 +338,8 @@
         "chars": [],
         "sizeWidth": "1600mm",
         "sizeHeight": "3200mm",
-        "gallery": []
+        "gallery": [],
+        "isNew": true
       },
       {
         "id": "lithic-coin",
@@ -415,7 +417,8 @@
         "tone": "blanco",
         "sizeWidth": "1600mm",
         "sizeHeight": "3200mm",
-        "gallery": []
+        "gallery": [],
+        "isNew": false
       },
       {
         "id": "Aisiling White 903",
@@ -423,7 +426,7 @@
         "name": "Aisiling White",
         "collection": "2026",
         "tone": "",
-        "isNew": "",
+        "isNew": true,
         "procedencia": "Importado\n(Lioli porcelain\nby Caesarstone)",
         "finish": "Rustic Matt\n(mate rústico)",
         "sizeWidth": "1600mm",
